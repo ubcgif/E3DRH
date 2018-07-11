@@ -1,0 +1,19 @@
+input_files/octree_mesh.txt             ! mesh file
+input_files/MT_data.dat                 ! data file
+VALUE 0.01                              ! 1d background
+VALUE 0.01                              ! initial model
+VALUE 0.01                              ! reference model
+NO_SUS                                  ! background susceptibility model | NO_SUS
+input_files/active_cells_topo.txt       ! topography active cell filee | ALL_ACTIVE
+ALL_ACTIVE                              ! model active cell file | ALL_ACTIVE
+NO_WEIGHT                               ! cell weight file | NO_WEIGHT | EKBLOM
+NO_FACE_WEIGHT                          ! face weighting file
+DEFAULT                                 ! DEFAULT ! beta_max  beta_min  beta_factor
+4e-6  1.  1.  1.                        ! alpha_s  alpha_x  alpha_y  alpha_z
+0.001                                   ! chifact
+1.e-2  1.e-3  3                         ! tol_nl  mindm  iter_per_beta
+1.e-2  20                               ! tol_ipcg  max_iter_ipcg
+NOT_CHANGE_MREF                         ! CHANGE_MREF | NOT_CHANGE_MREF
+SMOOTH_MOD_DIF                          ! SMOOTH_MOD | SMOOTH_MOD_DIF
+BOUNDS_NONE                             ! BOUNDS_CONST 1.e-10  1.e+10    ! bounds
+1e-11 1e-5 150 1e6                      ! tol_bicg tol_ipcg_bicg max_it_bicg Aphi

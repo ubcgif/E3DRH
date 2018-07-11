@@ -1,0 +1,7 @@
+input_files\octree_mesh.txt           ! octree mesh file
+input_files\dataPoints.txt            ! locations file
+input_files\octree_model.con          ! real conductivity model | VALUE
+NO_IMAG_COND                          ! imaginary conductivity model | NO_IMAG_COND
+VALUE 0.01                            ! 1D background conductivity file | VALUE #
+NO_SUS                                ! background susceptibility model | NO_SUS
+input_files\active_cells_topo.txt     ! topography active cell file | ALL_ACTIVE

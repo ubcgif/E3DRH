@@ -1,0 +1,9 @@
+500  500  100                         ! min dx, dy, dz
+10000  10000  10000 5000              ! padding x, y, down, air
+2500 3000 4000                        ! depth intervals for area of interest
+5 5 5                                 ! # of small cells around receivers
+ONLY_LOC input_files\dataPoints.txt   ! Survey (data locations) file
+input_files\topo.txt                  ! topo file
+NOT_SHIFT_DATA                        ! SHIFT_DATA | NOT_SHIFT_DATA
+APPROXTOPO                            ! APPROXTOPO | GOODTOPO
+START_LARGE_CELLS                     ! START_LARGE_CELLS | START_SMALL_CELLS
