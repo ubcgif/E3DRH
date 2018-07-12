@@ -3,7 +3,7 @@
 Running the programs
 ====================
 
-This section provides describes how to run all executables pertaining to the E3DMT version 1 (2014 and 2015) package and the E3DMT version 2 (2017) package.
+This section provides describes how to run all executables pertaining to the E3D package.
 
 .. note::
 

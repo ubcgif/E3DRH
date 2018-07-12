@@ -49,9 +49,6 @@ Here, we describe the formats of supporting files used to run E3DMT executable f
     :maxdepth: 1
 
     Survey and Locations File <files/surveyFile>
-    Receiver File <files/receiverFile>
-    Survey Index File <files/indexFile>
-    Frequencies Files <files/freqFile>
     Predicted Data File <files/preFile>
     Observations File <files/obsFile>
     Topography File <files/topoFile>
