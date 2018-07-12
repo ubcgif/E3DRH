@@ -3,10 +3,7 @@
 Forward Modeling Input File
 ===========================
 
-Version 1 (2014 and 2015)
--------------------------
-
-The forward problem is solved using the executable program **e3dMTfwd.exe**. Parameters necessary for running the forward modeling code are set in the input file. The lines of input file are as follows:
+The forward problem is solved using the executable program **e3dfwd_pardiso.exe**. Parameters necessary for running the forward modeling code are set in the input file. The lines of input file are as follows:
 
 .. tabularcolumns:: |L|C|C|
 
@@ -21,11 +18,11 @@ The forward problem is solved using the executable program **e3dMTfwd.exe**. Par
 +--------+------------------------------------------------------+-----------------------------------------------+
 |   4    |:ref:`Imaginary Conductivity<e3dmt_input_fwd_ln4>`    | path to imaginary conductivity file (optional)|
 +--------+------------------------------------------------------+-----------------------------------------------+
-|   5    |:ref:`1D Background Conductivity<e3dmt_input_fwd_ln5>`| set 1D conductivity model                     |
+|   5    |:ref:`Topography<e3dmt_input_fwd_ln5>`                | set topography                                |
 +--------+------------------------------------------------------+-----------------------------------------------+
-|   6    |:ref:`Background Susceptibility<e3dmt_input_fwd_ln6>` | set background susceptibility                 |
+|   6    |:ref:`Primary field options<e3dmt_input_fwd_ln6>`     | primary field computation options             |
 +--------+------------------------------------------------------+-----------------------------------------------+
-|   7    |:ref:`Topography<e3dmt_input_fwd_ln7>`                | set topography                                |
+|   7    |:ref:`Memory options<e3dmt_input_fwd_ln7>`            | memory options for factorizations             |
 +--------+------------------------------------------------------+-----------------------------------------------+
 
 
@@ -59,21 +56,22 @@ Line Descriptions
 
 .. _e3dmt_input_fwd_ln5:
 
-    - **1D Background Conductivity:** The user may supply the file path to a `1D background conductivity model <http://em1dfm.readthedocs.io/en/latest/content/files/supporting.html#files-for-reference-and-starting-models>`__ . If a homogeneous background conductivity is being used, the user enters "VALUE" followed by a space and a numerical value; example "VALUE 0.01"
+    - **Topography:** The user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above.
 
 .. _e3dmt_input_fwd_ln6:
 
-    - **Background Susceptibility:** The user may provide the file path to a background susceptibility model on this line. If a constant susceptibility is being used, "VALUE" may be entered and followed by the background susceptibility. For no background susceptibility, the flag "NO_SUS" is used.
+    - **Primary Field Options:**
+
 
 .. _e3dmt_input_fwd_ln7:
 
-    - **Topography:** The user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above.
+    - **Memory options:** This code uses a factorization to solve the forward system at each frequency. These factorizations must be stored. By using the flag ‘FACTOR_IC’ (in cpu), factorizations are stored within a computer’s RAM. Although this is faster, larger problems cannot be solved if insufficient temporary memory is available. The factorizations are stored in permanent memory (disk) if the flag ‘FACTOR_OOC’ (out of cpu) is used followed by the path to a directory. This is slower because the program must read these files many times. The second options is ill-advised if files are being transferred over a network.
 
 
-Version 2 (2017)
-----------------
+.. Version 2 (2017)
+.. ----------------
 
-Both the forward problem and inverse problem are solved using the executable program **e3dMTinv_ver2.exe**. As a result, the :ref:`input file<e3dmt_input_inv2>` will be described within the :ref:`running the inversion<e3dmt_inv2>` section.
+.. Both the forward problem and inverse problem are solved using the executable program **e3dMTinv_ver2.exe**. As a result, the :ref:`input file<e3dmt_input_inv2>` will be described within the :ref:`running the inversion<e3dmt_inv2>` section.
 
 
 
