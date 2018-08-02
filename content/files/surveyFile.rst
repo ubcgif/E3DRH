@@ -60,7 +60,12 @@ Parameter Descriptions
 
 .. _e3dmt_survey_ln2:
 
-    - **trx type:** For some codes, various transmitter types can be used. For E3D, the transmitter type will always be defined using the flag *TRX_ORIG*. This type of transmitter is a closed inductive loop source.
+    - **trx type:** Flag denoting the type of transmitter being used. Choices are one of the following:
+
+        *TRX_ORIG:* a closed inductive loop source where the values in the x, y or z column must all be the same.
+        *TRX_LINES:* a closed inductive loop source made of discrete line segments
+        *TRX_LOOP:* a circular loop source.
+         
 
 .. _e3dmt_survey_ln3:
 
