@@ -11,31 +11,47 @@ The observations contains the set of field measurements used in the inversion. T
 The lines the observations file are formatted as follows:
 
 
-| **N_TRX** :math:`\;` :ref:`n_trx<e3dmt_dobs_ln1>`
+| **N_TRX** :math:`\;` :ref:`n_trx<e3d_dobs_ln1>`
 |
-| :ref:`trx type<e3dmt_dobs_ln2>`
-| :ref:`n_nodes<e3dmt_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3dmt_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3dmt_dobs_ln4>`
+| :ref:`trx type<e3d_dobs_ln2>`
+| :ref:`n_nodes<e3d_dobs_ln3>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
 | :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3dmt_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3dmt_dobs_ln4>`
+| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
 | 
-| **FREQUENCY** :math:`\;` :ref:`f1<e3dmt_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3dmt_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3dmt_dobs_ln7>`
+| **FREQUENCY** :math:`\;` :ref:`f1<e3d_dobs_ln5>`
+| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
+| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
 |
-| **FREQUENCY** :math:`\;` :ref:`f2<e3dmt_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3dmt_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3dmt_dobs_ln7>`
+| :ref:`trx type<e3d_dobs_ln2>`
+| :ref:`n_nodes<e3d_dobs_ln3>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
+| :math:`\;\;\;\;\;\;\;\; \vdots`
+| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+|
+| **FREQUENCY** :math:`\;` :ref:`f2<e3d_dobs_ln5>`
+| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
+| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
 |
 | :math:`\;\;\;\;\;\; \vdots`
 |
-| **FREQUENCY** :math:`\;` :ref:`fn<e3dmt_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3dmt_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3dmt_dobs_ln7>`
+| :ref:`trx type<e3d_dobs_ln2>`
+| :ref:`n_nodes<e3d_dobs_ln3>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
+| :math:`\;\;\;\;\;\;\;\; \vdots`
+| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
+| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
 |
-| *Repeat for number of transmitters*
+| **FREQUENCY** :math:`\;` :ref:`fn<e3d_dobs_ln5>`
+| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
+| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
+|
+| *Repeat for number of unique transmitter-frequency pairs*
 |
 |
 
@@ -52,36 +68,36 @@ Parameter Descriptions
 ----------------------
 
 
-.. _e3dmt_dobs_ln1:
+.. _e3d_dobs_ln1:
 
     - **n_trx:** The total number of transmitters. Example: *N_TRX 3*
 
-.. _e3dmt_dobs_ln2:
+.. _e3d_dobs_ln2:
 
     - **trx type:** For some codes, various transmitter types can be used. For E3D, the transmitter type will always be defined using the flag *TRX_ORIG*. This type of transmitter is a closed inductive loop source.
 
-.. _e3dmt_dobs_ln3:
+.. _e3d_dobs_ln3:
 
     - **n_nodes:** The number of nodes defining a particular transmitter loop. Note that:
 
         - You **must close the loop**
         - **Something here about CW or CCW**
 
-.. _e3dmt_dobs_ln4:
+.. _e3d_dobs_ln4:
 
     - **xi yi zi:** This refers to the x, y and z locations of the nodes defining the transmitter loop.
 
-.. _e3dmt_dobs_ln5:
+.. _e3d_dobs_ln5:
 
     - **fi:** The frequency (in Hz) at which the subsequent set of measurements are made.
 
-.. _e3dmt_dobs_ln6:
+.. _e3d_dobs_ln6:
 
     - **n_recv:** The number of receivers collecting field observations at a particular frequency for a particular transmitter.
 
-.. _e3dmt_dobs_ln7:
+.. _e3d_dobs_ln7:
 
-    - **Data Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3dmt_dobs_ln6>` :math:`\times` 3.
+    - **Data Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_dobs_ln6>` :math:`\times` 3.
 
 
 Data Array

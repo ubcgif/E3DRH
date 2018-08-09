@@ -16,9 +16,9 @@ The main executable programs within the E3D program library are:
 
 Also included are the following Octree utility programs:
 
-    - **blk3cell:** creates conductivity on underlying tensor
+    - **blk3cellOct:** creates conductivity models on OcTree meshes
     - **create_weight_file:** creates the weighting on each cell in the model
-    - **interface_weights:** creates weights on the faces of cells
+    - **face_weights:** creates weights on the faces of cells
     - **octree_cell_centre:** computes the cell centres of each octree cell
     - **octreeTo3D:** converts and octree mesh to a 3D base mesh
     - **refine_octree:** refine the octrees

@@ -6,9 +6,9 @@ E3D package overview
 Description
 -----------
 
-This manual provides instruction and background for the e3d program library for the forward
+This manual provides instruction and background for the E3D program library for the forward
 modelling and inversion of frequency domain electromagnetic survey data. In order to decrease
-computational time and increase accuracy by mesh refinement in areas of interest, e3d models
+computational time and increase accuracy by mesh refinement in areas of interest, E3D models
 are discretized on an Octree mesh.  
 
 
@@ -19,14 +19,13 @@ are discretized on an Octree mesh.
      2D (QuadTree) mesh discretization about a ring (left). Cell refinement for OcTree mesh (right).
 
 
-For ease of use the program library includes several utilities which generate a regular base mesh, enabling the user to construct initial or simulation models on
-a regular mesh and then convert to an octree mesh. From the users point of view the software
+For ease of use the program library includes several utilities which generate OcTree meshes and additional weights. From the users point of view the software
 operates in much the same way as previous GIF codes. This version is currently run through the
 command line only.
 
 The program library provides codes to do the following:
 
-    - Construct models on a rectangular mesh, where each cell is assigned a constant value of conductivity, and transfers the model to an octree mesh.
+    - Construct models on OcTree meshes.
     - Forward model electric and magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
     - Convert from and octree mesh to a regular base mesh.
     - Invert of surface, airborne, and/or borehole EM data to generate 3D conductivity models:
@@ -58,13 +57,13 @@ E3D Program Library Content
 
 The main executable programs within the E3D program library are:
 
-    - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3dfwd_pardiso:** predicts data for a conductivity model
-    - **e3dinv_pardiso:** inverts observed data to recover a conductivity model
+    - **create_octree_mesh_E3D:** creates an OcTree mesh based on the survey geometry
+    - **E3Dfwd_pardiso:** predicts data for a conductivity model
+    - **E3Dinv_pardiso:** inverts observed data to recover a conductivity model
 
 Also included are the following Octree utility programs:
 
-      - blk3cell
+      - blk3cellOct
       - create_weight_file
       - interface_weights
       - octree_cell_centre
@@ -75,17 +74,6 @@ Also included are the following Octree utility programs:
 Licensing
 ---------
 
-A constrained educational version of the program is available with the `IAG <http://www.flintbox.com/public/project/1605/>`__ package
-(please visit `UBC-GIF website <http://gif.eos.ubc.ca/>`__ for details). The educational version is fully functional so that users can learn
-how to carry out effective and efficient 3D inversions of magnetic data. However, RESEARCH
-OR COMMERCIAL USE IS NOT POSSIBLE because the educational version will
-NOT work with more than 200 data points or 12,000 cells in the 3D mesh.
-
-Licensing for an unconstrained academic version is available - see the `Licensing policy document <http://gif.eos.ubc.ca/software/licensing>`__.
-
-NOTE: All academic licenses will be time-limited to one year. You can re-apply after that
-time. This ensures that everyone is using the most recent versions of codes.
-
 Licensing for commercial use is managed by distributors, not by the UBC-GIF research group.
 Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/licensing>`__.
 
@@ -93,7 +81,7 @@ Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/li
 Installing E3D
 --------------
 
-There is no automatic installer currently available for the e3d. Please follow the following steps in
+There is no automatic installer currently available for the E3D. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.
