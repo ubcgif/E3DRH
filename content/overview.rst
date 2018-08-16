@@ -1,14 +1,16 @@
 .. _overview:
 
-E3D package overview
-====================
+Package overview
+================
+
+.. important:: E3D version 1 performs forward modeling and inversion with the executable **e3dinv.exe**. Past iterations of this code may have been given the name 'e3dinv_iter.exe' or 'e3dinv_pardiso.exe'. To use this code, ensure you have downloaded 'e3dinv.exe' and all related file from the UBC-GIF website.
 
 Description
 -----------
 
-This manual provides instruction and background for the E3D program library for the forward
+This manual provides instruction and background for the **E3D version 1** program library for the forward
 modelling and inversion of frequency domain electromagnetic survey data. In order to decrease
-computational time and increase accuracy by mesh refinement in areas of interest, E3D models
+computational time and increase accuracy by mesh refinement in areas of interest, conductivity models
 are discretized on an Octree mesh.  
 
 
@@ -43,7 +45,7 @@ as well as overall influence of regulariztion on objective function minimization
 prior information may also take the form of upper and lower bounds on the conductivity
 contrast in any cell.
 
-he regularization parameter (controlling relative importance of objective function and
+The regularization parameter (controlling relative importance of objective function and
 misfit terms). The initial research underlying this program library was funded principally by the mineral industry
 consortium “Joint and Cooperative Inversion of Geophysical and Geological Data” (1991 -
 1997) which was sponsored by NSERC and the following 11 companies: BHP Minerals, CRA Exploration,
@@ -52,14 +54,13 @@ Exploration & Technical Services, Kennecott Exploration Company, Newmont Gold Co
 Noranda Exploration, Placer Dome, and WMC.
 
 
-E3D Program Library Content
----------------------------
+Program Library Content
+-----------------------
 
-The main executable programs within the E3D program library are:
+The main executable programs within the E3D version 1 program library are:
 
     - **create_octree_mesh_E3D:** creates an OcTree mesh based on the survey geometry
-    - **E3Dfwd_pardiso:** predicts data for a conductivity model
-    - **E3Dinv_pardiso:** inverts observed data to recover a conductivity model
+    - **e3dinv:** used to forward model and inverted FEM data
 
 Also included are the following Octree utility programs:
 

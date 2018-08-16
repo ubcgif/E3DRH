@@ -1,40 +1,40 @@
 .. _elements:
 
-Elements of the Program E3D
-===========================
+Elements of the E3D version 1 package
+=====================================
 
-This section provides a brief description of each program in the E3D package. In addition, we describe the file formats for all input and supporting files used by the coding library.
+This section provides a brief description of each program in the E3D version 1 package. In addition, we describe the file formats for all input and supporting files used by the coding library.
 
 Program Library
 ---------------
 
-The main executable programs within the E3D program library are:
+The main executable programs within the E3D version 1 program library are:
 
-    - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3dfwd_pardiso:** predicts data for a conductivity model
-    - **e3dinv_pardiso:** inverts observed data to recover a conductivity model
+    - **create_OcTree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
+    - **e3dinv:** used to forward model or invert FEM data
 
-Also included are the following Octree utility programs:
+Also included are the following OcTree utility programs:
 
-    - **blk3cellOct:** creates conductivity models on OcTree meshes
+    - **blk3cell:** creates conductivity models on the underlying tensor mesh
+    - **3DModel2OcTree:** interpolates models from tensor to OcTree meshes
     - **create_weight_file:** creates the weighting on each cell in the model
-    - **face_weights:** creates weights on the faces of cells
-    - **octree_cell_centre:** computes the cell centres of each octree cell
-    - **octreeTo3D:** converts and octree mesh to a 3D base mesh
-    - **refine_octree:** refine the octrees
-    - **remesh_octree_model:** converts the octree model to base mesh
+    - **interace_weights:** creates weights on the faces of cells
+    - **OcTree_cell_centre:** computes the cell centres of each OcTree cell
+    - **OcTreeTo3D:** converts and OcTree mesh to a 3D base mesh
+    - **refine_OcTree:** refine the OcTrees
+    - **remesh_OcTree_model:** converts the OcTree model to base mesh
 
 
 Main Input Files
 ----------------
 
-Here, we describe the main input files for executables contained with the E3DMT version 1 and version 2 coding packages.
+Here, we describe the main input files for executables contained with the E3D version 1 coding package.
 
-.. toctree::
+.. tOcTree::
     :maxdepth: 2
 
-    Create octree mesh <inputfiles/createOcTree>
-    Create octree model <inputfiles/createModel>
+    Create OcTree mesh <inputfiles/createOcTree>
+    Create OcTree model <inputfiles/createModel>
     Forward modeling <inputfiles/forward>
     Create face weights <inputfiles/weightsFiles>
     Inversion <inputfiles/inversion>
@@ -43,7 +43,7 @@ Here, we describe the main input files for executables contained with the E3DMT 
 Supporting Files
 ----------------
 
-Here, we describe the formats of supporting files used to run E3DMT executable files. The input files for each executable program are described in the :ref:`running the programs<running>` section.
+Here, we describe the formats of supporting files used to run E3D executable files. The input files for each executable program are described in the :ref:`running the programs<running>` section.
 
 .. toctree::
     :maxdepth: 1
@@ -53,7 +53,7 @@ Here, we describe the formats of supporting files used to run E3DMT executable f
     Observations File <files/obsFile>
     Topography File <files/topoFile>
     Tensor Mesh File <files/tensor_mesh>
-    Octree Mesh File <files/octree_mesh>
+    OcTree Mesh File <files/octree_mesh>
     Model File <files/model>
     Model and Face Weights Files <files/weights>
 

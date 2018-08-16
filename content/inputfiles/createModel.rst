@@ -1,9 +1,9 @@
-.. _e3dmt_input_model:
+.. _e3d_input_model:
 
 Create Model Input File
 =======================
 
-.. _e3dmt_blk3cell_input:
+.. _e3d_blk3cell_input:
 
 Input File for blk3cell
 -----------------------
@@ -37,10 +37,10 @@ where superscript :math:`(i)` for :math:`i=1,2,...,N` refers to a particular blo
      :align: center
      :width: 700
 
-     Example input file for blk3cell (`Download <https://github.com/ubcgif/e3dmt/raw/master/assets/input_files1/blk3cell.inp>`__ )
+     Example input file for blk3cell (`Download <https://github.com/ubcgif/e3d/raw/master/assets/input_files1/blk3cell.inp>`__ )
 
 
-.. _e3dmt_3Dmodel2octree_input:
+.. _e3d_3Dmodel2octree_input:
 
 Input File for Model2Octree
 ---------------------------
@@ -65,8 +65,6 @@ The file **Model2Octree.inp** contains the paths to the tensor mesh (**3D_mesh.t
 | 6      | :math:`Output \; model \; name`  | File name for conductivity model on Octree mesh                                                             |
 +--------+----------------------------------+-------------------------------------------------------------------------------------------------------------+
 
-.. | 7      | :math:`Start \; point`           | Either :ref:`START_LARGE_CELLS<e3dmt_input_octreeln9>` or :ref:`START_SMALL_CELLS<e3dmt_input_octreeln9>`   |
-.. +--------+----------------------------------+-------------------------------------------------------------------------------------------------------------+
 
 .. note::
 
@@ -81,7 +79,7 @@ An example input file and the resulting conductivity model on the octree mesh ar
      :align: center
      :width: 700
 
-     Example input file for 3DModel2Octree.exe (`Download <https://github.com/ubcgif/e3dmt/raw/master/assets/input_files1/3Dmodel2octree.inp>`__ )
+     Example input file for 3DModel2Octree.exe (`Download <https://github.com/ubcgif/e3d/raw/master/assets/input_files1/3Dmodel2octree.inp>`__ )
 
 
 
