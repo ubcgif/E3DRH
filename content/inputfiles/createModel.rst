@@ -1,4 +1,4 @@
-.. _aem_input_model:
+.. _e3d_input_model:
 
 Create Model Input File
 =======================
