@@ -3,7 +3,7 @@
 Octree Mesh File
 ================
 
-Octree meshes define the domain for which the forward modeling or inverse problem is solved. The format of Octree mesh files is as follows:
+Octree meshes define the global domain for which the inverse problem is solved and the local domains for which the set of forward problems are solved in parallel. The format of Octree mesh files is as follows:
 
 
 |
@@ -25,6 +25,11 @@ An example of an octree mesh file is shown below
 .. figure:: images/octree_mesh_file.png
      :align: center
      :width: 700
+
+
+.. note:: The set of local meshes for which the 
+
+
 
 
 Parameter Descriptions

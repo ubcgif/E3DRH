@@ -3,7 +3,7 @@
 Predicted Data File
 ===================
 
-predicted data files output from **e3dfwd_pardiso.exe** and **e3dinv_pardiso.exe** contain the locations and predicted data. The order of the data points is in the same order as the :ref:`survey and locations file <surveyFile>`. Each block, separated by a blank line, are the data for a particular transmitter and frequency. Thus predicted data files take the format:
+predicted data files output from **AEM.exe** contain the locations and predicted data. The order of the data points is in the same order as the :ref:`survey index<indexFile>` or :ref:`observations<obsFile>` file. Each block, separated by a blank line, are the data for a particular transmitter and frequency. Thus predicted data files take the format:
 
 |
 | **Data Array 1**

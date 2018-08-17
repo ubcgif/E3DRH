@@ -1,101 +1,122 @@
-.. _e3dmt_input_octree:
+.. _e3d_input_octree:
 
 Create OcTree Mesh Input File
 =============================
 
-The :ref:`OcTree mesh<octreeFile>` used in the E3D code are created using the program **create_octree_mesh_e3d.exe**. Parameters necessary for defining the OcTree mesh are set in the input file. The lines within the input file are as follows:
+:ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **AEMesh.exe**. The lines within the input file are as follows:
+
+..This includes a global mesh (the mesh for which the inverse problem is solved) and a set of local meshes (OcTree meshes use to solve the set of forward problems). Parameters necessary for creating all of the OcTree meshes are set in the input file. 
+
+.. important:: This code has parameters which define the global mesh used in the inversion (where the recovered model lives) **and** parameters defining the local meshes where the forward problem is solved for each transmitter. The former will be referred to as the **global inversion mesh** and the latter will be referred to as **local forward meshes**.
 
 
 .. tabularcolumns:: |C|C|C|
 
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| Line # | Parameter                                                | Descriptions                                                    |
-+========+==========================================================+=================================================================+
-| 1      |:ref:`dx dy dz<e3dmt_input_octreeln1>`                    | min. cell widths in x, y and z for base mesh                    |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 2      |:ref:`x_pad y_pad down_pad up_pad<e3dmt_input_octreeln2>` | sets the extend of mesh in x, y and z direction                 |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 3      |:ref:`dist_1 dist_2 dist_3<e3dmt_input_octreeln3>`        | sets cell sizes within core mesh region                         |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 4      |:ref:`n1 n2 n3<e3dmt_input_octreeln4>`                    | sets thickness of cells of finest discretization near receivers |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 5      |:ref:`locFile<e3dmt_input_octreeln5>`                     | the file containing transmitters and observation locations      |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 6      |:ref:`topoFile<e3dmt_input_octreeln6>`                    | sets topography                                                 |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 7      |:ref:`shift_data<e3dmt_input_octreeln7>`                  | *description needed. leave as NOT_SHIFT_DATA*                   |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 8      |:ref:`interp_topo<e3dmt_input_octreeln8>`                 | sets level of discretization for surface topography             |
-+--------+----------------------------------------------------------+-----------------------------------------------------------------+
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Line # | Parameter                                                                | Descriptions                                                      |
++========+==========================================================================+===================================================================+
+| 1      |:ref:`dx dy dz<e3d_input_octreeln1>`                                      | min. cell widths in x, y and z for base mesh                      |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 2      |:ref:`min_cell_fact min_cell_size_fwd max_topo_cell<e3d_input_octreeln2>` | additional cell size parameters                                   |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 3      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln3>`                   | sets the extent of mesh in x, y and z direction                   |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 4      |:ref:`dist_inv_1 dist_inv_2 dist_inv_3<e3d_input_octreeln4>`              | sets core mesh discretization for the inverse mesh                |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 5      |:ref:`dist_fwd_1 dist_fwd_2 dist_fwd_3<e3d_input_octreeln5>`              | sets core mesh discretization for local forward meshes            |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 6      |:ref:`n1 n2 n3<e3d_input_octreeln6>`                                      | sets thickness of cells of finest discretization near receivers   |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 7      |:ref:`locFile<e3d_input_octreeln7>`                                       | the file containing observation locations                         |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 8      |:ref:`txFile<e3d_input_octreeln8>`                                        | the file defining all transmitters                                |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 9      |:ref:`rxFile<e3d_input_octreeln9>`                                        | the file defining all receivers                                   |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 10     |:ref:`freqFile<e3d_input_octreeln10>`                                     | the file containing the frequencies being measured                |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 11     |:ref:`topoFile<e3d_input_octreeln11>`                                     | sets topography                                                   |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 12     |:ref:`polygon edge width<e3d_input_octreeln12>`                           | sets horizontal extent of core region for the inversion mesh      |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
+| 13     |:ref:`read/create mesh<e3d_input_octreeln13>`                             | read in or create global inversion mesh                           |
++--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 
-.. | 9      |:ref:`start_point<e3dmt_input_octreeln9>`                 | sets the starting point for the mesh generation                 |
-.. +--------+----------------------------------------------------------+-----------------------------------------------------------------+
 
+.. .. figure:: images/create_octree_input.png
+..      :align: center
+..      :width: 700
 
-.. figure:: images/create_octree_input.png
-     :align: center
-     :width: 700
-
-     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/e3dmt/raw/master/assets/input_files1/MTcreate_mesh.inp>`__ )
+..      Example input file for creating octree mesh (`Download <https://github.com/ubcgif/e3dmt/raw/master/assets/input_files1/MTcreate_mesh.inp>`__ )
 
 
 Line Descriptions
 ^^^^^^^^^^^^^^^^^
 
 
-.. _e3dmt_input_octreeln1:
+.. _e3d_input_octreeln1:
 
     - **dx dy dz:** Minimum cell widths in x, y and z for the base mesh.
 
-.. _e3dmt_input_octreeln2:
+.. _e3d_input_octreeln2:
 
-    - **x_pad y_pad down_pad up_pad:** Distance from the origin in the x, y, downward and upward directions, respectively, that the mesh extends.
+    - **min_cell_fact min_cell_size_fwd max_topo_cell:** These parameters determine the rate of cell expansion for regions near topography and for the local forward meshes.
 
-.. _e3dmt_input_octreeln3:
+        - **min_cell_fact:** Defines the rate of topography-based cell size increase on the global inversion mesh with respect to depth. After each layer of *N* cells, the cell size will increase by a factor of 2 until a maximum cell size (*max_topo_cell*) is reached. *N* must be an integer value that is a power of 2.
+        - **min_cell_size_fwd:** This sets the minimum cell size for the local forward meshes. A value of 2 means the minimum cell size in the local mesh has a side width of 2 times the base mesh cell size. This parameter must be an integer value that is a power of 2.
+        - **max_topo_cell:** This determines the maximum cell size for which topography-based cell size increase is used on the global inversion mesh; after which typical OcTree cell expansion is used. This parameter must be an integer value that is a power of 2.
 
-    - **dist_1 dist_2 dist_3:** Sets the distance from surface topography and receivers in which the cells widths are increased by a factor of 2 in x, y and z. Up to a depth of *dist_1* from surface topography and within a horizontal distance of *dist_1* from any receiver, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_2* metres, the cell widths are doubled. For the following *dist_3* metres, the cell widths are doubled again. Outside a depth and horizontal distance of *h1+h2+h3*, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+.. _e3d_input_octreeln3:
 
-.. _e3dmt_input_octreeln4:
+    - **x_pad y_pad down_pad up_pad:** Distance from the core mesh region in the x, y, downward and upward directions, respectively, that the global inversion mesh extends.
+
+.. _e3d_input_octreeln4:
+
+    - **dist_inv_1 dist_inv_2 dist_inv_3:** For the global inversion mesh, these parameters set the discretization of the core mesh region (i.e. the region near the transmitters and receivers) in terms of depth. Up to a depth of *dist_inv_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_inv_2* metres, a cell width 2 times large is used. For the following *dist_inv_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+
+
+.. _e3d_input_octreeln5:
+
+    - **dist_fwd_1 dist_fwd_2 dist_fwd_3:** For the local forward meshes, these parameters set the discretization of the core mesh region (i.e. the region near the transmitter and receivers) in terms of depth. Up to a depth of *dist_fwd_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_fwd_2* metres, a cell width 2 times large is used. For the following *dist_fwd_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+
+.. note:: These values must be entered. However, they are only relevant for the *e3dinv_ver2_tiled* code.
+
+.. _e3d_input_octreeln6:
 
     - **n1 n2 n3:** This sets the thicknesses of layers of finest discretization near the receivers. **n1 = 4** means that around each receiver, there is a layer 4 cells thick that uses the finest discretization. This is followed by a layer which is **n2** cells thick, where the cell dimensions are increased by a factor of 2. Likewise for the 3rd layer.
 
-.. _e3dmt_input_octreeln5:
+.. _e3d_input_octreeln7:
 
-    - **locFile:** Contains the locations of the receivers. The user may either enter the file path to an :ref:`observed data<obsFile>` file, or the flag "ONLY_LOC" followed by the path to a :ref:`data points<surveyFile>` file. 
+    - **locFile:** Path to the file containing the survey information. This can be either an :ref:`observed data<obsFile>` file, or a :ref:`survey index<indexFile>` file. 
 
-.. _e3dmt_input_octreeln6:
+.. _e3d_input_octreeln8:
+
+    - **txFile:** Path to the file defining the transmitters; i.e. the :ref:`transmitter file<receiverFile>`.
+
+.. _e3d_input_octreeln9:
+
+    - **rxFile:** Path to the file defining the receivers; i.e. the :ref:`receiver file<receiverFile>`. 
+
+.. _e3d_input_octreeln10:
+
+    - **freqFile:** Path to the file defining the frequencies used in the survey; i.e. the :ref:`frequencies file<freqFile>`. 
+
+.. _e3d_input_octreeln11:
 
     - **topoFile:** If a topography file is available, the file path to the topography file is entered; see :ref:`topography file<topoFile>` for format. In the case of flat topography, the user instead enter "TOPO_CONST", followed by a space, then the elevation of the surface topography; for example "TOPO_CONST 125.5".
 
-.. _e3dmt_input_octreeln7:
+.. _e3d_input_octreeln12:
 
-    - **shift_data:** Set as either "NOT_SHIFT_DATA" or "SHIFT_DATA *filename*". **EXPLANATION REQUIRED**
+    - **polygon edge width:** Here we define the horizontal extent of the core inversion mesh region. The user may do this by providing the path to a file containing the points for a polygon. The user may also set the horizontal extent of the core mesh region based on transmitter and receiver locations. The set of transmitter and receiver locations can be used to create a convex hull. For this option the user types "*MAKE_POLYGON d*", where *d* is the distance outside the convex hull the user want to extend to core mesh region.
 
-.. _e3dmt_input_octreeln8:
+.. _e3d_input_octreeln13:
 
-    - **interp_topo:** Set as either "APPROXTOPO" or "GOODTOPO". If "APPROXTOPO" is chosen, there will only be fine cells close to the survey, whereas "GOODTOPO" will place fine cells everywhere on the surface.
+    - **read/create mesh:** If the global inversion mesh has already been created, then it may be loaded by typing "READ_LARGE_MESH *filepath*". In this case, the global inversion mesh is used to define the local forward meshes. If the global inversion mesh needs to be created, the user types "CREATE_LARGE_MESH *filename*", where the global inversion mesh is output to the file *filename*.
 
-.. .. _e3dmt_input_octreeln9:
-
-..     - **start_point:** Set as either "START_LARGE_CELLS" or "START_SMALL_CELLS". This line sets the starting point for the mesh generation. Starting the mesh population from large cells greatly reduces initial memory required and is therefore suggested. Large cells are divided in this algorithm to produce the OcTree mesh.
+.. note:: This functionality is relevant to the *e3dinv_ver2_tiled* code. For *e3dinv_ver2*, use "CREATE_LARGE_MESH *filename*"
 
 
-.. .. figure:: images/octree_example.png
-..      :align: center
-..      :width: 400
-
-..      Octree mesh showing and surface topography. Cells below the surface topography are assigned a value of 1 in the active cells model.
-
-Approximate versus Good Topography
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Below, we see the difference between entering "APPROXTOPO" (top) and "GOODTOPO" (bottom) into :ref:`interp_top<e3dmt_input_octreeln7>`. For "APPROXTOPO", the mesh ultimately contains a smaller total number of cells, as discretization near the surface is coarser. For "GOODTOPO", the mesh contains a larger total number of cells because the surface topography is discretized to the finest cell size.
-
-
-.. figure:: images/create_octree_topo.png
-     :align: center
-     :width: 500
 
 
 

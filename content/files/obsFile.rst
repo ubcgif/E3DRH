@@ -3,126 +3,69 @@
 Observations File
 =================
 
-The observations contains the set of field measurements used in the inversion. This file contains all necessary survey information including: the number of transmitters, transmitter geometry, observation locations, frequencies, observed fields and uncertainties. 
+This file is input when forward modeling or inverting field-collected data. Using 8 columns, the observation file indexes the frequencies, transmitters and receivers used for each measurement as well as the field observations and data uncertainties. Each row defines a unique field measurement. The general format is as follows:
 
-.. note:: Bolded entries are fixed flags recognized by the Fortran codes and blue hyperlinked entries are values/regular expressions specified by the user
+.. note::
+    - Blue hyperlinked entries are values specified by the user
+    - To omit a particular datum in the inversion, used the flag **-99** on its corresponding uncertainty.
 
 
-The lines the observations file are formatted as follows:
 
-
-| **N_TRX** :math:`\;` :ref:`n_trx<e3d_dobs_ln1>`
-|
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| 
-| **FREQUENCY** :math:`\;` :ref:`f1<e3d_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
-|
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-|
-| **FREQUENCY** :math:`\;` :ref:`f2<e3d_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
-|
-| :math:`\;\;\;\;\;\; \vdots`
-|
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-|
-| **FREQUENCY** :math:`\;` :ref:`fn<e3d_dobs_ln5>`
-| **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
-| :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
-|
-| *Repeat for number of unique transmitter-frequency pairs*
+| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
+| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
+| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
+| :math:`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots`
+| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
 |
 |
 
-
-.. figure:: images/files_locations.png
-     :align: center
-     :width: 700
-
-     Example locations file for MTZ data.
-
+.. important:: 
+    Due to the way the forward problem is solved, it is imperative that the user sort the observations:
+        - First by transmitter
+        - Next by frequency
+        - Then finally by receiver
 
 
-Parameter Descriptions
-----------------------
+**Parameter Descriptions**
 
 
-.. _e3d_dobs_ln1:
+.. _aem_obs_ln1:
 
-    - **n_trx:** The total number of transmitters. Example: *N_TRX 3*
+    - **tx_ind:** The index corresponding to the desired transmitter within the :ref:`transmitter file<receiverFile>`. 
 
-.. _e3d_dobs_ln2:
+.. _aem_obs_ln2:
 
-    - **trx type:** For some codes, various transmitter types can be used. For E3D, the transmitter type will always be defined using the flag *TRX_ORIG*. This type of transmitter is a closed inductive loop source.
+    - **f_ind:** The index corresponding to the desired frequency within the :ref:`frequencies file<freqFile>`.
 
-.. _e3d_dobs_ln3:
+.. _aem_obs_ln3:
 
-    - **n_nodes:** The number of nodes defining a particular transmitter loop. Note that:
+    - **rx_ind:** The index corresponding to the desired receiver within the :ref:`receiver file<receiverFile>`.
 
-        - You **must close the loop**
-        - **Something here about CW or CCW**
+.. _aem_obs_ln4:
 
-.. _e3d_dobs_ln4:
+    - **1:** As of May 2018, a flag value of 1 is entered here. In future iterations of the code, this entry may be related to additional functionality.
 
-    - **xi yi zi:** This refers to the x, y and z locations of the nodes defining the transmitter loop.
+.. _aem_obs_ln5:
 
-.. _e3d_dobs_ln5:
+    - **data_real:** The real component of the observed data.
 
-    - **fi:** The frequency (in Hz) at which the subsequent set of measurements are made.
+.. _aem_obs_ln6:
 
-.. _e3d_dobs_ln6:
+    - **unc_real:** The uncertainty for the real component of the observed data.
 
-    - **n_recv:** The number of receivers collecting field observations at a particular frequency for a particular transmitter.
+.. _aem_obs_ln7:
 
-.. _e3d_dobs_ln7:
+    - **data_imag:** The imaginary component of the observed data.
 
-    - **Data Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_dobs_ln6>` :math:`\times` 3.
+.. _aem_obs_ln8:
 
-
-Data Array
-----------
-
-For each transmitter at each frequency, a set of field observations are made for a set of receivers. These field observations include real and imaginary components of the electric and magnetic fields as well as their uncertainties. The rows of the data array are formatted as follows:
-
-.. math::
-    | \; x \; | \; y \; | \; z \; | \;\;\; E_x \; data \;\;\; | \;\;\; E_y \; data \;\;\; | \;\;\; E_z \; data \;\;\; | \;\;\; H_x \; data \;\;\; | \;\;\; H_y \; data \;\;\; | \;\;\; H_z \; data \;\;\; |
-
-such that :math:`E_x \; data` is comprised of 4 columns:
-
-.. math::
-
-    | \; E_x^\prime \; | \; U_x^\prime \; | \; E_x^{\prime \prime} \; | \; U_x^{\prime \prime} \; |
-
-where
-
-    - :math:`E_x^\prime` is the real component of the electric field along the Easting direction
-    - :math:`E_x^{\prime\prime}` is the imaginary component of the electric field along the Easting direction
-    - :math:`U_x^\prime` is the uncertainty on :math:`E_x^\prime`
-    - :math:`U_x^{\prime\prime}` is the uncertainty on :math:`E_x^{\prime\prime}`
+    - **unc_imag:** The uncertainty for the real component of the observed data.
 
 
-This is done likewise for :math:`E_y`, :math:`E_z`, :math:`H_x`, :math:`E_y`, :math:`H_z`.
+
+
+
+
 
 
 

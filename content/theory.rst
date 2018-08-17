@@ -140,7 +140,28 @@ which can be also be written as
 
 
 In the code the :math:`\mathbf{R^T R}` matrix is stored as a separate matrix so that individual model norm components
-can be calculated . Now, if a cell weighting is used it is applied to the entire norm, that
+can be calculated.
+
+The resulting optimization problem is then
+
+.. math::
+    \begin{align}
+    &\min_{\mathbf{m}} \;\; \Phi_d (\mathbf{m}) + \beta \Phi_m ( \mathbf{m - m_{ref}}) \\ 
+    &s.t. \;\; \mathbf{m_L} \preceq \mathbf{m} \preceq \mathbf{m_H}
+    \end{align}
+
+where :math:`\beta` is trade-off parameter for the regularization, and :math:`\mathbf{m_L}` and :math:`\mathbf{m_H}` are upper and lower bounds provided by
+some a prior geological information.
+A simple Gauss-Newton optimization method is used to where the system of equations is solved
+using ipcg (incomplete preconditioned conjugate gradients) to solve for each G-N step. For more
+information refer again to Haber et al. (2012) and references therein.
+
+
+
+Cell Weighting
+^^^^^^^^^^^^^^
+
+Now, if a cell weighting is used it is applied to the entire norm, that
 is, there is a :math:`w_i` for each cell
 
 .. math:: 
@@ -160,19 +181,22 @@ When the value is greater than 1, there will be a smooth transition. To prevent 
     + \alpha_z \mathbf{G_z^T} \textrm{diag} \big ( \mathbf{W_z A_f^T v} \big ) \mathbf{G_z}
 
 
-The resulting optimization problem is then
+Sparse Norms
+^^^^^^^^^^^^
+
+The Ekblom regulization allows the user to essentially change the norm or distance measure of the regulization. The discrete Ekblom norm is given by
 
 .. math::
-    \begin{align}
-    &\min_{\mathbf{m}} \;\; \Phi_d (\mathbf{m}) + \beta \Phi_m ( \mathbf{m - m_{ref}}) \\ 
-    &s.t. \;\; \mathbf{m_L} \preceq \mathbf{m} \preceq \mathbf{m_H}
-    \end{align}
+    \phi_E = \mathbf{V^T} \big [ \mathbf{A_f} \big [ \mathbf{G} [\mathbf{m - m_{ref}} ] \big ]^2 + \epsilon \big ]^p
 
-where :math:`\beta` is trade-off parameter for the regularization, and :math:`\mathbf{m_L}` and :math:`\mathbf{m_H}` are upper and lower bounds provided by
-some a prior geological information.
-A simple Gauss-Newton optimization method is used to where the system of equations is solved
-using ipcg (incomplete preconditioned conjugate gradients) to solve for each G-N step. For more
-information refer again to Haber et al. (2012) and references therein.
+
+where :math:`\mathbf{G}` is the gradient operator. And as a result:
+
+.. math::
+    \mathbf{R^T R} = \mathbf{G^T} \textrm{diag} \Big ( \mathbf{A_f^T v} \big [ \mathbf{A_f} [\mathbf{G} (\mathbf{m - m_{ref}}) ] \big ]^2 + \epsilon \big ]^{p-1} \Big ) \mathbf{G}
+
+
+The Ekblom norm can be controlled by the user by choosing the parameters :math:`p` and :math:`\epsilon`.
 
 
 
