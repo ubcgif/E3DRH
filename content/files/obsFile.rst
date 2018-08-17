@@ -11,11 +11,11 @@ This file is input when forward modeling or inverting field-collected data. Usin
 
 
 
-| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
-| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
-| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
+| :ref:`tx_ind<e3d_obs_ln1>` :math:`\;` :ref:`f_ind<e3d_obs_ln2>` :math:`\;` :ref:`rx_ind<e3d_obs_ln3>` :math:`\;` :ref:`data_opt<e3d_obs_ln4>` :math:`\;` :ref:`data_real<e3d_obs_ln5>` :math:`\;` :ref:`unc_real<e3d_obs_ln6>` :math:`\;` :ref:`data_imag<e3d_obs_ln7>` :math:`\;` :ref:`unc_imag<e3d_obs_ln8>`
+| :ref:`tx_ind<e3d_obs_ln1>` :math:`\;` :ref:`f_ind<e3d_obs_ln2>` :math:`\;` :ref:`rx_ind<e3d_obs_ln3>` :math:`\;` :ref:`data_opt<e3d_obs_ln4>` :math:`\;` :ref:`data_real<e3d_obs_ln5>` :math:`\;` :ref:`unc_real<e3d_obs_ln6>` :math:`\;` :ref:`data_imag<e3d_obs_ln7>` :math:`\;` :ref:`unc_imag<e3d_obs_ln8>`
+| :ref:`tx_ind<e3d_obs_ln1>` :math:`\;` :ref:`f_ind<e3d_obs_ln2>` :math:`\;` :ref:`rx_ind<e3d_obs_ln3>` :math:`\;` :ref:`data_opt<e3d_obs_ln4>` :math:`\;` :ref:`data_real<e3d_obs_ln5>` :math:`\;` :ref:`unc_real<e3d_obs_ln6>` :math:`\;` :ref:`data_imag<e3d_obs_ln7>` :math:`\;` :ref:`unc_imag<e3d_obs_ln8>`
 | :math:`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots`
-| :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
+| :ref:`tx_ind<e3d_obs_ln1>` :math:`\;` :ref:`f_ind<e3d_obs_ln2>` :math:`\;` :ref:`rx_ind<e3d_obs_ln3>` :math:`\;` :ref:`data_opt<e3d_obs_ln4>` :math:`\;` :ref:`data_real<e3d_obs_ln5>` :math:`\;` :ref:`unc_real<e3d_obs_ln6>` :math:`\;` :ref:`data_imag<e3d_obs_ln7>` :math:`\;` :ref:`unc_imag<e3d_obs_ln8>`
 |
 |
 
@@ -29,35 +29,35 @@ This file is input when forward modeling or inverting field-collected data. Usin
 **Parameter Descriptions**
 
 
-.. _aem_obs_ln1:
+.. _e3d_obs_ln1:
 
     - **tx_ind:** The index corresponding to the desired transmitter within the :ref:`transmitter file<receiverFile>`. 
 
-.. _aem_obs_ln2:
+.. _e3d_obs_ln2:
 
     - **f_ind:** The index corresponding to the desired frequency within the :ref:`frequencies file<freqFile>`.
 
-.. _aem_obs_ln3:
+.. _e3d_obs_ln3:
 
     - **rx_ind:** The index corresponding to the desired receiver within the :ref:`receiver file<receiverFile>`.
 
-.. _aem_obs_ln4:
+.. _e3d_obs_ln4:
 
     - **1:** As of May 2018, a flag value of 1 is entered here. In future iterations of the code, this entry may be related to additional functionality.
 
-.. _aem_obs_ln5:
+.. _e3d_obs_ln5:
 
     - **data_real:** The real component of the observed data.
 
-.. _aem_obs_ln6:
+.. _e3d_obs_ln6:
 
     - **unc_real:** The uncertainty for the real component of the observed data.
 
-.. _aem_obs_ln7:
+.. _e3d_obs_ln7:
 
     - **data_imag:** The imaginary component of the observed data.
 
-.. _aem_obs_ln8:
+.. _e3d_obs_ln8:
 
     - **unc_imag:** The uncertainty for the real component of the observed data.
 
