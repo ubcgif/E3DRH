@@ -15,7 +15,7 @@ This section provides describes how to run all executables pertaining to the E3D
 
     Executable files should **not** be renamed. However, input file names can be specified by the user if desired.
 
-The main executable programs within the E3D program library are:
+The main executable programs within the E3D version 2 program library are:
 
     - **AEMesh:** creates a global OcTree mesh for the forward modeling and inversion of FEM data based on transmitter and receiver locations
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
