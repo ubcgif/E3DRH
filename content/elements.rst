@@ -10,7 +10,7 @@ Program Library
 
 The main executable programs within the E3D version 2 program library are:
 
-    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
+    - **AEMesh:** creates a global OcTree mesh for the forward modeling and inversion of FEM data based on transmitter and receiver locations
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
     - **e3dinv_ver2:** single executable file for carrying out forward modeling and inversion of FEM data
 

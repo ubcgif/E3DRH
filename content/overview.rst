@@ -10,13 +10,6 @@ This manual provides instruction and background for the E3D version 2 program li
 modelling and inversion of frequency domain electromagnetic survey data. In order to decrease computational time and increase accuracy by mesh refinement in areas of interest, models
 are discretized on an Octree mesh.
 
-.. This manual provides instruction and background for the E3D version 2 program library for the forward
-.. modelling and inversion of frequency domain electromagnetic survey data. New to this
-.. program is the ability to create many small local meshes on which to solve the EM forward problems
-.. for each transmitter in parallel. The AEM mesh generation code is parallelized with OpenMP and is meant to run on
-.. a single node. It will use as many threads as available, or the user can use the **OMP_NUM_THREADS**
-.. environment variable to indicate the number of threads.
-
 
 .. figure:: images/OcTree.png
      :align: center
@@ -33,7 +26,7 @@ command line only.
 The program library provides codes to do the following:
 
     - Construct models on a rectangular mesh, where each cell is assigned a constant value of conductivity, and transfers the model to an octree mesh.
-    - Forward model electric and magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
+    - Forward model magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
     - Convert from and octree mesh to a regular base mesh.
     - Invert of surface, airborne, and/or borehole EM data to generate 3D conductivity models:
 
@@ -63,8 +56,6 @@ with E3D version 2. These include:
 
   - Surface and below surface topography cell size control. This allows the user to generate a mesh with refined cells near the surface of the topography to better capture features.
 
-  .. - Small (tile) meshes are generated and focused around each source/receiver so that the forward problem can be split into many small problems and solved in parallel. The solutions are then interpolated back to the large base octree mesh. The user can specify the depth of each tile mesh, the number of cells surrounding source/receivers, and expand the polygon around the data.
-
   - A more versatile format for survey and observations files
 
 
@@ -73,7 +64,7 @@ Program Library Content
 
 The main executable programs within the E3D version 2 program library are:
 
-    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
+    - **AEMesh:** creates a global OcTree mesh for the forward modeling and inversion of FEM data based on transmitter and receiver locations
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
     - **e3dinv_ver2:** single executable file for carrying out forward modeling and inversion of FEM data
 
@@ -98,7 +89,7 @@ Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/li
 Installing E3D
 --------------
 
-There is no automatic installer currently available for the AEM program library. Please follow the following steps in
+There is no automatic installer currently available for the E3D program library. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.

@@ -3,7 +3,7 @@
 Running the programs
 ====================
 
-This section provides describes how to run all executables pertaining to the AEM package.
+This section provides describes how to run all executables pertaining to the E3D version 2 package.
 
 .. note::
 
@@ -15,11 +15,11 @@ This section provides describes how to run all executables pertaining to the AEM
 
     Executable files should **not** be renamed. However, input file names can be specified by the user if desired.
 
-The main executable programs within the AEM program library are:
+The main executable programs within the E3D program library are:
 
-    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
+    - **AEMesh:** creates a global OcTree mesh for the forward modeling and inversion of FEM data based on transmitter and receiver locations
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
-    - **AEM:** Single executable file for carrying out forward modeling and inversion of FEM data
+    - **e3dinv_ver2:** single executable file for carrying out forward modeling and inversion of FEM data
 
 Also included are the following Octree utility programs:
 
