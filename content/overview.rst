@@ -3,6 +3,8 @@
 Package overview
 ================
 
+.. important:: E3D version 2 performs forward modeling and inversion with the executable **e3dinv_ver2.exe**. Past iterations of this code may have been given the name 'e3dinv_1mesh.exe'. To use this code, ensure you have downloaded 'e3dinv_ver2.exe' and all related file from the UBC-GIF website.
+
 Description
 -----------
 
