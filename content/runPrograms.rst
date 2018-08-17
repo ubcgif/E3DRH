@@ -15,15 +15,15 @@ This section provides describes how to run all executables pertaining to the E3D
 
     Executable files should **not** be renamed. However, input file names can be specified by the user if desired.
 
-The main executable programs within the E3D program library are:
+The main executable programs within the E3D version 1 program library are:
 
     - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3dfwd_pardiso:** predicts data for a conductivity model
-    - **e3dinv_pardiso:** inverts observed data to recover a conductivity model
+    - **e3dinv:** used to forward model or invert FEM data
 
 Also included are the following Octree utility programs:
 
-    - **blk3cellOct:** creates conductivity model on OcTree meshes
+    - **blk3cell:** creates conductivity models on the underlying tensor mesh
+    - **3DModel2Octree:** interpolates models from tensor to OcTree meshes
     - **create_weight_file:** creates the weighting on each cell in the model
     - **interface_weights:** creates weights on the faces of cells
     - **octree_cell_centre:** computes the cell centres of each octree cell

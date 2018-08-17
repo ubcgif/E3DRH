@@ -28,9 +28,8 @@ command line only.
 The program library provides codes to do the following:
 
     - Construct models on OcTree meshes.
-    - Forward model electric and magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
-    - Convert from and octree mesh to a regular base mesh.
-    - Invert of surface, airborne, and/or borehole EM data to generate 3D conductivity models:
+    - Forward model magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
+    - Invert of surface, airborne, and/or borehole EM data to recover 3D conductivity models:
 
 The inversion is solved as an optimization problem with the simultaneous goals of (i)
 minimizing an objective function dependent on the model and (ii) generating synthetic
@@ -38,10 +37,10 @@ data that match observations to within a degree of misfit consistent with the st
 of those data.
 
 To counteract the inherent lack of information, the formulation incorporates reference
-model and smoothing by regularization.
+model and regularization.
 
 Capacity for the user to directionally weight smoothing and reference model influence
-as well as overall influence of regulariztion on objective function minimization. Explicit
+as well as overall influence of regularization on objective function minimization. Explicit
 prior information may also take the form of upper and lower bounds on the conductivity
 contrast in any cell.
 
@@ -59,12 +58,13 @@ Program Library Content
 
 The main executable programs within the E3D version 1 program library are:
 
-    - **create_octree_mesh_E3D:** creates an OcTree mesh based on the survey geometry
+    - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
     - **e3dinv:** used to forward model and inverted FEM data
 
 Also included are the following Octree utility programs:
 
-      - blk3cellOct
+      - blk3cell
+      - 3Dmodel2Octree
       - create_weight_file
       - interface_weights
       - octree_cell_centre
@@ -82,7 +82,7 @@ Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/li
 Installing E3D
 --------------
 
-There is no automatic installer currently available for the E3D. Please follow the following steps in
+There is no automatic installer currently available for E3D. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.
