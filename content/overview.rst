@@ -28,7 +28,7 @@ command line only.
 The program library provides codes to do the following:
 
     - Construct models on OcTree meshes.
-    - Forward model magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
+    - Forward model electric and magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
     - Invert of surface, airborne, and/or borehole EM data to recover 3D conductivity models:
 
 The inversion is solved as an optimization problem with the simultaneous goals of (i)
