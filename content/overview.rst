@@ -3,6 +3,8 @@
 Package overview
 ================
 
+.. important:: E3D version 2 tiled performs forward modeling and inversion with the executable **e3dinv_ver2_tiled.exe**. Past iterations of this code may have been given the name 'AEM.exe', although its application is not limited to airborne. To use this code, ensure you have downloaded 'e3dinv_ver2_tiled.exe' and all related file from the UBC-GIF website.
+
 Description
 -----------
 
@@ -31,7 +33,7 @@ command line only.
 The program library provides codes to do the following:
 
     - Construct models on a rectangular mesh, where each cell is assigned a constant value of conductivity, and transfers the model to an octree mesh.
-    - Forward model electric and magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
+    - Forward model magnetic field anomaly responses to a 3D volume of contrasting conductivity, on and octree mesh.
     - Convert from and octree mesh to a regular base mesh.
     - Invert of surface, airborne, and/or borehole EM data to generate 3D conductivity models:
 
