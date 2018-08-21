@@ -1,16 +1,20 @@
-.. _aem_inv:
+.. _e3d_inv:
 
 Inversion Program
 =================
 
-Both the forward and inverse problems are solved using the **AEM.exe** executable program. In each case, format of the :ref:`input file<aem_input_inv>` (denoted here as **AEM.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
+Both the forward and inverse problems are solved using the **e3dinv_ver2_tiled.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv_ver2_tiled.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
 
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
 
 To run the inversion, open a command line window and type the following:
 
-**IMAGE NEEDED**
+
+.. figure:: images/run_e3dinv_ver2_tiled.png
+     :align: center
+     :width: 500
+
 
 The *mpiexec* call is used for parallelization. This is followed by the flag *-n*, then the number of frequencies (*"nFreq"*). This is followed by the inversion executable and the corresponding input file.
 
@@ -19,7 +23,7 @@ Units
 
 **Input and outputs:**
 
-    - **FEM data:** Real and imaginary components of the auxiliary field H in units A/m
+    - **FEM data:** the component of the secondary magnetic field orthogonal to the receiver coil in units A/m
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
     - **Model/interface weights:** unitless
@@ -33,7 +37,9 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-The program **AEM.exe** creates the following output files:
+**THIS IS NOT CORRECT**
+
+The program **e3dinv_ver2.exe** creates the following output files:
 
     - **inv.con:** recovered conductivity model for the final beta value
 
