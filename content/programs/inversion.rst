@@ -1,73 +1,16 @@
-.. _e3dmt_inv:
+.. _e3d_inv:
 
 Inversion Program
 =================
 
-Version 1 (2014 and 2015)
--------------------------
-
-There are two options for inversion executables, both of which require parameters set through an :ref:`input file<e3dmt_input_inv>`; denoted here as **e3dMT_octree_inv.inp**. The two executable files are:
-
-    - **e3dMTinv.exe:** Uses the MUMPS direct solver (2014). Faster but larger memory requirements
-    - **e3dMTinv_iter.exe:** Uses an iterative solver (2015). Slower run-time but less memory requirements
+Both the forward and inverse problems are solved using the **e3dinv.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
 
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
 
 To run the inversion, open a command line window and type the following:
 
-.. figure:: images/run_e3dmt_inv_iter.png
-     :align: center
-     :width: 700
-
-The *mpiexec* call is used for parallelization. This is followed by the flag *-n*, then the number of frequencies (*"nFreq"*). This is followed by the inversion executable and the corresponding input file.
-
-Units
-^^^^^
-
-**Inputs:**
-
-    - **MT data:** Real and imaginary components of impedance tensor entries (V/A)
-    - **ZTEM data:** Real and imaginary components of transfer function entries (unitless)
-    - **Reference/starting conductivity model:** S/m 
-    - **Background susceptibility model:** SI
-    - **Model/interface weights:** unitless
-
-
-.. important:: The current version of the code requires both components for all entries within the impedance tensor. For example, the user cannot invert only the off-diagonal impedance tensor data. Instead the user must supply large uncertainties for the diagonal data.
-
-**Outputs:**
-
-    - **Conductivity model:** S/m
-
-
-Output Files
-^^^^^^^^^^^^
-
-The program **e3dMTinv.exe** creates the following output files:
-
-    - **inv.con:** recovered conductivity models
-
-    - **dpred.txt** predicted data for each recovered conductivity model
-
-    - **e3dMT_octree_inv.log:** log file for the inversion
-
-    - **e3dMT_octree_inv.out:**
-
-
-.. _e3dmt_inv2:
-
-Version 2 (2017)
-----------------
-
-Both the forward and inverse problems are solved using the **e3dMTinv_ver2** executable program. In each case, format of the :ref:`input file<e3dmt_input_inv2>` (denoted here as **e3dMTver2.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
-
-Running the Program
-^^^^^^^^^^^^^^^^^^^
-
-To run the inversion, open a command line window and type the following:
-
-.. figure:: images/run_e3dmt_inv2.png
+.. figure:: images/run_e3dinv.png
      :align: center
      :width: 700
 
@@ -78,32 +21,35 @@ Units
 
 **Input and outputs:**
 
-    - **MT data:** Real and imaginary components of impedance tensor entries (V/A)
-    - **ZTEM data:** Real and imaginary components of transfer function entries (unitless)
+    - **Electric field data:** Real and imaginary components of *Ex*, *Ey* and *Ez* in units V/m
+    - **Magnetic field data:** The total magnetic field in units A/m. Represented as the real and imaginary components of *Hx*, *Hy* and *Hz*. 
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
-    - **Background susceptibility model:** SI
     - **Model/interface weights:** unitless
 
 
-.. important::
+.. important:: Any combination of data, electric and or magnetic field components, can be be inverted. A specified flag at the start of the observations file can be used to omit columns or individual datums.
 
-    - The current version of the code cannot forward model or invert both MT and ZTEM data, just one or the other.
-    - If a flag value of -99 is used as the uncertainty for a particular datum, the inversion will omit that datum. Using this, we are not required to invert all entries of the impedance tensor or transfer function.
 
 
 Output Files
 ^^^^^^^^^^^^
 
-The program **e3dMTinv_ver2.exe** creates the following output files:
+The program **e3dMTinv.exe** creates the following output files:
 
-    - **inv.con:** recovered conductivity models
+    - **model0.con:** the starting model
 
-    - **dpred.txt** predicted data for each recovered conductivity model
+    - **dpred0.txt** data predicted using the starting model
 
-    - **e3dMTinv.log:** log file for the inversion
+    - **inv_xx.con:** recovered model at iteration 'xx'
 
-    - **e3dMTinv.out:**
+    - **dpred_xx.txt** data predicted using model 'xx'
+
+    - **inv.con:** final conductivity model
+
+    - **e3d_octree_inv_pardiso.log:** log file for the inversion
+
+    - **e3d_octree_inv.pardiso.out:** stores details regarding the inversion
 
 
 
