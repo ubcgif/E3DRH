@@ -18,7 +18,7 @@ Also included are the following OcTree utility programs:
     - **blk3cell:** creates conductivity models on the underlying tensor mesh
     - **3DModel2Octree:** interpolates models from tensor to OcTree meshes
     - **create_weight_file:** creates the weighting on each cell in the model
-    - **interace_weights:** creates weights on the faces of cells
+    - **interface_weights:** creates weights on the faces of cells
     - **OcTree_cell_centre:** computes the cell centres of each OcTree cell
     - **OcTreeTo3D:** converts and OcTree mesh to a 3D base mesh
     - **refine_OcTree:** refine the OcTrees

@@ -79,7 +79,7 @@ Line Descriptions
 
 .. important::
 
-    If data are only being forward modeled, only the :ref:`active topography cells<e3dmt_input_inv2_ln7>` and :ref:`tol_ipcg max_iter_ipcg<e3dmt_input_inv2_ln16>` fields are relevant. **However**, the remaining fields must not be empty and must have correct syntax for the code to run.
+    If data are only being forward modeled, only the :ref:`active topography cells<e3d_input_inv_ln7>` and :ref:`tol_ipcg max_iter_ipcg<e3d_input_inv_ln16>` fields are relevant. **However**, the remaining fields must not be empty and must have correct syntax for the code to run.
 
 .. _e3d_input_inv_ln4:
 
