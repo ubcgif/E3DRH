@@ -37,6 +37,8 @@ Output Files
 
 The program **e3dMTinv.exe** creates the following output files:
 
+    - **dpred_fwd.txt** predicted data if forward modeling is used
+
     - **model0.con:** the starting model
 
     - **dpred0.txt** data predicted using the starting model
