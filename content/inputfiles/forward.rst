@@ -1,9 +1,9 @@
-.. _aem_input_fwd:
+.. _e3d_input_fwd:
 
 Forward Modeling Input File
 ===========================
 
-Both the forward problem and inverse problem are solved using the executable program **AEM.exe**. As a result, the :ref:`input file<aem_input_inv>` will be described within the :ref:`running the inversion<aem_inv>` section.
+Both the forward problem and inverse problem are solved using the executable program **e3dinv_ver2.exe**. As a result, the :ref:`input file<e3d_input_inv>` will be described within the :ref:`running the inversion<e3d_inv>` section.
 
 
 

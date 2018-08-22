@@ -1,0 +1,13 @@
+50 50 50                            ! min_dx, min_dy, min_dz
+1 1 64                              ! mincellfactor  mincellsize_fwd  max_topo_cell  
+8000. 8000. 8000. 8000.             ! total mesh extent in x, y, down, up
+800 200 200                         ! depth_core_inv  depth_core_inv2  depth_core_inv3
+800 200 200                         ! depth_core_fwd  depth_core_fwd2  depth_core_fwd3
+4 4 4                               ! # of small cells around receivers,  ncell2,  ncell4
+locFile.txt                         ! survey index file
+txFile.txt                          ! transmitters file
+rxFile.txt                          ! receivers file
+freqFile.txt                        ! frequencies file
+topo.txt                            ! topo data file | TOPO_CONST d ! NO_TOPO
+MAKE_POLYGON 200                    ! polygon points file | MAKE_POLYGON d
+CREATE_LARGE_MESH octree_mesh.txt   ! READ_LARGE_MESH octree_file | CREATE_LARGE_MESH output mesh name

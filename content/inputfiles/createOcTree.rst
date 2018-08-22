@@ -5,8 +5,6 @@ Create OcTree Mesh Input File
 
 :ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **AEMesh.exe**. The lines within the input file are as follows:
 
-..This includes a global mesh (the mesh for which the inverse problem is solved) and a set of local meshes (OcTree meshes use to solve the set of forward problems). Parameters necessary for creating all of the OcTree meshes are set in the input file. 
-
 .. important:: This code has parameters which define the global mesh used in the inversion (where the recovered model lives) **and** parameters defining the local meshes where the forward problem is solved for each transmitter. The former will be referred to as the **global inversion mesh** and the latter will be referred to as **local forward meshes**.
 
 
@@ -44,11 +42,11 @@ Create OcTree Mesh Input File
 
 
 
-.. .. figure:: images/create_octree_input.png
-..      :align: center
-..      :width: 700
+.. figure:: images/create_octree_input.png
+     :align: center
+     :width: 700
 
-..      Example input file for creating octree mesh (`Download <https://github.com/ubcgif/e3dmt/raw/master/assets/input_files1/MTcreate_mesh.inp>`__ )
+     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/input_files2/octree_mesh.inp>`__ )
 
 
 Line Descriptions
