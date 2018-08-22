@@ -13,7 +13,7 @@ The :ref:`OcTree mesh<octreeFile>` used in the E3D code are created using the pr
 +========+==========================================================+=================================================================+
 | 1      |:ref:`dx dy dz<e3d_input_octreeln1>`                      | min. cell widths in x, y and z for base mesh                    |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 2      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln2>`   | sets the extend of mesh in x, y and z direction                 |
+| 2      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln2>`   | sets the thickness of padding in x, y, down and up directions   |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
 | 3      |:ref:`dist_1 dist_2 dist_3<e3d_input_octreeln3>`          | sets cell sizes within core mesh region                         |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
@@ -33,7 +33,7 @@ The :ref:`OcTree mesh<octreeFile>` used in the E3D code are created using the pr
      :align: center
      :width: 700
 
-     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/e3d/raw/master/assets/input_files1/MTcreate_mesh.inp>`__ )
+     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/input_files1/e3d_mesh.inp>`__ )
 
 
 Line Descriptions
