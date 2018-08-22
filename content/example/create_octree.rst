@@ -16,11 +16,11 @@ To generate the OcTree mesh, the following input file was used:
      :width: 700
 
 
-To keep the problem simple, the topography is given a constant elevation of 0 m. The resulting OcTree mesh is shown below:
+.. To keep the problem simple, the topography is given a constant elevation of 0 m. The resulting OcTree mesh is shown below:
 
-.. figure:: images/octree_mesh1.png
-     :align: center
-     :width: 500
+.. .. figure:: images/octree_mesh1.png
+..      :align: center
+..      :width: 500
 
 
 

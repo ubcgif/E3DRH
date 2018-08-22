@@ -61,7 +61,7 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2.exe** e
 
 
 
-.. figure:: images/e3d_inv_input2.png
+.. figure:: images/create_inv_input.png
      :align: center
      :width: 700
 
@@ -77,7 +77,7 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln3:
 
-    - **Observation File:** file path to the :ref:`observed data file<obsFile2>`
+    - **Observation File:** file path to the :ref:`observed data file<obsFile>`
 
 .. _e3d_input_inv2_ln4:
 

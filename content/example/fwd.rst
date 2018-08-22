@@ -16,13 +16,13 @@ To forward model the data, the following input file was used:
      :width: 700
 
 
-Predicted data are shown below.
+.. Predicted data are shown below.
 
-.. figure:: images/fwd1.png
-     :align: center
-     :width: 700
+.. .. figure:: images/fwd1.png
+..      :align: center
+..      :width: 700
 
-     Real component of the vertical magnetic field at 10 kHz (left). Imaginary component of the vertical magnetic response at 10 kHz (right).
+..      Real component of the vertical magnetic field at 10 kHz (left). Imaginary component of the vertical magnetic response at 10 kHz (right).
 
 
 
