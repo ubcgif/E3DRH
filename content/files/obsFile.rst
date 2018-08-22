@@ -12,6 +12,8 @@ The lines the observations file are formatted as follows:
 
 
 | **N_TRX** :math:`\;` :ref:`n_trx<e3d_dobs_ln1>`
+| **IGNORE** :ref:`reg_exp<e3d_dobs_ln1b>`
+|
 |
 | :ref:`trx type<e3d_dobs_ln2>`
 | :ref:`n_nodes<e3d_dobs_ln3>`
@@ -25,6 +27,7 @@ The lines the observations file are formatted as follows:
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
 | :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
 |
+|
 | :ref:`trx type<e3d_dobs_ln2>`
 | :ref:`n_nodes<e3d_dobs_ln3>`
 | :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
@@ -37,7 +40,9 @@ The lines the observations file are formatted as follows:
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
 | :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
 |
+|
 | :math:`\;\;\;\;\;\; \vdots`
+|
 |
 | :ref:`trx type<e3d_dobs_ln2>`
 | :ref:`n_nodes<e3d_dobs_ln3>`
@@ -71,6 +76,10 @@ Parameter Descriptions
 .. _e3d_dobs_ln1:
 
     - **n_trx:** The total number of transmitters. Example: *N_TRX 3*
+
+.. _e3d_dobs_ln1b:
+
+    - **reg_exp:** Regular expression (flag) used to data points that are ignored during the inversion
 
 .. _e3d_dobs_ln2:
 

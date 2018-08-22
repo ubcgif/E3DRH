@@ -10,7 +10,7 @@ Program Library
 
 The main executable programs within the E3D version 1 program library are:
 
-    - **create_OcTree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
+    - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
     - **e3dinv:** used to forward model or invert FEM data
 
 Also included are the following OcTree utility programs:

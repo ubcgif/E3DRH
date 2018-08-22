@@ -71,7 +71,7 @@ see :cite:`Haber2012` for a detailed description of the discretization process.
 Forward Problem
 ---------------
 
-The solution for the fields :math:`\mathbf{H} and :math:`\mathbf{E} can either be computed iteratively or directly depending on
+The solution for the fields :math:`\mathbf{H}` and :math:`\mathbf{E}` can either be computed iteratively or directly depending on
 the number of sources. If the number of sources is small than an iterative method (BiCGstab) is
 used. Because of the null space of the curl operator a discrete Helmholz decomposition is used to
 write the electric field as:
@@ -81,6 +81,7 @@ write the electric field as:
 
 
 The problem is then solved by eliminating the curl operator and solving for :math:`\mathbf{A}` and :math:`\phi`.
+
 If on the other hand if there are many sources, it is more efficient to directly decompose the
 forward matrix system by LU factorization. By doing so, many systems can be solved with a single
 factorization. MUMPS (Amestoy et al. (2001)) is used for the factorization and can be downloaded

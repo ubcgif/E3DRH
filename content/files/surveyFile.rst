@@ -13,6 +13,7 @@ The lines of the survey file are formatted as follows:
 
 | **N_TRX** :math:`\;` :ref:`n_trx<e3d_survey_ln1>`
 |
+|
 | :ref:`trx type<e3d_survey_ln2>`
 | :ref:`n_nodes<e3d_survey_ln3>`
 | :math:`\;\;` :ref:`x1 y1 z1<e3d_survey_ln4>`
@@ -25,7 +26,6 @@ The lines of the survey file are formatted as follows:
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_survey_ln6>`
 | :math:`\;\;` :ref:`Loc Array<e3d_survey_ln7>`
 |
-| **N_TRX** :math:`\;` :ref:`n_trx<e3d_survey_ln1>`
 |
 | :ref:`trx type<e3d_survey_ln2>`
 | :ref:`n_nodes<e3d_survey_ln3>`
@@ -39,9 +39,9 @@ The lines of the survey file are formatted as follows:
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_survey_ln6>`
 | :math:`\;\;` :ref:`Loc Array<e3d_survey_ln7>`
 |
+|
 | :math:`\;\;\;\;\;\; \vdots`
 |
-| **N_TRX** :math:`\;` :ref:`n_trx<e3d_survey_ln1>`
 |
 | :ref:`trx type<e3d_survey_ln2>`
 | :ref:`n_nodes<e3d_survey_ln3>`
@@ -74,7 +74,7 @@ Parameter Descriptions
 
 .. _e3d_survey_ln1:
 
-    - **n_trx:** The total number of transmitters. Example: *N_TRX 3*
+    - **n_trx:** The total number of unique transmitter-frequency pairs. Example: *N_TRX 3*
 
 .. _e3d_survey_ln2:
 
@@ -109,9 +109,8 @@ Parameter Descriptions
     - **Loc Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_survey_ln6>` :math:`\times` 3.
 
 
-.. important::
 
-    - **Something about coordinate systems**
+
 
 
 
