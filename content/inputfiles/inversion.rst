@@ -50,9 +50,7 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2.exe** e
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 | 20     |:ref:`Bounds<e3d_input_inv2_ln21>`                            | upper and lower bounds for recovered model                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 21     |:ref:`Calculate sensitivity<e3d_input_inv2_ln22>`             | use *CALC_SENS* or *NOT_CALC_SENS*                                      |
-+--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 22     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
+| 21     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -166,10 +164,6 @@ Line Descriptions
 .. _e3d_input_inv2_ln21:
 
     - **Bounds:** Bound constraints on the recovered model. Choose "BOUNDS_CONST" and enter the values of the minimum and maximum model conductivity; example "BOUNDS_CONST 1E-6 0.1". Enter "BOUNDS_NONE" if the inversion is unbounded, or if there is no a-prior information about the subsurface model.
-
-.. _e3d_input_inv2_ln22:
-
-    - **Calculate sensitivity:** Use the flag *CALC_SENS* to calculate the full sensitivity matrix. Use the flag *NOT_CALC_SENS* to approximate using a set of .
 
 .. _e3d_input_inv2_ln23:
 
