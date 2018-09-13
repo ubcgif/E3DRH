@@ -54,10 +54,6 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2.exe** e
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 | 22     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 23     |:ref:`PCT_FACT<e3d_input_inv2_ln24>`                          | percent factor for sensitivity calculation                              |
-+--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 24     |:ref:`Tile file<e3d_input_inv2_ln25>`                         | option to invert using only subset of tiles                             |
-+--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
 
@@ -179,11 +175,3 @@ Line Descriptions
 
     - **Memory Options:** This code uses a factorization to solve the forward system at each frequency. These factorizations must be stored. By using the flag 'FACTOR_IC' (in cpu), factorizations are stored within a computer's RAM. Although this is faster, larger problems cannot be solved if insufficient temporary memory is available. The factorizations are stored in permanent memory (disk) if the flag 'FACTOR_OOC' (out of cpu) is used followed by the path to a directory. This is slower because the program must read these files many times. The second options is ill-advised if files are being transferred over a network.
 
-
-.. _e3d_input_inv2_ln24:
-
-    - **PCT_FACT:** percentage of tiles (local meshes) for which the sensitivities will be calculated (use 1 for airborne). **MORE DETAILS NEEDED**
-
-.. _e3d_input_inv2_ln25:
-
-    - **Tile file:** USE_ALL_TILES
