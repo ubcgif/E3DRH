@@ -67,10 +67,6 @@ Also included are the following Octree utility programs:
       - 3Dmodel2Octree
       - create_weight_file
       - interface_weights
-      - octree_cell_centre
-      - octreeTo3D
-      - refine_octree
-      - remesh_octree_model
 
 Licensing
 ---------

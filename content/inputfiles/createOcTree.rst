@@ -66,7 +66,7 @@ Line Descriptions
 
 .. _e3d_input_octreeln7:
 
-    - **shift_data:** Set as either "NOT_SHIFT_DATA" or "SHIFT_DATA *filename*". **EXPLANATION REQUIRED**
+    - **shift_data:** If the flag "NOT_SHIFT_DATA" is used, then it is possible for transmitters and receiver to lie below the surface topography. If "SHIFT_DATA *filename*" is used, then a new survey file is output in which the transmitter and receivers have been projected to the surface topography.
 
 .. _e3d_input_octreeln8:
 

@@ -26,10 +26,6 @@ Also included are the following Octree utility programs:
     - **3DModel2Octree:** interpolates models from tensor to OcTree meshes
     - **create_weight_file:** creates the weighting on each cell in the model
     - **interface_weights:** creates weights on the faces of cells
-    - **octree_cell_centre:** computes the cell centres of each octree cell
-    - **octreeTo3D:** converts and octree mesh to a 3D base mesh
-    - **refine_octree:** refine the octrees
-    - **remesh_octree_model:** converts the octree model to base mesh
 
 Contents
 --------
