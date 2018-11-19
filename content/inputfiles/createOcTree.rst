@@ -40,7 +40,7 @@ Create OcTree Mesh Input File
 
 
 
-**MUST BE REDONE**
+**EXAMPLE FILE MUST BE REDONE**
 
 .. figure:: images/create_octree_input.png
      :align: center

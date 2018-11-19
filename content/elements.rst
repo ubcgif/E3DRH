@@ -48,7 +48,7 @@ Here, we describe the formats of supporting files used to run **e3dinv_ver2.exe*
     Predicted Data File <files/preFile>
     Frequencies File <files/freqFile>
     Transmitter/Receiver File <files/receiverFile>
-    Topography File <files/topoFile>
+    Topography/Polygon File <files/topoFile>
     Tensor Mesh File <files/tensor_mesh>
     Octree Mesh File <files/octree_mesh>
     Model File <files/model>

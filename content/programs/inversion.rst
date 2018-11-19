@@ -51,9 +51,9 @@ The program **e3dinv_ver2.exe** creates the following output files:
 
     - **dpred.txt** predicted data for final recovered model
 
-    - **e3d octree inv tiles.log:** log file for the inversion
+    - **e3dinv_1mesh.log:** log file for the inversion
 
-    - **e3d octree inv tiles.out:** inversion summary
+    - **e3dinv_1mesh.out:** inversion summary
 
 
 
