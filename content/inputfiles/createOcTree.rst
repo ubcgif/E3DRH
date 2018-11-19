@@ -3,9 +3,7 @@
 Create OcTree Mesh Input File
 =============================
 
-:ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **AEMesh.exe**. The lines within the input file are as follows:
-
-.. important:: This code has parameters which define the global mesh used in the inversion (where the recovered model lives) **and** parameters defining the local meshes where the forward problem is solved for each transmitter. The former will be referred to as the **global inversion mesh** and the latter will be referred to as **local forward meshes**.
+:ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **create_mesh_newformat_e3d.exe**. The lines within the input file are as follows:
 
 
 .. tabularcolumns:: |C|C|C|
@@ -21,19 +19,19 @@ Create OcTree Mesh Input File
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 4      |:ref:`dist_inv_1 dist_inv_2 dist_inv_3<e3d_input_octreeln4>`              | sets core mesh discretization for the inverse mesh                |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 5      |:ref:`dist_fwd_1 dist_fwd_2 dist_fwd_3<e3d_input_octreeln5>`              | sets core mesh discretization for local forward meshes            |
+| 5      |:ref:`n1 n2 n3<e3d_input_octreeln5>`                                      | sets thickness of cells of finest discretization near receivers   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 6      |:ref:`n1 n2 n3<e3d_input_octreeln6>`                                      | sets thickness of cells of finest discretization near receivers   |
+| 6      |:ref:`locFile<e3d_input_octreeln6>`                                       | the file containing observation locations                         |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 7      |:ref:`locFile<e3d_input_octreeln7>`                                       | the file containing observation locations                         |
+| 7      |:ref:`txFile<e3d_input_octreeln7>`                                        | the file defining all transmitters                                |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 8      |:ref:`txFile<e3d_input_octreeln8>`                                        | the file defining all transmitters                                |
+| 8      |:ref:`rxFile<e3d_input_octreeln8>`                                        | the file defining all receivers                                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 9      |:ref:`rxFile<e3d_input_octreeln9>`                                        | the file defining all receivers                                   |
+| 9      |:ref:`freqFile<e3d_input_octreeln9>`                                      | the file containing the frequencies being measured                |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 10     |:ref:`freqFile<e3d_input_octreeln10>`                                     | the file containing the frequencies being measured                |
+| 10     |:ref:`topoFile<e3d_input_octreeln10>`                                     | sets topography                                                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 11     |:ref:`topoFile<e3d_input_octreeln11>`                                     | sets topography                                                   |
+| 11     |:ref:`shift data<e3d_input_octreeln11>`                                   | shift data above topography                                       |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 12     |:ref:`polygon edge width<e3d_input_octreeln12>`                           | sets horizontal extent of core region for the inversion mesh      |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -41,6 +39,8 @@ Create OcTree Mesh Input File
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 
+
+**MUST BE REDONE**
 
 .. figure:: images/create_octree_input.png
      :align: center
@@ -73,36 +73,34 @@ Line Descriptions
 
     - **dist_inv_1 dist_inv_2 dist_inv_3:** For the global inversion mesh, these parameters set the discretization of the core mesh region (i.e. the region near the transmitters and receivers) in terms of depth. Up to a depth of *dist_inv_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_inv_2* metres, a cell width 2 times large is used. For the following *dist_inv_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
 
-
 .. _e3d_input_octreeln5:
-
-    - **dist_fwd_1 dist_fwd_2 dist_fwd_3:** For the local forward meshes, these parameters set the discretization of the core mesh region (i.e. the region near the transmitter and receivers) in terms of depth. Up to a depth of *dist_fwd_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_fwd_2* metres, a cell width 2 times large is used. For the following *dist_fwd_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
-
-.. note:: These values must be entered. However, they are only relevant for the *e3dinv_ver2_tiled* code.
-
-.. _e3d_input_octreeln6:
 
     - **n1 n2 n3:** This sets the thicknesses of layers of finest discretization near the receivers. **n1 = 4** means that around each receiver, there is a layer 4 cells thick that uses the finest discretization. This is followed by a layer which is **n2** cells thick, where the cell dimensions are increased by a factor of 2. Likewise for the 3rd layer.
 
-.. _e3d_input_octreeln7:
+.. _e3d_input_octreeln6:
 
     - **locFile:** Path to the file containing the survey information. This can be either an :ref:`observed data<obsFile>` file, or a :ref:`survey index<indexFile>` file. 
 
-.. _e3d_input_octreeln8:
+.. _e3d_input_octreeln7:
 
     - **txFile:** Path to the file defining the transmitters; i.e. the :ref:`transmitter file<receiverFile>`.
 
-.. _e3d_input_octreeln9:
+.. _e3d_input_octreeln8:
 
     - **rxFile:** Path to the file defining the receivers; i.e. the :ref:`receiver file<receiverFile>`. 
 
-.. _e3d_input_octreeln10:
+.. _e3d_input_octreeln9:
 
     - **freqFile:** Path to the file defining the frequencies used in the survey; i.e. the :ref:`frequencies file<freqFile>`. 
 
-.. _e3d_input_octreeln11:
+.. _e3d_input_octreeln10:
 
     - **topoFile:** If a topography file is available, the file path to the topography file is entered; see :ref:`topography file<topoFile>` for format. In the case of flat topography, the user instead enter "TOPO_CONST", followed by a space, then the elevation of the surface topography; for example "TOPO_CONST 125.5".
+
+.. _e3d_input_octreeln11:
+
+    - **shift data:** If the flag "NOT_SHIFT_DATA" is used, then transmitters and receivers can lie below the surface topography. If "SHIFT_DATA" *filename* is entered, then new transmitter and receiver files are created such that the transmitters and receivers lie above the surface topography. *NOTE:* this line may be a legacy from E3D version 1 and may not be used.
+
 
 .. _e3d_input_octreeln12:
 
