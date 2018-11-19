@@ -19,10 +19,6 @@ Also included are the following Octree utility programs:
     - **extract_mesh:** extracts a specified local OcTree mesh from a hexidecimal file containing all local meshes
     - **create_weight_file:** creates cell weighting for the recovered model
     - **interface_weights:** creates weights on the faces of cells for the recovered model
-    - **octree_cell_centre:** computes the cell centres of each octree cell
-    - **octreeTo3D:** converts an OcTree model from its OcTree mesh to the underlying 3D base mesh
-    - **refine_octree:** refine the octrees
-    - **remesh_octree_model:** converts the octree model to base mesh
 
 
 Main Input Files
