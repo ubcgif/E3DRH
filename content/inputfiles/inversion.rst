@@ -56,9 +56,9 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2_tiled.e
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 | 23     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 24     |:ref:`PCT_FACT<e3d_input_inv2_ln24>`                          | percent factor for sensitivity calculation                              |
+| 24     |:ref:`PCT_FACT<e3d_input_inv2_ln24>`                          | fractional percent of tiles used for sensitivity calculation            |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 25     |:ref:`Tile file<e3d_input_inv2_ln25>`                         | option to invert using only subset of tiles                             |
+| 25     |:ref:`Active tiles file<e3d_input_inv2_ln25>`                 | option to invert using only subset of data                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -179,7 +179,7 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln22:
 
-    - **Calculate sensitivity:** Use the flag *CALC_SENS* to calculate the full sensitivity matrix. Use the flag *NOT_CALC_SENS* to approximate using a set of .
+    - **Calculate sensitivity:** When the flag *CALC_SENS* is used, the :ref:`sensitivity matrix <theory_IPCG>` (:math:`\mathbf{J}`) is computed and stored for the current model. When the flag *NOT_CALC_SENS* is used, the product of the sensitivity and any vector is done without storing the sensitivity matrix. The former option is faster but uses a lot more memory. Unless the forward meshes and/or the number of data are sufficiently small, it is suggested the user choose *NOT_CALC_SENS*.
 
 .. _e3d_input_inv2_ln23:
 
@@ -188,8 +188,8 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln24:
 
-    - **PCT_FACT:** percentage of tiles (local meshes) for which the sensitivities will be calculated (use 1 for airborne). **MORE DETAILS NEEDED**
+    - **PCT_FACT:** To save time and memory, we can approximate the sensitivity matrix at each iteration by using a **random** subset of the data/local forward meshes. Thus *PCT_FACT* is the fractional percent of tiles (local forward meshes) which are used to approximate the sensitivity at each iteration; e.g. 0 < *PCT_FACT* < 1. As a default option, we should use all of the tiles; i.e. *PCT_FACT* = 1.
 
 .. _e3d_input_inv2_ln25:
 
-    - **Tile file:** USE_ALL_TILES
+    - **Active tiles file:** This line allows the user to invert only a subset of the data by specifying the tiles (local forward meshes) they wish to be used in the inversion. If the flag *USE_ALL_TILES* is used, then all the data are inverted; e.g. all the tiles are used. If the path to an :ref:`active tiles file<activeTilesFile>` is used, then only the 'active tiles' are inverted. The active tiles file is a vector of 1s and 0s, where a 1 denotes a local forward mesh that is used in the inversion, and a zero denotes a local forward mesh that is not. The number of values in the active tiles file must equal the number of local forward meshes.

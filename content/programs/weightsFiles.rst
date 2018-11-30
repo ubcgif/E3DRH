@@ -9,7 +9,7 @@ The creation of specific cell and face weights is not required to run the invers
 Generating Model Weights File
 -----------------------------
 
-Model weights are applied in the smallness term of the model objective function; see :ref:`theory: inversion <theory_inv>`. To generate a model weights file, use the same workflow described on the :ref:`create model <aem_model>` page. When creating a model weight file, consider the following:
+Model weights are applied in the smallness term of the model objective function; see :ref:`theory: inversion <theory_inv>`. To generate a model weights file, use the same workflow described on the :ref:`create model <e3d_model>` page. When creating a model weight file, consider the following:
 
      - All cells **must** be assigned a weight values larger than 0! This is to ensure the problem is sufficiently well-conditioned.
      - Model weight values should be set relative to a value of 1. This is to ensure the relative emphasis on model weights and surface weights is preserved.

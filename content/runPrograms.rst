@@ -37,6 +37,7 @@ To learn the specifics of running each executable, see the following sections:
 
     OcTree Mesh Generation <programs/createOcTree>
     Creating Octree Models <programs/createModel>
+    Extract Tile <programs/extractOcTree>
     Forward Modeling <programs/forward>
     Additional Cell and Face Weights <programs/weightsFiles>
     Inversion <programs/inversion>

@@ -52,8 +52,11 @@ Here, we describe the formats of supporting files used to run **e3dinv_ver2_tile
     Topography File <files/topoFile>
     Tensor Mesh File <files/tensor_mesh>
     Octree Mesh File <files/octree_mesh>
+    Local Forward Meshes File <files/local_meshes>
+    Active tiles file <files/active_tiles>
     Model File <files/model>
     Model and Face Weights Files <files/weights>
+    
 
 
 
