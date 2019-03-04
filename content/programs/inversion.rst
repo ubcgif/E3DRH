@@ -21,9 +21,7 @@ The *mpiexec* call is used for parallelization. This is followed by the flag *-n
 Units
 ^^^^^
 
-**Input and outputs:**
-
-    - **FEM data:** the component of the secondary magnetic field orthogonal to the receiver coil in units A/m
+    - **Data:** the component of the total magnetic field along the direction of the receiver's dipole moment in units A/m
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
     - **Model/interface weights:** unitless
@@ -37,17 +35,15 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-**THIS IS NOT CORRECT**
-
 The program **e3dinv_ver2.exe** creates the following output files:
 
     - **inv.con:** recovered conductivity model for the final beta value
 
-    - **inv_n.con:** recovered conductivity model for the nth beta value
+    - **inv_xxx.con:** recovered conductivity model for the nth beta value
 
     - **dpred0.txt** predicted data for the initial model
 
-    - **dpredn.txt** predicted data for the nth beta value
+    - **dpred_xxx.txt** predicted data for the nth beta value
 
     - **dpred.txt** predicted data for final recovered model
 

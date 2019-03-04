@@ -50,7 +50,7 @@ Parameter Descriptions
         
 .. _e3d_rec_ln4:
 
-    - :math:`\mathbf{x_i \;\; y_i \;\; z_i}`: node locations for the loop transmitter/receiver. The coordinates are right-handed with X (Easting), Y (Northing) and Z+ (Up).
+    - :math:`\mathbf{x_i \;\; y_i \;\; z_i}`: Denotes the X (Easting), Y (Northing) and Z (elevation) locations for nodes defining transmitter/receiver loops. Transmitters and receivers are **must** be defined in a left-handed (clockwise) manner. For example, a horizontal loop must be defined in a clockwise manner for its dipole moment to be in the vertical direction.
 
 
 

@@ -25,6 +25,16 @@ This file is input when forward modeling or inverting field-collected data. Usin
         - Next by frequency
         - Then finally by receiver
 
+.. important:: 
+
+    The data are the dot product of the total magnetic field (:math:`\mathbf{H}`) with the direction defining the dipole moment of the receiver (:math:`\mathbf{m}`).
+
+    .. math::
+        d = \mathbf{H} \cdot \frac{\mathbf{m}}{| \mathbf{m} |}
+
+
+.. important:: The data are represented in a left-handed coordinate system where X is Easting, Y is Northing and Z +ve is downward.
+
 
 **Parameter Descriptions**
 
