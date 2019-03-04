@@ -20,6 +20,9 @@ predicted data files output from **e3dfwd_pardiso.exe** and **e3dinv_pardiso.exe
 Data Array
 ----------
 
+.. important:: The data are represented in a left-handed coordinate system where X is Easting, Y is Northing and Z is +ve downward.
+
+
 For each transmitter at each frequency, a set of field observations are made for a set of receivers. These field observations include real and imaginary components of the electric and magnetic fields. The rows of the data array are formatted as follows:
 
 .. math::

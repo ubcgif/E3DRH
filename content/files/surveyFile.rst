@@ -80,21 +80,18 @@ Parameter Descriptions
 
     - **trx type:** Flag denoting the type of transmitter being used. Choices are one of the following:
 
-        *TRX_ORIG:* a closed inductive loop source where the values in the x, y or z column must all be the same.
-        *TRX_LINES:* a closed inductive loop source made of discrete line segments
-        *TRX_LOOP:* a circular loop source.
+        - *TRX_ORIG:* a closed inductive loop source where the values in the x, y or z column must all be the same.
+        - *TRX_LINES:* a closed inductive loop source made of discrete line segments
+        - *TRX_LOOP:* a circular loop source.
          
 
 .. _e3d_survey_ln3:
 
     - **n_nodes:** The number of nodes defining a particular transmitter loop. Note that:
 
-        - You **must close the loop**
-        - **Something here about CW or CCW**
-
 .. _e3d_survey_ln4:
 
-    - **xi yi zi:** This refers to the x, y and z locations of the nodes defining the transmitter loop.
+    - **xi yi zi:** This refers to the X (Easting), Y (Northing) and Z (elevation) locations of the nodes defining the transmitter loop. Transmitters are defined using a left-handed coordinate system. Which means you must define a horizontal transmitter loop in the clockwise direction for a dipole moment in the vertical direction.
 
 .. _e3d_survey_ln5:
 
@@ -106,7 +103,7 @@ Parameter Descriptions
 
 .. _e3d_survey_ln7:
 
-    - **Loc Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_survey_ln6>` :math:`\times` 3.
+    - **Loc Array:** Contains the X (Easting), Y (Northing) and Z (elevation) locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_survey_ln6>` :math:`\times` 3.
 
 
 

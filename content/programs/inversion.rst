@@ -19,10 +19,8 @@ The *mpiexec* call is used for parallelization. This is followed by the flag *-n
 Units
 ^^^^^
 
-**Input and outputs:**
-
     - **Electric field data:** Real and imaginary components of *Ex*, *Ey* and *Ez* in units V/m
-    - **Magnetic field data:** Real and imaginary components of the secondary magnetic field *Hx*, *Hy* and *Hz* in units A/m. 
+    - **Magnetic field data:** Real and imaginary components of the total magnetic field *Hx*, *Hy* and *Hz* in units A/m. 
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
     - **Model/interface weights:** unitless
@@ -35,7 +33,7 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-The program **e3dMTinv.exe** creates the following output files:
+The program **e3dinv.exe** creates the following output files:
 
     - **dpred_fwd.txt** predicted data if forward modeling is used
 

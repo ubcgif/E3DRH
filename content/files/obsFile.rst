@@ -89,12 +89,9 @@ Parameter Descriptions
 
     - **n_nodes:** The number of nodes defining a particular transmitter loop. Note that:
 
-        - You **must close the loop**
-        - **Something here about CW or CCW**
-
 .. _e3d_dobs_ln4:
 
-    - **xi yi zi:** This refers to the x, y and z locations of the nodes defining the transmitter loop.
+    - **xi yi zi:** This refers to the X (Easting), Y (Northing) and Z (elevation) locations of the nodes defining the transmitter loop. Transmitters are defined using a left-handed coordinate system. Which means you must define a horizontal transmitter loop in the clockwise direction for a dipole moment in the vertical direction.
 
 .. _e3d_dobs_ln5:
 
@@ -106,11 +103,14 @@ Parameter Descriptions
 
 .. _e3d_dobs_ln7:
 
-    - **Data Array:** Contains the x, y and z locations for measurements at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_dobs_ln6>` :math:`\times` 3.
+    - **Data Array:** Contains the X (Easting), Y (Northing) and Z (elevation) locations, observations and uncertainties at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_dobs_ln6>` :math:`\times` 27.
 
 
 Data Array
 ----------
+
+.. important:: The data are represented in a left-handed coordinate system where X is Easting, Y is Northing and Z is +ve downward. 
+
 
 For each transmitter at each frequency, a set of field observations are made for a set of receivers. These field observations include real and imaginary components of the electric and magnetic fields as well as their uncertainties. The rows of the data array are formatted as follows:
 
