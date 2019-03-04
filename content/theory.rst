@@ -5,7 +5,13 @@ Background Theory
 
 This section aims to provide the user with a basic review of the physics, discretization, and optimization
 techniques used to solve the frequency domain electromagnetics problem. It is assumed
-that the user has some background in these areas. For further reading see (Nabighian 2006) (**cite**).
+that the user has some background in these areas. For further reading see (:cite:`Nabighian1991`).
+
+.. important::
+
+    This code uses the following coordinate system and Fourier convention to solve Maxwell's equations:
+        - X = Easting, Y = Northing, Z +ve downward (left-handed)
+        - An :math:`e^{-i \omega t}` Fourier convention
 
 .. _theory_fundamentals:
 
@@ -18,7 +24,7 @@ equations are:
 
 .. math::
     \begin{align}
-        \nabla \times &\mathbf{E} + i\omega\mu \mathbf{H} = 0 \\
+        \nabla \times &\mathbf{E} - i\omega\mu \mathbf{H} = 0 \\
         \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{S} \\
         &\mathbf{\hat{n} \times H} = 0
     \end{align}
