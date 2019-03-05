@@ -147,5 +147,10 @@ Line Descriptions
     - **Direct or iterative solver options:** Here the user chooses whether the forward problem is solved using a direct or iterative solver.
 
         - For Pardiso solver, the flag 'USE_DIRECT_PARDISO' is used.
-        - For the BICG iterative solver, the flag 'USE_ITER' is used followed by values for the parameters *tol_bicg*, *tol_ipcg_bicg* and *max_it_bicg*. 
+        - For the BICG iterative solver, the flag 'USE_ITER' is used followed by values for the parameters *tol_bicg*, *tol_ipcg_bicg* and *max_it_bicg*.
+
+            - *tol_bicg*: relative tolerance (stopping criteria) when solver is used during forward modeling. Ideally, this number is very small (default = 1e-10).
+            - *tol_ipcg_bicg:* relative tolerance (stopping criteria) when solver needed in computation of :math:`\delta m` during Gauss Newton iteration. This value does not need to be as large as the previous parameter (default = 1e-5).
+            - *max_it_bicg:* maximum number of BICG iterations (default = 100)
+
 

@@ -15,7 +15,7 @@ The :ref:`OcTree mesh<octreeFile>` used in the E3D code are created using the pr
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
 | 2      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln2>`   | sets the thickness of padding in x, y, down and up directions   |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
-| 3      |:ref:`dist_1 dist_2 dist_3<e3d_input_octreeln3>`          | sets cell sizes within core mesh region                         |
+| 3      |:ref:`h1 h2 h3<e3d_input_octreeln3>`                      | sets cell sizes within core mesh region                         |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
 | 4      |:ref:`n1 n2 n3<e3d_input_octreeln4>`                      | sets thickness of cells of finest discretization near receivers |
 +--------+----------------------------------------------------------+-----------------------------------------------------------------+
@@ -46,11 +46,11 @@ Line Descriptions
 
 .. _e3d_input_octreeln2:
 
-    - **x_pad y_pad down_pad up_pad:** Distance from the origin in the x, y, downward and upward directions, respectively, that the mesh extends.
+    - **x_pad y_pad down_pad up_pad:** Distance from the survey area in the x, y, downward and upward directions, respectively, that the mesh extends.
 
 .. _e3d_input_octreeln3:
 
-    - **dist_1 dist_2 dist_3:** Sets the distance from surface topography and receivers in which the cells widths are increased by a factor of 2 in x, y and z. Up to a depth of *dist_1* from surface topography and within a horizontal distance of *dist_1* from any receiver, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_2* metres, the cell widths are doubled. For the following *dist_3* metres, the cell widths are doubled again. Outside a depth and horizontal distance of *h1+h2+h3*, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+    - **h1 h2 h3:** Sets cell sizes within the core mesh region. Up to a depth of *h1* from surface topography and within a horizontal distance of *h1* from any receiver, the smallest cell size is used (set by *dx, dy, dz*). For the following *h2* metres, the cell widths are doubled. For the following *h3* metres, the cell widths are doubled again. Outside a depth and horizontal distance of *h1+h2+h3*, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
 
 .. _e3d_input_octreeln4:
 

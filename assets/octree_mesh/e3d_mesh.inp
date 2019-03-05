@@ -1,9 +1,0 @@
-50 50 50                              ! min dx, dy, dz
-8000 8000 8000 6800                   ! padding thickness x, y, down, air
-800 200 200                           ! depths for area of interest
-4 4 4                                 ! # of small cells around receivers
-ONLY_LOC input_files\surveyFile.txt   ! Survey (data locations) file
-input_files\topo.txt                  ! topo data file
-NOT_SHIFT_DATA                        ! SHIFT_DATA | NOT_SHIFT_DATA
-APPROXTOPO                            ! APPROXTOPO | GOODTOPO
-START_LARGE_CELLS                     ! START_LARGE_CELLS | START_SMALL_CELLS
