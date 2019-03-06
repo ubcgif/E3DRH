@@ -16,7 +16,13 @@ To invert the synthetic data, the input file below was used:
      :width: 700
 
 
-The true model (left) and recovered model (right) at iteration 4 are shown below. A cutoff of 0.05 S/m has been used for both models. 
+The true model (left) and recovered model (right) at iteration 4 are shown below. A cutoff of 0.05 S/m has been used for both models. We should note some things about the inversion:
+
+	- We inverted data at only two frequencies (25 Hz and 2500 Hz)
+	- We only inverted the vertical component of the total magnetic field
+	- Only simple uncertainties were applied
+
+The inversion places a conductive body in the appropriate location and is able to resolve the surface of the conductor. Given the minimal number of frequencies and field components being inverted in the example, the data were still able to resolve the shape of the conductor to a reasonable degree. For this case however, the inversion does not locate the bottom of the conductor.
 
 .. figure:: images/inv2.png
      :align: center

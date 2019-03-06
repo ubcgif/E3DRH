@@ -22,7 +22,5 @@ Predicted data are shown below.
      :align: center
      :width: 700
 
-     Real component of the vertical magnetic field at 10 kHz (left). Imaginary component of the vertical magnetic response at 10 kHz (right).
-
 
 
