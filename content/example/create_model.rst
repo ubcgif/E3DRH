@@ -28,13 +28,11 @@ Here is the input file for **3DModel2Octree.exe**
 
 
 
-The resulting Octree model (core region only) shows a conductive block (:math:`\sigma` = 1 S/m) within a highly resistive background (:math:`\sigma_b` = 0.00001 S/m).
+The resulting Octree model shows a conductive block (:math:`\sigma` = 0.2 S/m) within a more resistive background (:math:`\sigma_b` = 0.01 S/m).
 
 
 .. figure:: images/octree_model1.png
      :align: center
      :width: 500
-
-     Cross-section at 0 m Northing (left). Cross-section at 0 m Easting (right).
 
 
