@@ -15,9 +15,9 @@ Create OcTree Mesh Input File
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 2      |:ref:`min_cell_fact min_cell_size_fwd max_topo_cell<e3d_input_octreeln2>` | additional cell size parameters                                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 3      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln3>`                   | sets the extent of mesh in x, y and z direction                   |
+| 3      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln3>`                   | sets the extent padding in x, y and z direction                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 4      |:ref:`dist_inv_1 dist_inv_2 dist_inv_3<e3d_input_octreeln4>`              | sets core mesh discretization for the inverse mesh                |
+| 4      |:ref:`h1 h2 h3<e3d_input_octreeln4>`                                      | sets discretization in the core mesh region                       |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 5      |:ref:`n1 n2 n3<e3d_input_octreeln5>`                                      | sets thickness of cells of finest discretization near receivers   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -38,9 +38,6 @@ Create OcTree Mesh Input File
 | 13     |:ref:`read/create mesh<e3d_input_octreeln13>`                             | read in or create global inversion mesh                           |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-
-
-**EXAMPLE FILE MUST BE REDONE**
 
 .. figure:: images/create_octree_input.png
      :align: center
@@ -67,11 +64,11 @@ Line Descriptions
 
 .. _e3d_input_octreeln3:
 
-    - **x_pad y_pad down_pad up_pad:** Distance from the core mesh region in the x, y, downward and upward directions, respectively, that the global inversion mesh extends.
+    - **x_pad y_pad down_pad up_pad:** Distance from the survey region in the x, y, downward and upward directions, respectively, that the inversion mesh extends.
 
 .. _e3d_input_octreeln4:
 
-    - **dist_inv_1 dist_inv_2 dist_inv_3:** For the global inversion mesh, these parameters set the discretization of the core mesh region (i.e. the region near the transmitters and receivers) in terms of depth. Up to a depth of *dist_inv_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_inv_2* metres, a cell width 2 times large is used. For the following *dist_inv_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+    - **h1 h2 h3:** Sets the discretization for the core mesh region. Up to a depth of *h1* from the surface, transmitters and receivers, the smallest cell size is used (set by *dx, dy, dz*). For the following *h2* metres, a cell width 2 times large is used. For the following *h3* metres, the cell width is doubled again. Outside of a distance of *h1+h2+h3*, the cells widths increase by a factor of 2 for every additional layer.
 
 .. _e3d_input_octreeln5:
 
