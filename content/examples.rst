@@ -8,6 +8,7 @@ Here, the program libraries for E3D version 1 will be used to:
 	- create an Octree mesh based on the survey
 	- create octree models
 	- predict FEM data for a synthetic model
+    - create interface weights
 	- invert FEM data created using our synthetic model
 
 Zip folders containing all necessary files can be downloaded here:
