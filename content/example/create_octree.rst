@@ -3,7 +3,7 @@
 Create OcTree Mesh
 ==================
 
-Here, the code **AEMesh.exe** and the input file **create_octree.inp** (:ref:`see format <e3d_input_octree>`) are used to create an OcTree mesh based on the set of observation location and surface topography. Files relevant to this part of the example are in the sub-folder *octree_mesh*. Before running this example, you may want to do the following:
+Here, the code **create_mesh_newformat_e3d.exe** and the input file **create_octree.inp** (:ref:`see format <e3d_input_octree>`) are used to create an OcTree mesh based on the set of observation location and surface topography. Files relevant to this part of the example are in the sub-folder *octree_mesh*. Before running this example, you may want to do the following:
 
 	- `Download and open the zip folder containing the entire E3D version 2 example <https://github.com/ubcgif/E3D/raw/e3dinv/assets/e3d_ver2_example.zip>`__ (if not done already)
 	- :ref:`Learn how to run code from command line <e3d_octree>`
@@ -16,11 +16,11 @@ To generate the OcTree mesh, the following input file was used:
      :width: 700
 
 
-.. To keep the problem simple, the topography is given a constant elevation of 0 m. The resulting OcTree mesh is shown below:
+To keep the problem simple, the topography is given a constant elevation of 0 m. The resulting OcTree mesh is shown below:
 
-.. .. figure:: images/octree_mesh1.png
-..      :align: center
-..      :width: 500
+.. figure:: images/octree_mesh2.png
+     :align: center
+     :width: 500
 
 
 
