@@ -25,12 +25,12 @@ equations are:
 .. math::
     \begin{align}
         \nabla \times &\mathbf{E} - i\omega\mu \mathbf{H} = 0 \\
-        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{S} \\
+        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{s} \\
         &\mathbf{\hat{n} \times H} = 0
     \end{align}
     :label: maxwells_eq
 
-where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{S}` is some external source and :math:`e^{-i\omega t}` is suppressed.
+where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{s}` is some external source and :math:`e^{-i\omega t}` is suppressed.
 Symbols :math:`\mu`, :math:`\sigma` and :math:`\omega` are the magnetic permeability, conductivity, and angular frequency, respectively. This formulation assumes a quasi-static mode so that the system can be viewed as a diffusion equation (Weaver, 1994; Ward and Hohmann, 1988 in :cite:`Nabighian1991`). By doing so, some difficulties arise when
 solving the system;
 
@@ -38,19 +38,14 @@ solving the system;
     - the conductivity :math:`\sigma` varies over several orders of magnitude
     - the fields can vary significantly near the sources, but smooth out at distance thus high resolution is required near sources
 
-These issues are addressed by considering a Helmholz potential formulation to deal with the null
-space of the curl operator, harmonic averaging and mesh refinement to combat large jumps in
-conductivities, and the ability to refine the mesh near the sources to improve resolution.
-
-
 
 Octree Mesh
 -----------
 
 By using an Octree discretization of the earth domain, the areas near sources and likely model
 location can be give a higher resolution while cells grow large at distance. In this manner, the
-necessary refinement can be obtained without added computational expense. Figure(2) shows an
-example of an Octree mesh, with nine cells, eight of which are the base mesh minimum size.
+necessary refinement can be obtained without added computational expense. 
+The figure below shows an example of an Octree mesh, with nine cells, eight of which are the base mesh minimum size.
 
 
 .. figure:: images/OcTree.png
@@ -70,40 +65,130 @@ only refined when the model begins to change rapidly.
 Discretization of Operators
 ---------------------------
 
-The operators div, grad, and curl are discretized using a finite volume formulation. Although div and grad do not appear in :eq:`maxwells_eq`, they are required for the solution of the system. The divergence operator is discretized in the usual flux-balance approach, which by Gauss' theorem considers the current flux through each face of a cell. The nodal gradient (operates on a function with values on the nodes) is obtained by differencing adjacent nodes and dividing by edge length. The discretization of the curl operator is computed similarly to the divergence operator by utilizing Stokes theorem by summing the magnetic field components around the edge of each face. Please
-see :cite:`Haber2012` for a detailed description of the discretization process.
+The operators div, grad, and curl are discretized using a finite volume formulation. Although div and grad do not appear in :eq:`maxwells_eq`, they are required for the solution of the system. The divergence operator is discretized in the usual flux-balance approach, which by Gauss' theorem considers the current flux through each face of a cell. The nodal gradient (operates on a function with values on the nodes) is obtained by differencing adjacent nodes and dividing by edge length. The discretization of the curl operator is computed similarly to the divergence operator by utilizing Stokes theorem by summing the magnetic field components around the edge of each face. Please see :cite:`Haber2012` for a detailed description of the discretization process.
 
 
 Forward Problem
 ---------------
 
-The solution for the fields :math:`\mathbf{H}` and :math:`\mathbf{E}` can either be computed iteratively or directly depending on
-the number of sources. If the number of sources is small than an iterative method (BiCGstab) is
-used. Because of the null space of the curl operator a discrete Helmholz decomposition is used to
-write the electric field as:
+Direct Solver Approach
+^^^^^^^^^^^^^^^^^^^^^^
+
+To solve the forward problem, we must first discretize and solve for the fields in Eq. :eq:`maxwells_eq`, where :math:`e^{-i\omega t}` is suppressed. Using finite volume discretization, the electric fields on cell edges (:math:`\mathbf{u_e}`) are obtained by solving the following system at every frequency:
 
 .. math::
-    \mathbf{E} = \mathbf{A} + \nabla \phi
+    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s}
+    :label: discrete_e_sys
 
-
-The problem is then solved by eliminating the curl operator and solving for :math:`\mathbf{A}` and :math:`\phi`.
-
-If on the other hand if there are many sources, it is more efficient to directly decompose the
-forward matrix system by LU factorization. By doing so, many systems can be solved with a single
-factorization. MUMPS (Amestoy et al. (2001)) is used for the factorization and can be downloaded
-`here <http://graal.ens-lyon.fr/MUMPS/>`__.
-
-The forward problem of simulating data can now be written in the following form. Let :math:`\mathbf{A(m)}` be
-the discrete linear system obtained by the discretiztion of Maxwell’s equations, where :math:`\mathbf{m} = log (\boldsymbol{\sigma})`.
-
-Assuming there are :math:`n_s` sources :math:`\mathbf{S} = i\omega(\mathbf{s_1, s_2, ....., s_{n_2}})` and that :math:`\mathbf{P^T}` is a projection from edges to receivers then the simulated EM field data can be written as:
+where :math:`\mathbf{C}` is the curl operator and:
 
 .. math::
-    \mathbb{F}[\mathbf{m}] = \mathbf{P^T A(m)^{-1} \, S}
+    \begin{align}
+    \mathbf{M_\mu} &= diag \big ( \mathbf{A^T_{f2c} V} \, \boldsymbol{\mu^{-1}} \big ) \\
+    \mathbf{M_\sigma} &= diag \big ( \mathbf{A^T_{e2c} V} \, \boldsymbol{\sigma} \big ) \\
+    \end{align}
+
+where :math:`\mathbf{V}` is a diagonal matrix containing  all cell volumes, :math:`\mathbf{A_{f2c}}` averages from faces to cell centres and :math:`\mathbf{A_{e2c}}` averages from edges to cell centres. The magnetic permeabilities and conductivities for each cell are contained within vectors :math:`\boldsymbol{\mu}` and :math:`\boldsymbol{\sigma}`, respectively.
+
+Once the electric field on cell edges has been computed, the electric (:math:`\mathbf{E}`) and magnetic (:math:`\mathbf{H}`) fields at observation locations can be obtain via the following:
+
+.. math::
+    \begin{align}
+    \mathbf{E} &= \mathbf{Q_e \, u_e} = \mathbf{Q_c \, A_{e2c} \, u_e} \\
+    \mathbf{H} &= \mathbf{Q_h \, u_e} = \frac{1}{i \omega} \mathbf{Q_c} \, diag(\boldsymbol{\mu}^{-1}) \, \mathbf{A_{f2c} C \, u_e}
+    \end{align}
+    :label: fields_projected
+
+where :math:`\mathbf{Q_c}` represents the appropriate projection matrix from cell centers to a particular receiver (Ex, Ey, Ez, Hx, Hy or Hz). If we let
+
+.. math::
+    \mathbf{A}(\sigma) = \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma}
+    :label: A_operator
+
+then :eq:`fields_projected` can be written as:
+
+.. math::
+    \begin{align}
+    \mathbf{E} &= -i\omega \mathbf{Q_e \, A}(\sigma)^{-1} \, \mathbf{s} \\
+    \mathbf{H} &= -i\omega \mathbf{Q_h \, A}(\sigma)^{-1} \, \mathbf{s}
+    \end{align}
+    :label: fwd_solution
+
+
+.. _theory_solver:
+
+Iterative Solver Approach
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For this approach we decompose the electric field as follows:
+
+.. math::
+    \mathbf{u_e} = \mathbf{a} + \mathbf{G} \phi
+    :label: e_decomposition
+
+where :math:`\mathbf{u_e}` is the fields on cell edges, :math:`\mathbf{a}` is the vector potential, :math:`\phi` is the scalar potential and :math:`\mathbf{G}` is the discrete gradient operator. To compute the electric fields, the `BiCGstab <https://en.wikipedia.org/wiki/Biconjugate_gradient_stabilized_method>`__ algorithm is used to solve the following system:
+
+.. math::
+    \begin{bmatrix} \mathbf{A} (\sigma) + \mathbf{D} & -i\omega \mathbf{M_\sigma G} \\ -i\omega \mathbf{G^T M_\sigma} & -i\omega \mathbf{G^T M_\sigma G} \end{bmatrix}
+    \begin{bmatrix} \mathbf{a} \\ \phi \end{bmatrix} = 
+    \begin{bmatrix} -i\omega\mathbf{s} \\ -i\omega \mathbf{G^T s} \end{bmatrix}
+    :label: maxwell_a_phi
+
+where
+
+.. math::
+    \mathbf{D} = \mathbf{G}  \, diag \big ( \mathbf{A^T_{n2c} V} \, \boldsymbol{\mu^{-1}} \big ) \mathbf{G^T}
+
+is a matrix that is added to the (1,1) block of Eq. :eq:`maxwell_a_phi` to improve the stability of the system and :math:`\mathbf{A}` is given by Eq. :eq:`A_operator`. Once Eq. :eq:`maxwell_a_phi` is solved, Eq. :eq:`e_decomposition` is used to obtain the electric fields on cell edges and Eq. :eq:`fields_projected` computes the fields at the receivers.
+
+Adjustable parameters for solving Eq. :eq:`maxwell_a_phi` iteratively using BiCGstab are defined as follows:
+
+     - **tol_bicg:** relative tolerance (stopping criteria) when solver is used during forward modeling; i.e. solves Eq. :eq:`discrete_e_sys`. Ideally, this number is very small (~1e-10).
+     - **tol_ipcg_bicg:** relative tolerance (stopping criteria) when solver needed in computation of :math:`\delta m` during Gauss Newton iteration; i.e. must solve Eq. :eq:`sensitivity_fields` to solve Eq. :eq:`GN_gen`. This value does not need to be as large as the previous parameter (~1e-5).
+     - **max_it_bicg:** maximum number of BICG iterations (~100)
+
+.. _theory_sensitivity:
+
+Sensitivity
+-----------
+
+Electric and magnetic field observations are split into their real and imaginary components. Thus the data at a particular frequency for a particular reading is organized in a vector of the form:
+
+.. math::
+    \mathbf{d} = [E^\prime_{x}, E^{\prime \prime}_{x}, E^\prime_{y}, E^{\prime \prime}_{y}, E^\prime_{z}, E^{\prime \prime}_{z}, 
+    H^\prime_{x}, H^{\prime \prime}_{x}, H^\prime_{y}, H^{\prime \prime}_{y}, H^\prime_{z}, H^{\prime \prime}_{z}]^T
+    :label: data_vector
+
+
+where :math:`\prime` denotes real components and :math:`\prime\prime` denotes imaginary components. To determine the sensitivity of the data (i.e. :eq:`data_vector`) with respect to the model (:math:`\boldsymbol{\sigma}`), we must compute:
+
+.. math::
+    \frac{\partial \mathbf{d}}{\partial \boldsymbol{\sigma}} = \Bigg [ 
+    \dfrac{\partial E_{x}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial E_{x}^{\prime\prime}}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial E_{y}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial E_{y}^{\prime\prime}}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial E_{z}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial E_{z}^{\prime\prime}}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{x}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{x}^{\prime\prime}}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{y}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{y}^{\prime\prime}}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{z}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial H_{z}^{\prime\prime}}{\partial \boldsymbol{\sigma}} , \Bigg ]^T
+
+
+where the conductivity model :math:`\boldsymbol{\sigma}` is real-valued. To differentiate :math:`E^\prime_x` (or any other field component) with respect to the model, we require the derivative of the electric fields on cell edges (:math:`\mathbf{u_e}`) with respect to the model. This is given by:
+
+.. math::
+    \frac{\partial \mathbf{u_e}}{\partial \boldsymbol{\sigma}} = - i\omega \mathbf{A}^{-1} diag(\mathbf{u_e}) \, \mathbf{A_{e2c}^T V }
+    :label: sensitivity_fields
+
+
+.. note:: Eq. :eq:`sensitivity_fields` defines the sensitivities when using the direct solver formulation. Computations involving the sensitivities will differ if the :ref:`iterative solver approach<theory_solver>` is used.
 
 
 .. _theory_inv:
-
 
 Inverse Problem
 ---------------
