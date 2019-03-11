@@ -24,7 +24,7 @@ equations are:
     \end{align}
     :label: maxwells_eq
 
-where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{S}` is some external source and :math:`e^{+i\omega t}` is suppressed.
+where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{S}` is some external source and :math:`e^{-i\omega t}` is suppressed.
 Symbols :math:`\mu`, :math:`\sigma` and :math:`\omega` are the magnetic permeability, conductivity, and angular frequency, respectively. This formulation assumes a quasi-static mode so that the system can be viewed as a diffusion equation (Weaver, 1994; Ward and Hohmann, 1988 in :cite:`Nabighian1991`). By doing so, some difficulties arise when
 solving the system;
 
