@@ -25,12 +25,12 @@ equations are:
 .. math::
     \begin{align}
         \nabla \times &\mathbf{E} - i\omega\mu \mathbf{H} = 0 \\
-        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{S} \\
+        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{s} \\
         &\mathbf{\hat{n} \times H} = 0
     \end{align}
     :label: maxwells_eq
 
-where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{S}` is some external source and :math:`e^{+i\omega t}` is suppressed.
+where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{s}` is some external source and :math:`e^{-i\omega t}` is suppressed.
 Symbols :math:`\mu`, :math:`\sigma` and :math:`\omega` are the magnetic permeability, conductivity, and angular frequency, respectively. This formulation assumes a quasi-static mode so that the system can be viewed as a diffusion equation (Weaver, 1994; Ward and Hohmann, 1988 in :cite:`Nabighian1991`). By doing so, some difficulties arise when
 solving the system;
 
@@ -38,18 +38,13 @@ solving the system;
     - the conductivity :math:`\sigma` varies over several orders of magnitude
     - the fields can vary significantly near the sources, but smooth out at distance thus high resolution is required near sources
 
-These issues are addressed by considering a Helmholz potential formulation to deal with the null
-space of the curl operator, harmonic averaging and mesh refinement to combat large jumps in
-conductivities, and the ability to refine the mesh near the sources to improve resolution.
-
-
 
 Octree Mesh
 -----------
 
 By using an Octree discretization of the earth domain, the areas near sources and likely model
 location can be give a higher resolution while cells grow large at distance. In this manner, the
-necessary refinement can be obtained without added computational expense. Figure(2) shows an
+necessary refinement can be obtained without added computational expense. The figure below shows an
 example of an Octree mesh, with nine cells, eight of which are the base mesh minimum size.
 
 
@@ -77,28 +72,77 @@ see :cite:`Haber2012` for a detailed description of the discretization process.
 Forward Problem
 ---------------
 
-The solution for the fields :math:`\mathbf{H}` and :math:`\mathbf{E}` can either be computed iteratively or directly depending on
-the number of sources. If the number of sources is small than an iterative method (BiCGstab) is
-used. Because of the null space of the curl operator a discrete Helmholz decomposition is used to
-write the electric field as:
+To solve the forward problem, we must first discretize and solve for the fields in Eq. :eq:`maxwells_eq`, where :math:`e^{-i\omega t}` is suppressed. Using finite volume discretization, the electric fields on cell edges (:math:`\mathbf{u_e}`) are obtained by solving the following system at every frequency:
 
 .. math::
-    \mathbf{E} = \mathbf{A} + \nabla \phi
+    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s}
+    :label: discrete_e_sys
 
-
-The problem is then solved by eliminating the curl operator and solving for :math:`\mathbf{A}` and :math:`\phi`.
-If on the other hand if there are many sources, it is more efficient to directly decompose the
-forward matrix system by LU factorization. By doing so, many systems can be solved with a single
-factorization. MUMPS (Amestoy et al. (2001)) is used for the factorization and can be downloaded
-`here <http://graal.ens-lyon.fr/MUMPS/>`__.
-
-The forward problem of simulating data can now be written in the following form. Let :math:`\mathbf{A(m)}` be
-the discrete linear system obtained by the discretiztion of Maxwell’s equations, where :math:`\mathbf{m} = log (\boldsymbol{\sigma})`.
-
-Assuming there are :math:`n_s` sources :math:`\mathbf{S} = i\omega(\mathbf{s_1, s_2, ....., s_{n_2}})` and that :math:`\mathbf{P^T}` is a projection from edges to receivers then the simulated EM field data can be written as:
+where :math:`\mathbf{C}` is the curl operator and:
 
 .. math::
-    \mathbb{F}[\mathbf{m}] = \mathbf{P^T A(m)^{-1} \, S}
+    \begin{align}
+    \mathbf{M_\mu} &= diag \big ( \mathbf{A^T_{f2c} V} \, \boldsymbol{\mu^{-1}} \big ) \\
+    \mathbf{M_\sigma} &= diag \big ( \mathbf{A^T_{e2c} V} \, \boldsymbol{\sigma} \big ) \\
+    \end{align}
+
+where :math:`\mathbf{V}` is a diagonal matrix containing  all cell volumes, :math:`\mathbf{A_{f2c}}` averages from faces to cell centres and :math:`\mathbf{A_{e2c}}` averages from edges to cell centres. The magnetic permeabilities and conductivities for each cell are contained within vectors :math:`\boldsymbol{\mu}` and :math:`\boldsymbol{\sigma}`, respectively.
+
+E3D version 2 data represent the component of the total magnetic field that is parallel to the dipole moment of the loop receiver. To compute this, we approximate the integral formulation of Faraday's law as:
+
+.. math::
+    \sum_{i=1}^N \, \big (\mathbf{P_i \, u_e})^T \, \boldsymbol{\ell_i} = i \omega \mu \mathbf{H_i}^T \mathbf{a}
+    :label: faraday_law
+
+where :math:`i` denotes a particular loop segment, :math:`\mathbf{P_i}` is a projection matrix from cell edges to a particular segment and :math:`\boldsymbol{\ell_i}` is the vector distance for a particular segment. :math:`\mathbf{H_i}` is the total magnetic field at the center of the loop and :math:`\mathbf{a}` is the vector cross-sectional area of the loop. If we let :math:`\bar{H_i}` be the dot product of :math:`\mathbf{H_i}` and the unit vector direction of :math:`\mathbf{a}`, then
+
+.. math::
+    \bar{H_i} = \frac{1}{i\omega} \, \mathbf{Q_i \, u_e}
+
+
+where :math:`\mathbf{Q_i}` is a just a linear operator that integrates the electric field over the path of the receiver loop and normalizes by :math:`\mu` and the cross-sectional area. The projection matrix for all receivers can be amalgamated to form a single linear operator (:math:`\mathbf{Q}`) such that the data vector is given by:
+
+.. math::
+    \mathbf{d} = \frac{1}{i\omega} \mathbf{Q \, u_e} = - \mathbf{Q \, A}(\sigma)^{-1} \mathbf{s}
+    :label: fwd_solution
+
+
+where
+
+.. math::
+    \mathbf{A}(\sigma) = \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma}
+    :label: A_operator
+
+
+Sensitivity
+-----------
+
+The data are split into their real and imaginary components. Thus the data at a particular frequency for a particular reading is organized in a vector of the form:
+
+.. math::
+    \mathbf{d} = [\mathbf{d}^\prime, \mathbf{d}^{\prime \prime}]^T
+    :label: data_vector
+
+
+where :math:`\prime` denotes real components and :math:`\prime\prime` denotes imaginary components. To determine the sensitivity of the data (i.e. :eq:`data_vector`) with respect to the model (:math:`\boldsymbol{\sigma}`), we must compute:
+
+.. math::
+    \frac{\partial \mathbf{d}}{\partial \boldsymbol{\sigma}} = \Bigg [ 
+    \dfrac{\partial \mathbf{d}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial \mathbf{d}^{\prime\prime}}{\partial \boldsymbol{\sigma}} \Bigg ]^T
+
+
+where the conductivity model :math:`\boldsymbol{\sigma}` is real-valued. To differentiate the data with with respect to the model, we require the derivative of the electric fields on cell edges (:math:`\mathbf{u_e}`) with respect to the model (Eq. :eq:`fwd_solution`). This is given by:
+
+.. math::
+    \frac{\partial \mathbf{u_e}}{\partial \boldsymbol{\sigma}} = - i\omega \mathbf{A}^{-1} diag(\mathbf{u_e}) \, \mathbf{A_{e2c}^T V }
+    :label: sensitivity_fields
+
+
+
+
+
+
 
 
 
