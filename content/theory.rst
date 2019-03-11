@@ -100,7 +100,7 @@ where :math:`i` denotes a particular loop segment, :math:`\mathbf{P_i}` is a pro
     \bar{H_i} = \frac{1}{i\omega} \, \mathbf{Q_i \, u_e}
 
 
-where :math:`\mathbf{Q_i}` is a just a linear operator that integrates the electric field over the path of the receiver loop and normalizes by :math:`\mu` and the cross-sectional area. The projection matrix for all receivers can be amalgamated to form a single linear operator (:math:`\mathbf{Q}`) such that the data vector is given by:
+where :math:`\mathbf{Q_i}` is a just a linear operator that integrates the electric field over the path of the receiver loop and normalizes by :math:`\mu` and the cross-sectional area. The projection matrix for all receivers can be amalgamated to form a single linear operator (:math:`\mathbf{Q}`) such that the data is given by:
 
 .. math::
     \mathbf{d} = \frac{1}{i\omega} \mathbf{Q \, u_e} = - \mathbf{Q \, A}(\sigma)^{-1} \mathbf{s}
