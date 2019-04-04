@@ -262,7 +262,7 @@ but how do we choose an acceptable trade-off parameter :math:`\beta`? For this, 
     - **beta_max:** The initial value for :math:`\beta`
     - **beta_factor:** The factor at which :math:`\beta` is decrease to a subsequent solution of Eq. :eq:`inverse_problem`
     - **nBetas:** The number of times the inversion code will decrease :math:`\beta` and solve Eq. :eq:`inverse_problem` before it quits
-    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d = N \times Chi \; Factor`, where :math:`N` is the number of data observations
+    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d \leq N \times Chi \; Factor`, where :math:`N` is the number of data observations
 
 .. _theory_GN:
 
