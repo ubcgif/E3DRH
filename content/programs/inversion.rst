@@ -8,15 +8,25 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2_tiled.e
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
 
-To run the inversion, open a command line window and type the following:
-
+Here, the *mpiexec* call is used to parallelize multiple processes (large-scale independent operations) within the code. To run the executable, open a command window and type the following:
 
 .. figure:: images/run_e3dinv_ver2_tiled.png
      :align: center
      :width: 500
 
 
-The *mpiexec* call is used for parallelization. This is followed by the flag *-n*, then the number of frequencies (*"nFreq"*). This is followed by the inversion executable and the corresponding input file.
+The call *mpiexec* is followed by the flag *-n*, then the number of processes (*"nFreq"* ) to be carried out simultaneously. This is followed by the paths to the executable and the corresponding input file, respectively. The number of simultaneous processes (*"nFreq"* ) **must** be equal or less than the number of frequencies. Ideally there is enough memory for *nFreq* to be equal to the number of frequencies.
+
+Setting Number of Threads with Open MPI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before running the executable, the number of threads used to carry out all simultaneous processes can be set with Open MPI. This is set in the command window **before** running the executable. To set the number of threads (*nThreads* ), use the following syntax:
+
+    - Windows computer: "set OMP_NUM_THREADS=nThreads"
+    - Linux (bash shell): "export OMP_NUM_THREADS=nThreads"
+    - Linux (csh shell): "setenv OMP_NUM_THREADS nThreads"
+
+.. important:: The number of processes (*nFreq* ) times the number of threads (*nThreads* ) **cannot** exceed the total number of threads available from the computer.
 
 Units
 ^^^^^
