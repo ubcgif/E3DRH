@@ -54,9 +54,10 @@ The figure below shows an example of an Octree mesh, with nine cells, eight of w
 
 
 When working with Octree meshes, the underlying mesh is defined as a regular 3D orthogonal grid where
-the number of cells in each dimension are :math:`2^{m_1} \times 2^{m_2} \times 2^{m_3}`, with grid size :math:`h`. This underlying mesh
-is the finest possible, so that larger cells have lengths which increase by powers of 2 multiplied by
-:math:`h`. The idea is that if the recovered model properties change slowly over a certain volume, the cells
+the number of cells in each dimension are :math:`2^{n_1} \times 2^{n_2} \times 2^{n_3}`. The cell widths for the underlying mesh
+are :math:`h_1, \; h_2, \; h_3`, respectively. This underlying mesh
+is the finest possible, so that larger cells have side lengths which increase by powers of 2.
+The idea is that if the recovered model properties change slowly over a certain volume, the cells
 bounded by this volume can be merged into one without losing the accuracy in modeling, and are
 only refined when the model begins to change rapidly.
 
@@ -300,9 +301,8 @@ but how do we choose an acceptable trade-off parameter :math:`\beta`? For this, 
 
     - **beta_max:** The initial value for :math:`\beta`
     - **beta_factor:** The factor at which :math:`\beta` is decrease to a subsequent solution of Eq. :eq:`inverse_problem`
-    - **beta_min:** The minimum :math:`\beta` for which Eq. :eq:`inverse_problem` is solved before the inversion will quit (E3D version 1 only)
-    - **nBetas:** The number of times the inversion code will decrease :math:`\beta` and solve Eq. :eq:`inverse_problem` before it quits (E3D version 2 only)
-    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d = N \times Chi \; Factor`, where :math:`N` is the number of data observations
+    - **beta_min:** The minimum :math:`\beta` for which Eq. :eq:`inverse_problem` is solved before the inversion will quit
+    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d \leq N \times Chi \; Factor`, where :math:`N` is the number of data observations
 
 .. _theory_GN:
 
