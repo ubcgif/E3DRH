@@ -54,9 +54,10 @@ example of an Octree mesh, with nine cells, eight of which are the base mesh min
 
 
 When working with Octree meshes, the underlying mesh is defined as a regular 3D orthogonal grid where
-the number of cells in each dimension are :math:`2^{m_1} \times 2^{m_2} \times 2^{m_3}`, with grid size :math:`h`. This underlying mesh
-is the finest possible, so that larger cells have lengths which increase by powers of 2 multiplied by
-:math:`h`. The idea is that if the recovered model properties change slowly over a certain volume, the cells
+the number of cells in each dimension are :math:`2^{n_1} \times 2^{n_2} \times 2^{n_3}`. The cell widths for the underlying mesh
+are :math:`h_1, \; h_2, \; h_3`, respectively. This underlying mesh
+is the finest possible, so that larger cells have side lengths which increase by powers of 2.
+The idea is that if the recovered model properties change slowly over a certain volume, the cells
 bounded by this volume can be merged into one without losing the accuracy in modeling, and are
 only refined when the model begins to change rapidly.
 
@@ -152,23 +153,30 @@ where the conductivity model :math:`\boldsymbol{\sigma}` is real-valued. To diff
 Inverse Problem
 ---------------
 
-To solve the inverse problem, we minimize the following global objective function:
-
+We are interested in recovering the conductivity distribution for the Earth. However, the numerical stability of the inverse problem is made more challenging by the fact rock conductivities can span many orders of magnitude. To deal with this, we define the model as the log-conductivity for each cell, e.g.:
 
 .. math::
-    \phi = \phi_d + \beta \phi_m
+    \mathbf{m} = log (\boldsymbol{\sigma})
+
+
+The inverse problem is solved by minimizing the following global objective function with respect to the model:
+
+.. math::
+    \phi (\mathbf{m}) = \phi_d (\mathbf{m}) + \beta \phi_m (\mathbf{m})
     :label: global_objective
 
+where :math:`\phi_d` is the data misfit, :math:`\phi_m` is the model objective function and :math:`\beta` is the trade-off parameter. The data misfit ensures the recovered model adequately explains the set of field observations. The model objective function adds geological constraints to the recovered model. The trade-off parameter weights the relative emphasis between fitting the data and imposing geological structures.
 
-where :math:`\phi_d` is the data misfit and :math:`\phi_m` is the model objective function. The data misfit ensures the recovered model adequately explains the set of field observations. The model objective function adds geological constraints to the recovered model.
+
+.. _theory_inv_misfit:
 
 Data Misfit
 ^^^^^^^^^^^
 
-The data misfit is represented as the L2-norm of a weighted residual between the observed data (:math:`d_{obs}`) and the predicted data for a given conductivity model :math:`\boldsymbol{\sigma}`, i.e.:
+Here, the data misfit is represented as the L2-norm of a weighted residual between the observed data (:math:`d_{obs}`) and the predicted data for a given conductivity model :math:`\boldsymbol{\sigma}`, i.e.:
 
 .. math::
-    \phi_d = \big \| \mathbf{W_d} \big ( \mathbf{d_{obs}} - \mathbb{F}[\boldsymbol{\sigma}] \big ) \big \|^2
+    \phi_d = \frac{1}{2} \big \| \mathbf{W_d} \big ( \mathbf{d_{obs}} - \mathbb{F}[\boldsymbol{\sigma}] \big ) \big \|^2
     :label: data_misfit_2
 
 
@@ -184,82 +192,52 @@ where :math:`W_d` is a diagonal matrix containing the reciprocals of the uncerta
 Model Objective Function
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Due to the ill-posedness of the problem, there are no stable solutions obtain by freely minimizing the data misfit, and thus regularization is needed. The regularization used penalties for both smoothness, and likeness to a reference model :math:`\mathbf{m_{ref}}` supplied by the user.
-
-.. math::
-    \phi_m (\mathbf{m-m_{ref}}) = \frac{1}{2} \big \| \nabla (\mathbf{m - m_{ref}}) \big \|^2_2
-    :label:
-
-An important consideration comes when discretizing the regularization. The gradient operates on
-cell centered variables in this instance. Applying a short distance approximation is second order
-accurate on a domain with uniform cells, but only :math:`\mathcal{O}(1)` on areas where cells are non-uniform. To
-rectify this a higher order approximation is used (:cite:`Haber2012`). The discrete regularization
-operator can then be expressed as
+Due to the ill-posedness of the problem, there are no stable solutions obtained by freely minimizing the data misfit, and thus regularization is needed. The regularization uses penalties for both smoothness, and likeness to a reference model :math:`m_{ref}` supplied by the user. The model objective function is given by:
 
 .. math::
     \begin{align}
-    \phi_m(\mathbf{m}) &= \frac{1}{2} \int_\Omega \big | \nabla m \big |^2 dV \\
-    & \approx \frac{1}{2}  \beta \mathbf{ m^T G_c^T} \textrm{diag} (\mathbf{A_f^T v}) \mathbf{G_c m}
+    \phi_m = \frac{\alpha_s}{2} \!\int_\Omega w_s | m - & m_{ref} |^2 dV
+    + \frac{\alpha_x}{2} \!\int_\Omega w_x \Bigg | \frac{\partial}{\partial x} \big (m - m_{ref} \big ) \Bigg |^2 dV \\
+    &+ \frac{\alpha_y}{2} \!\int_\Omega w_y \Bigg | \frac{\partial}{\partial y} \big (m - m_{ref} \big ) \Bigg |^2 dV
+    + \frac{\alpha_z}{2} \!\int_\Omega w_z \Bigg | \frac{\partial}{\partial z} \big (m - m_{ref} \big ) \Bigg |^2 dV
     \end{align}
     :label:
 
-where :math:`\mathbf{A_f}` is an averaging matrix from faces to cell centres, :math:`\mathbf{G}` is the cell centre to cell face gradient operator, and v is the cell volume For the benefit of the user, let :math:`\mathbf{R^T R}` be the weighting matrix given by:
+where :math:`\alpha_s, \alpha_x, \alpha_y` and :math:`\alpha_z` weight the relative emphasis on minimizing differences from the reference model and the smoothness along each gradient direction. And :math:`w_s, w_x, w_y` and :math:`w_z` are additional user defined weighting functions.
+
+An important consideration comes when discretizing the regularization onto the mesh. The gradient operates on
+cell centered variables in this instance. Applying a short distance approximation is second order
+accurate on a domain with uniform cells, but only :math:`\mathcal{O}(1)` on areas where cells are non-uniform. To
+rectify this a higher order approximation is used (:cite:`Haber2012`). The second order approximation of the model
+objective function can be expressed as:
 
 .. math::
-    \mathbf{R^T R} = \beta \mathbf{ G_c^T} \textrm{diag}(\mathbf{A_f^T v}) \mathbf{G_c m} =
-    \begin{bmatrix} \mathbf{\alpha_x} & & \\ & \mathbf{\alpha_y} & \\ & & \mathbf{\alpha_z} \end{bmatrix} \big ( \mathbf{G_x^T \; G_y^T \; G_z^T} \big ) \textrm{diag} (\mathbf{v_f}) \begin{bmatrix} \mathbf{G_x} \\ \mathbf{G_y} \\ \mathbf{G_z} \end{bmatrix}
-    :label:
+    \phi_m (\mathbf{m}) = \mathbf{\big (m-m_{ref} \big )^T W^T W \big (m-m_{ref} \big )}
 
-where :math:`\alpha_i` for :math:`i=x,y,z` are diagonal matricies. In the code the :math:`\mathbf{R^T R}` matrix is stored as a separate matrix so that individual model norm components can be calculated. Now, if a cell weighting is used it is applied to the entire norm, that is, there is a w for each cell.
-
-.. math::
-    \mathbf{R^T R} = \textrm{diag} (w) \mathbf{W^T W} \textrm{diag} (w)
-    :label:
-
-There is also the option of choosing a cell interface weighting. This allows for a weight on each cell FACE. The user must supply the weights (:math:`w_x, w_y, w_z` ) for each weighted cell. When the interface weighting option is chosen and the value is less than 1, a sharp discontinuity will be created. When
-the value is greater than 1, there will be a smooth transition. To prevent the inversion from putting
-"junk" on the surface, the top X and Y face weights should have a large value.
-
-.. math::
-    \mathbf{R^T R} = \mathbf{\alpha_x G_x^T} \textrm{diag} (w_x v_f) \mathbf{G_x} + \mathbf{\alpha_y G_y^T} \textrm{diag} (w_y v_f) \mathbf{G_y} + \mathbf{\alpha_z G_z^T} \textrm{diag} (w_z v_f) \mathbf{G_z}
-    :label: MOF
-
-The resulting optimization problem is therefore:
+where the regularizer is given by:
 
 .. math::
     \begin{align}
-    &\min_m \;\; \phi_d (\mathbf{m}) + \beta \phi_m(\mathbf{m - m_{ref}}) \\
-    &\; \textrm{s.t.} \;\; \mathbf{m_L \leq m \leq m_H}
+    \mathbf{W^T W} =& \;\;\;\;\alpha_s \textrm{diag} (\mathbf{w_s \odot v}) \\
+    & + \alpha_x \mathbf{G_x^T} \textrm{diag} (\mathbf{w_x \odot v_x}) \mathbf{G_x} \\
+    & + \alpha_y \mathbf{G_y^T} \textrm{diag} (\mathbf{w_y \odot v_y}) \mathbf{G_y} \\
+    & + \alpha_z \mathbf{G_z^T} \textrm{diag} (\mathbf{w_z \odot v_z}) \mathbf{G_z}
+    \end{align}
+    :label: MOF
+
+The Hadamard product is given by :math:`\odot`, :math:`\mathbf{v_x}` is the volume of each cell averaged to x-faces, :math:`\mathbf{w_x}` is the weighting function :math:`w_x` evaluated on x-faces and :math:`\mathbf{G_x}` computes the x-component of the gradient from cell centers to cell faces. Similarly for y and z.
+
+If we require that the recovered model values lie between :math:`\mathbf{m_L  \preceq m \preceq m_H}` , the resulting bounded optimization problem we must solve is:
+
+.. math::
+    \begin{align}
+    &\min_m \;\; \phi_d (\mathbf{m}) + \beta \phi_m(\mathbf{m}) \\
+    &\; \textrm{s.t.} \;\; \mathbf{m_L \preceq m \preceq m_H}
     \end{align}
     :label: inverse_problem
 
-where :math:`\beta` is a regularization parameter, and :math:`\mathbf{m_L}` and :math:`\mathbf{m_H}` are upper and lower bounds provided by some a prior geological information.
 A simple Gauss-Newton optimization method is used where the system of equations is solved using ipcg (incomplete preconditioned conjugate gradients) to solve for each G-N step. For more
 information refer again to :cite:`Haber2012` and references therein.
-
-
-.. _theory_sparse:
-
-Sparse Norms
-^^^^^^^^^^^^
-
-The Ekblom regularization allows the user to essentially change the norm or distance measure of the regularization. The discrete Ekblom norm is given by
-
-.. math::
-    \phi_E = \mathbf{V^T} \big [ \mathbf{A_f} \big [ \mathbf{G} [\mathbf{m - m_{ref}} ] \big ]^2 + \epsilon \big ]^p
-
-
-where
-
-    - :math:`\mathbf{G}` is the gradient operator
-    - :math:`\epsilon` is a threshold value 
-    - :math:`p` specifies the norm 
-    
-The threshold value (:math:`\epsilon`) acts as a means of stability for the Ekblom norm and is usually chosen to be several orders of magnitude lower than the smallest reasonable model value (:math:`\sim 10^{-8}`). The parameter :math:`p` is best chosen to be between 1 and 2; where :math:`p` = 1 recovers more compact models and :math:`p` = 2 recovers smoother models. When incorporated into the regularization, the model objective function becomes:
-
-.. math::
-    \mathbf{R^T R} = \mathbf{G^T} \textrm{diag} \Big ( \mathbf{A_f^T v} \big [ \mathbf{A_f} [\mathbf{G} (\mathbf{m - m_{ref}}) ] \big ]^2 + \epsilon \big ]^{p-1} \Big ) \mathbf{G}
-
 
 
 Inversion Parameters and Tolerances
@@ -282,9 +260,8 @@ but how do we choose an acceptable trade-off parameter :math:`\beta`? For this, 
 
     - **beta_max:** The initial value for :math:`\beta`
     - **beta_factor:** The factor at which :math:`\beta` is decrease to a subsequent solution of Eq. :eq:`inverse_problem`
-    - **beta_min:** The minimum :math:`\beta` for which Eq. :eq:`inverse_problem` is solved before the inversion will quit (E3D version 1 only)
-    - **nBetas:** The number of times the inversion code will decrease :math:`\beta` and solve Eq. :eq:`inverse_problem` before it quits (E3D version 2 only)
-    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d = N \times Chi \; Factor`, where :math:`N` is the number of data observations
+    - **nBetas:** The number of times the inversion code will decrease :math:`\beta` and solve Eq. :eq:`inverse_problem` before it quits
+    - **Chi Factor:** The inversion program stops when the data misfit :math:`\phi_d \leq N \times Chi \; Factor`, where :math:`N` is the number of data observations
 
 .. _theory_GN:
 
