@@ -89,22 +89,16 @@ where :math:`\mathbf{C}` is the curl operator and:
 
 where :math:`\mathbf{V}` is a diagonal matrix containing  all cell volumes, :math:`\mathbf{A_{f2c}}` averages from faces to cell centres and :math:`\mathbf{A_{e2c}}` averages from edges to cell centres. The magnetic permeabilities and conductivities for each cell are contained within vectors :math:`\boldsymbol{\mu}` and :math:`\boldsymbol{\sigma}`, respectively.
 
-E3D version 2 data represent the component of the total magnetic field that is parallel to the dipole moment of the loop receiver. To compute this, we approximate the integral formulation of Faraday's law as:
+Once the electric field on cell edges has been computed, we must project to the receivers. For E3D version 2, closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H`) are obtained by integrating the electric field (:math:`\mathbf{e}`) over the path of close loop to compute the EMF. The EMF is then divided by :math:`i\omega \mu_0 A`, where :math:`A` is the cross-sectional area, to represent the quantity in terms of the average magnetic field normal to the receiver. In practice, magnetic field measurements can be approximated accurately by applying a linear projection matrix (:math:`P`) to the electric fields computed on cell edges:
 
 .. math::
-    \sum_{i=1}^N \, \big (\mathbf{P_i \, u_e})^T \, \boldsymbol{\ell_i} = i \omega \mu \mathbf{H_i}^T \mathbf{a}
-    :label: faraday_law
-
-where :math:`i` denotes a particular loop segment, :math:`\mathbf{P_i}` is a projection matrix from cell edges to a particular segment and :math:`\boldsymbol{\ell_i}` is the vector distance for a particular segment. :math:`\mathbf{H_i}` is the total magnetic field at the center of the loop and :math:`\mathbf{a}` is the vector cross-sectional area of the loop. If we let :math:`\bar{H_i}` be the dot product of :math:`\mathbf{H_i}` and the unit vector direction of :math:`\mathbf{a}`, then
-
-.. math::
-    \bar{H_i} = \frac{1}{i\omega} \, \mathbf{Q_i \, u_e}
+    H = \frac{1}{i\omega \mu_0 A} \int_C \mathbf{e} \cdot d\mathbf{l} \approx \frac{1}{i\omega} P \, \mathbf{u_e}
 
 
-where :math:`\mathbf{Q_i}` is a just a linear operator that integrates the electric field over the path of the receiver loop and normalizes by :math:`\mu` and the cross-sectional area. The projection matrix for all receivers can be amalgamated to form a single linear operator (:math:`\mathbf{Q}`) such that the data is given by:
+Where (:math:`\mathbf{P}`) is the projection matrix that takes the electric fields on cell edges to all receivers, the vector containing all magnetic field measurements is given by:
 
 .. math::
-    \mathbf{d} = \frac{1}{i\omega} \mathbf{Q \, u_e} = - \mathbf{Q \, A}(\sigma)^{-1} \mathbf{s}
+    \mathbf{H} = \frac{1}{i\omega} \mathbf{P \, u_e} = - \mathbf{P \, A}(\sigma)^{-1} \mathbf{s}
     :label: fwd_solution
 
 
@@ -118,10 +112,10 @@ where
 Sensitivity
 -----------
 
-The data are split into their real and imaginary components. Thus the data at a particular frequency for a particular reading is organized in a vector of the form:
+The total magnetic field data are split into their real and imaginary components. Thus the data at a particular frequency for a particular reading is organized in a vector of the form:
 
 .. math::
-    \mathbf{d} = [\mathbf{d}^\prime, \mathbf{d}^{\prime \prime}]^T
+    \mathbf{d} = [\mathbf{H}^\prime, \mathbf{H}^{\prime \prime}]^T
     :label: data_vector
 
 
@@ -129,8 +123,8 @@ where :math:`\prime` denotes real components and :math:`\prime\prime` denotes im
 
 .. math::
     \frac{\partial \mathbf{d}}{\partial \boldsymbol{\sigma}} = \Bigg [ 
-    \dfrac{\partial \mathbf{d}^\prime}{\partial \boldsymbol{\sigma}} ,
-    \dfrac{\partial \mathbf{d}^{\prime\prime}}{\partial \boldsymbol{\sigma}} \Bigg ]^T
+    \dfrac{\partial \mathbf{H}^\prime}{\partial \boldsymbol{\sigma}} ,
+    \dfrac{\partial \mathbf{H}^{\prime\prime}}{\partial \boldsymbol{\sigma}} \Bigg ]^T
 
 
 where the conductivity model :math:`\boldsymbol{\sigma}` is real-valued. To differentiate the data with with respect to the model, we require the derivative of the electric fields on cell edges (:math:`\mathbf{u_e}`) with respect to the model (Eq. :eq:`fwd_solution`). This is given by:
