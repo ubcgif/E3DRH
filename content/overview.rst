@@ -97,7 +97,6 @@ Message passaging interface (MPI) programming allows E3D version 1 to utilize pa
       
       - `Microsoft MPI v10.0 <https://www.microsoft.com/en-us/download/details.aspx?id=57467>`__ : Required for window machines
       - `MPICH <https://www.mpich.org/downloads/>`__ : Required for Linux machines
-      - `Open MPI v4 <https://www.open-mpi.org/software/ompi/v4.0/>`__ : Optional programming to set MPI threads
 
     2. Path the folders containing MPI executables to your environment variables.
 
