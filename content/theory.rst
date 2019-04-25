@@ -5,7 +5,7 @@ Background Theory
 
 This section aims to provide the user with a basic review of the physics, discretization, and optimization
 techniques used to solve the frequency domain electromagnetics problem. It is assumed
-that the user has some background in these areas. For further reading see ( :cite:`Nabighian1991` ).
+that the user has some background in these areas. For further reading see ( :cite:`nabighian1991` ).
 
 .. important::
 
@@ -31,7 +31,7 @@ equations are:
     :label: maxwells_eq
 
 where :math:`\mathbf{E}` and :math:`\mathbf{H}` are the electric and magnetic fields, :math:`\mathbf{s}` is some external source and :math:`e^{-i\omega t}` is suppressed.
-Symbols :math:`\mu`, :math:`\sigma` and :math:`\omega` are the magnetic permeability, conductivity, and angular frequency, respectively. This formulation assumes a quasi-static mode so that the system can be viewed as a diffusion equation (Weaver, 1994; Ward and Hohmann, 1988 in :cite:`Nabighian1991`). By doing so, some difficulties arise when
+Symbols :math:`\mu`, :math:`\sigma` and :math:`\omega` are the magnetic permeability, conductivity, and angular frequency, respectively. This formulation assumes a quasi-static mode so that the system can be viewed as a diffusion equation (Weaver, 1994; Ward and Hohmann, 1988 in :cite:`nabighian1991`). By doing so, some difficulties arise when
 solving the system;
 
     - the curl operator has a non-trivial null space making the resulting linear system highly ill-conditioned
@@ -66,7 +66,7 @@ only refined when the model begins to change rapidly.
 Discretization of Operators
 ---------------------------
 
-The operators div, grad, and curl are discretized using a finite volume formulation. Although div and grad do not appear in :eq:`maxwells_eq`, they are required for the solution of the system. The divergence operator is discretized in the usual flux-balance approach, which by Gauss' theorem considers the current flux through each face of a cell. The nodal gradient (operates on a function with values on the nodes) is obtained by differencing adjacent nodes and dividing by edge length. The discretization of the curl operator is computed similarly to the divergence operator by utilizing Stokes theorem by summing the magnetic field components around the edge of each face. Please see :cite:`Haber2012` for a detailed description of the discretization process.
+The operators div, grad, and curl are discretized using a finite volume formulation. Although div and grad do not appear in :eq:`maxwells_eq`, they are required for the solution of the system. The divergence operator is discretized in the usual flux-balance approach, which by Gauss' theorem considers the current flux through each face of a cell. The nodal gradient (operates on a function with values on the nodes) is obtained by differencing adjacent nodes and dividing by edge length. The discretization of the curl operator is computed similarly to the divergence operator by utilizing Stokes theorem by summing the magnetic field components around the edge of each face. Please see :cite:`haber2012` for a detailed description of the discretization process.
 
 
 Forward Problem
@@ -249,7 +249,7 @@ where :math:`\alpha_s, \alpha_x, \alpha_y` and :math:`\alpha_z` weight the relat
 An important consideration comes when discretizing the regularization onto the mesh. The gradient operates on
 cell centered variables in this instance. Applying a short distance approximation is second order
 accurate on a domain with uniform cells, but only :math:`\mathcal{O}(1)` on areas where cells are non-uniform. To
-rectify this a higher order approximation is used (:cite:`Haber2012`). The second order approximation of the model
+rectify this a higher order approximation is used (:cite:`haber2012`). The second order approximation of the model
 objective function can be expressed as:
 
 .. math::
@@ -278,7 +278,7 @@ If we require that the recovered model values lie between :math:`\mathbf{m_L  \p
     :label: inverse_problem
 
 A simple Gauss-Newton optimization method is used where the system of equations is solved using ipcg (incomplete preconditioned conjugate gradients) to solve for each G-N step. For more
-information refer again to :cite:`Haber2012` and references therein.
+information refer again to :cite:`haber2012` and references therein.
 
 
 Inversion Parameters and Tolerances
