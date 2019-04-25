@@ -1,6 +1,6 @@
 
 
-ED3 Version 1 Package
+E3D Version 1 Package
 =====================
 
 .. important:: E3D version 1 performs forward modeling and inversion with the executable **e3dinv.exe**. Past iterations of this code may have been given the name 'e3dinv_iter.exe' or 'e3dinv_pardiso.exe'. To use this code, ensure you have downloaded 'e3dinv.exe' and all related file from the UBC-GIF website.
