@@ -327,18 +327,18 @@ where :math:`\mathbf{\delta m}_k` is the step direction, :math:`\nabla \phi_k` i
 
     1. The gradient is sufficiently small, i.e.:
 
-        .. .. math::
-        ..     \| \nabla \phi_k \|^2 < \textrm{tol_nl}
+        .. math::
+            \| \nabla \phi_k \|^2 < \textrm{tol_nl}
 
     2. The smallest component of the model perturbation its small in absolute value, i.e.:
 
-        .. .. math::
-        ..     \textrm{max} ( |\mathbf{\delta m}_k | ) < mindm
+        .. math::
+            \textrm{max} ( |\mathbf{\delta m}_k | ) < mindm
 
     3. A max number of GN iterations have been performed, i.e.
 
-        .. .. math::
-        ..     k = \textrm{iter_per_beta} 
+        .. math::
+            k = \textrm{iter_per_beta} 
 
 
 .. _theory_IPCG:
