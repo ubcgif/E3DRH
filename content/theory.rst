@@ -5,7 +5,7 @@ Background Theory
 
 This section aims to provide the user with a basic review of the physics, discretization, and optimization
 techniques used to solve the frequency domain electromagnetics problem. It is assumed
-that the user has some background in these areas. For further reading see (:cite:`Nabighian1991`).
+that the user has some background in these areas. For further reading see ( :cite:`Nabighian1991` ).
 
 .. important::
 
@@ -50,7 +50,7 @@ The figure below shows an example of an Octree mesh, with nine cells, eight of w
 
 .. figure:: images/OcTree.png
      :align: center
-     :width: 700
+     :width: 600
 
 
 When working with Octree meshes, the underlying mesh is defined as a regular 3D orthogonal grid where
