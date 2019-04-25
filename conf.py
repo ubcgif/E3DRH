@@ -35,10 +35,7 @@ sys.path.append(os.path.abspath('./_ext'))
 extensions = [
     'sphinx.ext.mathjax',
     'sphinxcontrib.bibtex',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.mathjax',
-    'edit_on_github',
+        'edit_on_github',
     'purpose',
     'example',
 ]
@@ -129,13 +126,7 @@ check_meta = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-try:
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-    pass
-except Exception:
-    html_theme = 'default'
+html_theme = 'sphinx_rtd_theme'
 # Used to be 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
