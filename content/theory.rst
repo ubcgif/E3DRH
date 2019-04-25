@@ -282,7 +282,7 @@ where :math:`\mathbf{\delta m}_k` is the step direction, :math:`\nabla \phi_k` i
     1. The gradient is sufficiently small, i.e.:
 
         .. math::
-            \| \nabla \phi_k \|^2 < \textrm{tol_nl}
+            \| \nabla \phi_k \|^2 < tol \_ nl
 
     2. The smallest component of the model perturbation its small in absolute value, i.e.:
 
@@ -292,7 +292,7 @@ where :math:`\mathbf{\delta m}_k` is the step direction, :math:`\nabla \phi_k` i
     3. A max number of GN iterations have been performed, i.e.
 
         .. math::
-            k = \textrm{iter_per_beta} 
+            k = iter \_ per \_ beta 
 
 
 .. _theory_IPCG:
@@ -313,12 +313,12 @@ where :math:`\mathbf{J}` is the sensitivity of the data to the current model :ma
     1. the system is solved to within some tolerance and additional iterations do not result in significant increases in solution accuracy, i.e.:
 
         .. math::
-            \| \mathbf{\delta m}_k^{(i-1)} - \mathbf{\delta m}_k^{(i)} \|^2 / \| \mathbf{\delta m}_k^{(i-1)} \|^2 < \textrm{tol_ipcg}
+            \| \mathbf{\delta m}_k^{(i-1)} - \mathbf{\delta m}_k^{(i)} \|^2 / \| \mathbf{\delta m}_k^{(i-1)} \|^2 < tol \_ ipcg
 
 
     2. a maximum allowable number of IPCG iterations has been completed, i.e.:
 
         .. math::
-            i = \textrm{max_iter_ipcg}
+            i = max \_ iter \_ ipcg
 
 
