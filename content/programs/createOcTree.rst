@@ -3,7 +3,7 @@
 Create OcTree Mesh
 ==================
 
-:ref:`OcTree meshes<octreeFile>` used in the E3D version 2 tiled code are created using the program **AEMesh.exe**. The program creates a global OcTree mesh (on which the model lives) and a set of local OcTree meshes (referred to as 'tiles') based on survey geometry. Parameters necessary for creating the OcTree meshes are set in the :ref:`input file<e3d_input_octree>`; referred to here as **create_octree.inp**.
+:ref:`OcTree meshes<octreeFile>` used in the E3D version 2 tiled code are created using the program **AEMesh.exe**. The program creates a global OcTree mesh (on which the model lives) and a set of local OcTree meshes (referred to as 'tiles') based on survey geometry. Parameters necessary for creating the OcTree meshes are set in the :ref:`input file<e3d_input_octree>`; referred to here as **octree_mesh.inp**.
 
 To generate the OcTree meshes, open a command window. Type the path to the code **AEMesh.exe**, followed by a space, followed by the path to the input file.
 
