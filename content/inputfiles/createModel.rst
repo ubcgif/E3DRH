@@ -34,7 +34,7 @@ where superscript :math:`(i)` for :math:`i=1,2,...,N` refers to a particular blo
      :align: center
      :width: 700
 
-     Example input file for creating octree model (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/input_files2/blk3cellOct.inp>`__ )
+     Example input file for creating octree model (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/e3d_ver2_input/blk3cellOct.inp>`__ )
 
 
 

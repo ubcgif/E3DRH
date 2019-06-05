@@ -59,7 +59,7 @@ Both the forward and inverse problems are solved using the **e3dinv_ver2.exe** e
      :align: center
      :width: 700
 
-     Example input file for running the inversion (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/input_files2/e3dinv_ver2.inp>`__ ). Example input file for forward modeling (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/input_files2/e3dfwd_ver2.inp>`__ ).
+     Example input file for running the inversion (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/e3d_ver2_input/e3dinv.inp>`__ ). Example input file for forward modeling (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/e3d_ver2_input/e3dfwd.inp>`__ ).
 
 
 Line Descriptions
