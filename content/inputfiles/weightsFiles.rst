@@ -30,7 +30,7 @@ The parameters used to create cell weights are defined in the input file. The li
      :align: center
      :width: 700
 
-     Example input file for creating interface weights.
+     Example input file for creating interface weights (`Download <https://github.com/ubcgif/e3dmt/raw/e3d_ver2_tiled/assets/e3d_ver2_tiled_input/interface_weights.inp>`__ )
 
 
 .. _aem_input_weights_lines:
