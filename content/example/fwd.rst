@@ -17,9 +17,9 @@ To forward model the data, the following input file was used:
 
 E3D version 1 forward models the Cartesian components of the electric field and total magnetic field. Below we show the real and imaginary components of the vertical magnetic field at 25 Hz and 2500 Hz.
 
-.. .. figure:: images/fwd1.png
-..      :align: center
-..      :width: 700
+.. figure:: images/fwd1.png
+     :align: center
+     :width: 700
 
 
 
