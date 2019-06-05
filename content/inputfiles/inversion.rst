@@ -83,7 +83,7 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln3:
 
-    - **Observation File:** file path to the :ref:`observed data file<obsFile2>`
+    - **Observation File:** file path to the :ref:`observed data file<obsFile>`
 
 .. _e3d_input_inv2_ln4:
 
