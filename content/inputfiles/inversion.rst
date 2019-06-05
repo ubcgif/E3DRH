@@ -55,7 +55,7 @@ The inverse problem is solved using the executable program **e3dinv.exe**. The l
      :align: center
      :width: 700
 
-     Example input file for the inversion program (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/input_files1/e3dinv.inp>`__ ). Example input file for forward modeling only (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/input_files1/e3dfwd.inp>`__ ).
+     Example input file for the inversion program (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/e3d_ver1_input/e3dinv.inp>`__ ). Example input file for forward modeling only (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/e3d_ver1_input/e3dfwd.inp>`__ ).
 
 
 Line Descriptions
