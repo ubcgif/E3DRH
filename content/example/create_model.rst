@@ -17,11 +17,11 @@ Here is the input file for **blk3cellOct.exe**
      :width: 700
 
 
-The resulting Octree model shows a conductor (:math:`\sigma` = 0.2 S/m) within a more resistive background (:math:`\sigma_b` = 0.01 S/m).
+The resulting Octree model shows a conductive block (:math:`\sigma` = 0.2 S/m) within a more resistive background (:math:`\sigma_b` = 0.01 S/m). A constant topography of 0 m in elevation is shown in gray. The observation locations are shown in blue.
 
 
-.. .. figure:: images/octree_model2.png
-..      :align: center
-..      :width: 500
+.. figure:: images/octree_model2.png
+     :align: center
+     :width: 500
 
 
