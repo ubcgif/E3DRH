@@ -18,9 +18,9 @@ To generate the OcTree mesh, the following input file was used:
 
 To keep the problem simple, the topography is given a constant elevation of 0 m. The resulting OcTree mesh is shown below:
 
-.. .. figure:: images/octree_mesh2.png
-..      :align: center
-..      :width: 500
+.. figure:: images/octree_mesh2.png
+     :align: center
+     :width: 500
 
 
 
