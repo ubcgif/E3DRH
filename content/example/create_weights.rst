@@ -1,7 +1,7 @@
 .. _example_weights:
 
-Forward Modeling
-================
+Interface Weights
+=================
 
 Here, the code **interface_weights.exe** and the input file **interface_weights.inp** (:ref:`see format <e3d_input_weights>`) are used to create interface weights. Files relevant to this part of the example are in the sub-folder *create_weights*. For this example, we use the mesh that was created in the example ":ref:`create model<example_octree>`". Before running this example, you may want to do the following:
 
