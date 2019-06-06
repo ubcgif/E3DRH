@@ -15,7 +15,7 @@ To invert the synthetic data, the input file below was used:
      :align: center
      :width: 700
 
-The true model (left) and the final recovered model (right) are shown below. A cutoff of 0.025 S/m has been used for both models. We should note some things about the inversion:
+The true model (left) and the final recovered model (right) are shown below. A cutoff of 0.0225 S/m has been used for both models. We should note some things about the inversion:
 
 	- We inverted data at only two frequencies (25 Hz and 2500 Hz)
 	- We only inverted the vertical component of the total magnetic field
