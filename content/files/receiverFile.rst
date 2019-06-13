@@ -50,7 +50,11 @@ Parameter Descriptions
         
 .. _e3d_rec_ln4:
 
-    - :math:`\mathbf{x_i \;\; y_i \;\; z_i}`: Denotes the X (Easting), Y (Northing) and Z (elevation) locations for nodes defining transmitter/receiver loops. Transmitters and receivers are **must** be defined in a left-handed (clockwise) manner. For example, a horizontal loop must be defined in a clockwise manner for its dipole moment to be in the vertical direction.
+    - :math:`\mathbf{x_i \;\; y_i \;\; z_i}`: Denotes the X (Easting), Y (Northing) and Z (elevation) locations for nodes defining transmitter/receiver.
+
+    	- **Loop transmitter/receiver:** Loop transmitters and receivers **must** be defined in a left-handed (clockwise) manner. For example, a horizontal loop must be defined in a clockwise manner for its dipole moment to be in the vertical direction. For *N* loop segments, you will need to define *N+1* nodes; e.g. you must close the loop. If a closed loop is used to define a receiver, the corresponding data are the magnetic field in units H/m.
+    	
+    	- **Wire transmitter/receiver:** Wire transmitters and receivers are defined using 2 node locations. If a single wire segment is used to define a receiver, the corresponding data are the electric field in units V/m.
 
 
 
