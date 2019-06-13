@@ -33,7 +33,8 @@ Units
 
 **Input and outputs:**
 
-    - **FEM data:** the component of the secondary magnetic field orthogonal to the receiver coil in units A/m
+    - **Magnetic field data:** the component of the total magnetic field along the direction of the receiver's dipole moment in units A/m
+    - **Electric field data:** the component of the electric field along the path of the wire segment
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
     - **Model/interface weights:** unitless
