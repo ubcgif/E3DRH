@@ -15,26 +15,14 @@ The lines the observations file are formatted as follows:
 | **IGNORE** :ref:`reg_exp<e3d_dobs_ln1b>`
 |
 |
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :ref:`DEFINE TRANSMITTER<e3d_dobs_transmitter>`
 | 
 | **FREQUENCY** :math:`\;` :ref:`f1<e3d_dobs_ln5>`
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
 | :math:`\;\;` :ref:`Data Array<e3d_dobs_ln7>`
 |
 |
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :ref:`DEFINE TRANSMITTER<e3d_dobs_transmitter>`
 |
 | **FREQUENCY** :math:`\;` :ref:`f2<e3d_dobs_ln5>`
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
@@ -44,13 +32,7 @@ The lines the observations file are formatted as follows:
 | :math:`\;\;\;\;\;\; \vdots`
 |
 |
-| :ref:`trx type<e3d_dobs_ln2>`
-| :ref:`n_nodes<e3d_dobs_ln3>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x2 y2 z2<e3d_dobs_ln4>`
-| :math:`\;\;\;\;\;\;\;\; \vdots`
-| :math:`\;\;` :ref:`xn yn zn<e3d_dobs_ln4>`
-| :math:`\;\;` :ref:`x1 y1 z1<e3d_dobs_ln4>`
+| :ref:`DEFINE TRANSMITTER<e3d_dobs_transmitter>`
 |
 | **FREQUENCY** :math:`\;` :ref:`fn<e3d_dobs_ln5>`
 | **N_RECV** :math:`\;` :ref:`n_recv<e3d_dobs_ln6>`
@@ -61,11 +43,11 @@ The lines the observations file are formatted as follows:
 |
 
 
-.. figure:: images/files_locations.png
-     :align: center
-     :width: 700
+.. .. figure:: images/files_locations.png
+..      :align: center
+..      :width: 700
 
-     Example locations file for MTZ data.
+..      Example locations file for MTZ data.
 
 
 
@@ -81,18 +63,6 @@ Parameter Descriptions
 
     - **reg_exp:** Regular expression (flag) used to data points that are ignored during the inversion
 
-.. _e3d_dobs_ln2:
-
-    - **trx type:** For some codes, various transmitter types can be used. For E3D, the transmitter type will always be defined using the flag *TRX_ORIG*. This type of transmitter is a closed inductive loop source.
-
-.. _e3d_dobs_ln3:
-
-    - **n_nodes:** The number of nodes defining a particular transmitter loop. Note that:
-
-.. _e3d_dobs_ln4:
-
-    - **xi yi zi:** This refers to the X (Easting), Y (Northing) and Z (elevation) locations of the nodes defining the transmitter loop. Transmitters are defined using a left-handed coordinate system. Which means you must define a horizontal transmitter loop in the clockwise direction for a dipole moment in the vertical direction.
-
 .. _e3d_dobs_ln5:
 
     - **fi:** The frequency (in Hz) at which the subsequent set of measurements are made.
@@ -104,6 +74,16 @@ Parameter Descriptions
 .. _e3d_dobs_ln7:
 
     - **Data Array:** Contains the X (Easting), Y (Northing) and Z (elevation) locations, observations and uncertainties at a particular frequency for a particular transmitter. It has dimensions :ref:`n_recv<e3d_dobs_ln6>` :math:`\times` 27.
+
+
+
+.. _e3d_dobs_transmitter:
+
+Defining Transmitters
+---------------------
+
+There are three types of transmitters that *E3D* survey files can use. These were defined in the :ref:`survey file section <e3d_survey_transmitter>`.
+
 
 
 Data Array
