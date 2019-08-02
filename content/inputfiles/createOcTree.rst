@@ -3,7 +3,7 @@
 Create OcTree Mesh Input File
 =============================
 
-:ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **create_mesh_newformat_e3d.exe**. The lines within the input file are as follows:
+:ref:`OcTree meshes<octreeFile>` used in the e3d code are created using the program **create_octree_mesh_e3d_v2.exe**. The lines within the input file are as follows:
 
 
 .. tabularcolumns:: |C|C|C|
