@@ -11,9 +11,9 @@ Program Library
 The main executable programs within the E3D version 1 program library are:
 
     - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3dinv:** used to forward model or invert FEM data
+    - **e3d:** used to forward model or invert FEM data
 
-Also included are the following OcTree utility programs:
+The following Octree utility programs may also be helpful:
 
     - **blk3cell:** creates conductivity models on the underlying tensor mesh
     - **3DModel2Octree:** interpolates models from tensor to OcTree meshes
