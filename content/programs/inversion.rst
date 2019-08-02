@@ -13,7 +13,7 @@ Here, the *mpiexec* call is used to parallelize multiple processes (large-scale 
 
 .. figure:: images/run_e3dinv_ver2.png
      :align: center
-     :width: 500
+     :width: 600
 
 
 The call *mpiexec* is followed by the flag *-n*, then the number of processes (*"nFreq"* ) to be carried out simultaneously. This is followed by the paths to the executable and the corresponding input file, respectively. The number of simultaneous processes (*"nFreq"* ) **must** be equal or less than the number of frequencies. Ideally there is enough memory for *nFreq* to be equal to the number of frequencies.
@@ -59,9 +59,9 @@ The program **e3d_v2.exe** creates the following output files:
 
     - **dpred.txt** predicted data for final recovered model
 
-    - **e3dinv_1mesh.log:** log file for the inversion
+    - **e3d_v2.log:** log file for the inversion
 
-    - **e3dinv_1mesh.out:** inversion summary
+    - **e3d_v2.out:** inversion summary
 
 
 

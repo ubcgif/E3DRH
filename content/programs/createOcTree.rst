@@ -10,7 +10,7 @@ To generate the OcTree meshes, open a command window. Type the path to the code 
 
 .. figure:: images/run_create_octree.png
      :align: center
-     :width: 500
+     :width: 600
 
 
 .. _e3d_octree_output:
@@ -26,7 +26,7 @@ The program **create_octree_mesh_e3d_v2.exe** creates 5 output files:
 
     - **active_cells_topo.txt:** an :ref:`active cells model<modelFile>` which defines the topography on the OcTree mesh. Cells are active (underground) if assigned a value of 1 and inactive (in the air) if assigned a value of 0.
 
-    - **E3DMesh.log:** log file
+    - **create_octree_mesh_e3d_v2.log:** log file
 
 
 

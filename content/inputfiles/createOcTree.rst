@@ -107,7 +107,7 @@ Line Descriptions
 
     - **read/create mesh:** If the global inversion mesh has already been created, then it may be loaded by typing "READ_LARGE_MESH *filepath*". In this case, the global inversion mesh is used to define the local forward meshes. If the global inversion mesh needs to be created, the user types "CREATE_LARGE_MESH *filename*", where the global inversion mesh is output to the file *filename*.
 
-.. note:: This functionality is relevant to the *e3dinv_ver2_tiled* code. For *e3dinv_ver2*, use "CREATE_LARGE_MESH *filename*"
+.. note:: This functionality is relevant to the *e3d_v2_tiled* code. For *e3d_v2*, use "CREATE_LARGE_MESH *filename*"
 
 
 

@@ -14,7 +14,7 @@ If the receive loop is sufficiently small, the data are just the dot product of 
 	H = \mathbf{H} \cdot \frac{\mathbf{m}}{| \mathbf{m} |}
 
 
-Predicted data files output from **e3dinv_ver2.exe** have a simple 2 column format. Column 1 contains the real component of the total magnetic field data measured by the receiver, and column 2 contains the imaginary component. The rows are ordered the same as in the :ref:`survey index<indexFile>` or :ref:`observations<obsFile>` file. Thus predicted data files take the format:
+Predicted data files output from **e3d_v2.exe** have a simple 2 column format. Column 1 contains the real component of the total magnetic field data measured by the receiver, and column 2 contains the imaginary component. The rows are ordered the same as in the :ref:`survey index<indexFile>` or :ref:`observations<obsFile>` file. Thus predicted data files take the format:
 
 |
 | :math:`H_1^\prime \;\; H_1^{\prime\prime}`
