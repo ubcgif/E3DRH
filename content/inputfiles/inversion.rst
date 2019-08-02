@@ -3,7 +3,7 @@
 Inversion Input File
 ====================
 
-The inverse problem is solved using the executable program **e3dinv.exe**. The lines of input file are as follows:
+The inverse problem is solved using the executable program **e3d.exe**. The lines of input file are as follows:
 
 .. tabularcolumns:: |L|C|C|
 
