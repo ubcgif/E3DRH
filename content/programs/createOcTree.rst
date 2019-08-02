@@ -26,7 +26,7 @@ The program **create_octree_mesh_e3d.exe** creates 5 output files:
 
     - **active_cells_topo.txt:** :ref:`active cells model<modelFile>` on the OcTree mesh. Cells are active if assigned a value of 1 and inactive if assigned a value of 0 
 
-    - **create_mesh.log:** log file
+    - **create_octree_mesh_e3d.log:** log file
 
 
 

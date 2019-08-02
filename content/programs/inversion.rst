@@ -44,7 +44,7 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-The program **e3dinv.exe** creates the following output files:
+The program **e3d.exe** creates the following output files:
 
     - **dpred_fwd.txt** predicted data if forward modeling is used
 
@@ -58,9 +58,9 @@ The program **e3dinv.exe** creates the following output files:
 
     - **inv.con:** final conductivity model
 
-    - **e3d_octree_inv_pardiso.log:** log file for the inversion
+    - **e3d.log:** log file for the inversion
 
-    - **e3d_octree_inv.pardiso.out:** stores details regarding the inversion
+    - **e3d.out:** stores details regarding the inversion
 
 
 
