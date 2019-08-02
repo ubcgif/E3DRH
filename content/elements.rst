@@ -10,12 +10,12 @@ Program Library
 
 The main executable programs within the E3D version 2 program library are:
 
-    - **octree_mesh_newformat_e3d:** creates a the OcTree mesh based on transmitter and receiver locations
+    - **e3d_v2:** single executable file for carrying out forward modeling and inversion of FEM data
+    - **create_octree_mesh_e3d_v2:** creates a the OcTree mesh based on transmitter and receiver locations
+
+The following Octree utility programs may also be helpful:
+
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
-    - **e3dinv_ver2:** single executable file for carrying out forward modeling and inversion of FEM data
-
-Also included are the following Octree utility programs:
-
     - **create_weight_file:** creates cell weighting for the recovered model
     - **interface_weights:** creates weights on the faces of cells for the recovered model
 
@@ -38,7 +38,7 @@ Here, we describe the main input files for executables contained with the E3D ve
 Supporting Files
 ----------------
 
-Here, we describe the formats of supporting files used to run **e3dinv_ver2.exe**. The input files for each executable program are described in the :ref:`running the programs<running>` section.
+Here, we describe the formats of supporting files used to run **e3d_v2.exe**. The input files for each executable program are described in the :ref:`running the programs<running>` section.
 
 .. toctree::
     :maxdepth: 1

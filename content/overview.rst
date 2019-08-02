@@ -3,7 +3,7 @@
 Package overview
 ================
 
-.. important:: E3D version 2 performs forward modeling and inversion with the executable **e3dinv_ver2.exe**. Past iterations of this code may have been given the name 'e3dinv_1mesh.exe'. To use this code, ensure you have downloaded 'e3dinv_ver2.exe' and all related files from the UBC-GIF website.
+.. important:: E3D version 2 performs forward modeling and inversion with the executable **e3d_v2.exe**. Past iterations of this code may have been given the name 'e3dinv_1mesh.exe'. To use this code, ensure you have downloaded E3D version 2 package from the UBC-GIF website.
 
 Description
 -----------
@@ -66,14 +66,14 @@ Program Library Content
 
 The main executable programs within the E3D version 2 program library are:
 
-    - **octree_mesh_newformat_e3d:** creates a the OcTree mesh based on transmitter and receiver locations
+    - **e3d_v2:** single executable file for carrying out forward modeling and inversion of FEM data
+    - **create_octree_mesh_e3d_v2:** creates a the OcTree mesh based on transmitter and receiver locations
+
+The following Octree utility programs may also be helpful:
+
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
-    - **e3dinv_ver2:** single executable file for carrying out forward modeling and inversion of FEM data
-
-Also included are the following Octree utility programs:
-
-      - create_weight_file
-      - interface_weights
+    - **create_weight_file:** creates cell weighting for the recovered model
+    - **interface_weights:** creates weights on the faces of cells for the recovered model
 
 Licensing
 ---------
