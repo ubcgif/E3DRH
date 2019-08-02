@@ -3,7 +3,7 @@
 Inversion Input File
 ====================
 
-Both the forward and inverse problems are solved using the **e3dinv_ver2_tiled.exe** executable program. In both cases, the lines of the input file are the same. However in the case of forward modeling, some lines in the input file are not used by the code and can be given any value. The lines of input file are as follows:
+Both the forward and inverse problems are solved using the **e3d_v2_tiled.exe** executable program. In both cases, the lines of the input file are the same. However in the case of forward modeling, some lines in the input file are not used by the code and can be given any value. The lines of input file are as follows:
 
 .. tabularcolumns:: |L|C|C|
 
