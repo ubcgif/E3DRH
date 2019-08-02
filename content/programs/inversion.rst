@@ -62,9 +62,9 @@ The program **e3d_v2_tiled.exe** creates the following output files:
 
     - **dpred.txt** predicted data for final recovered model
 
-    - **e3d octree inv tiles.log:** log file for the inversion
+    - **e3d_v2_tiled.log:** log file for the inversion
 
-    - **e3d octree inv tiles.out:** inversion summary
+    - **e3d_v2_tiled.out:** inversion summary
 
 
 

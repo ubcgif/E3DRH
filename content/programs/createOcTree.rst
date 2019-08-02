@@ -28,7 +28,7 @@ The program **create_octree_mesh_e3d_v2_tiled.exe** creates 5 output files:
 
     - **octree_small_mesh.dat:** a binary data file containing the local forward meshes for all transmitters.
 
-    - **AEMesh.log:** log file
+    - **create_octree_mesh_e3d_v2_tiled.log:** log file
 
 
 
