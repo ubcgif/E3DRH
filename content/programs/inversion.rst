@@ -3,7 +3,7 @@
 Inversion Program
 =================
 
-Both the forward and inverse problems are solved using the **e3dinv_ver2.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
+Both the forward and inverse problems are solved using the **e3d_v2.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
 
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-The program **e3dinv_ver2.exe** creates the following output files:
+The program **e3d_v2.exe** creates the following output files:
 
     - **inv.con:** recovered conductivity model for the final beta value
 
