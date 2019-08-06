@@ -67,7 +67,7 @@ Both the forward and inverse problems are solved using the **e3d_v2_tiled.exe** 
      :align: center
      :width: 700
 
-     Example input file for the inversion program (`Download <https://github.com/ubcgif/e3dmt/raw/e3d_ver2_tiled/assets/e3d_ver2_tiled_input/e3dinv.inp>`__ ). Example for forward modeling only (`Download <https://github.com/ubcgif/e3dmt/raw/e3d_ver2_tiled/assets/e3d_ver2_tiled_input/e3dfwd.inp>`__ )
+     Example input file for the inversion program (`Download <https://github.com/ubcgif/e3dmt/raw/e3d_v2_tiled/assets/e3d_ver2_tiled_input/e3dinv.inp>`__ ). Example for forward modeling only (`Download <https://github.com/ubcgif/e3dmt/raw/e3d_v2_tiled/assets/e3d_ver2_tiled_input/e3dfwd.inp>`__ )
 
 
 Line Descriptions

@@ -5,7 +5,7 @@ Create OcTree Mesh
 
 Here, the code **AEMesh.exe** and the input file **octree_mesh.inp** (:ref:`see format <e3d_input_octree>`) are used to create an OcTree mesh based on the set of observation location and surface topography. Files relevant to this part of the example are in the sub-folder *octree_mesh*. Before running this example, you may want to do the following:
 
-	- `Download and open the zip folder containing the entire E3D version 2 tiled example <https://github.com/ubcgif/E3D/raw/e3dinv_ver2_tiled/assets/E3D_manual_ver2_tiled.zip>`__ (if not done already)
+	- `Download and open the zip folder containing the entire E3D version 2 tiled example <https://github.com/ubcgif/E3D/raw/e3d_v2_tiled/assets/E3D_manual_ver2_tiled.zip>`__ (if not done already)
 	- :ref:`Learn how to run code from command line <e3d_octree>`
 	- :ref:`Learn the format of the input file <e3d_input_octree>`
 
