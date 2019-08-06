@@ -1,2 +1,3 @@
-# E3D
-Manual for E3D code
+# AEM
+
+Manual for the AEM code
