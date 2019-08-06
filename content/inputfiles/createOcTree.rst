@@ -33,7 +33,7 @@ The :ref:`OcTree mesh<octreeFile>` used in the E3D code are created using the pr
      :align: center
      :width: 700
 
-     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3dinv/assets/e3d_ver1_input/octree_mesh.inp>`__ )
+     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3d/assets/e3d_v1_input/octree_mesh.inp>`__ )
 
 
 Line Descriptions
