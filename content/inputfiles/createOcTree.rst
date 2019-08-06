@@ -43,7 +43,7 @@ Create OcTree Mesh Input File
      :align: center
      :width: 700
 
-     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/e3d_ver1_input/octree_mesh.inp>`__ )
+     Example input file for creating octree mesh (`Download <https://github.com/ubcgif/E3D/raw/e3d_v2/assets/e3d_ver2_input/octree_mesh.inp>`__ )
 
 
 Line Descriptions
