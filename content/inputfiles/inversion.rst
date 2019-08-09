@@ -54,11 +54,13 @@ Both the forward and inverse problems are solved using the **e3d_v2_tiled.exe** 
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 | 22     |:ref:`Calculate sensitivity<e3d_input_inv2_ln22>`             | use *CALC_SENS* or *NOT_CALC_SENS*                                      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 23     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
+| 23     |:ref:`Primary Field Computation Options<e3d_input_inv2_ln23>` | computer primary field in free-space or whole space                     |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 24     |:ref:`PCT_FACT<e3d_input_inv2_ln24>`                          | fractional percent of tiles used for sensitivity calculation            |
+| 24     |:ref:`Memory Options<e3d_input_inv2_ln24>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 25     |:ref:`Active tiles file<e3d_input_inv2_ln25>`                 | option to invert using only subset of data                              |
+| 25     |:ref:`PCT_FACT<e3d_input_inv2_ln25>`                          | fractional percent of tiles used for sensitivity calculation            |
++--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
+| 26     |:ref:`Active tiles file<e3d_input_inv2_ln26>`                 | option to invert using only subset of data                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -181,15 +183,19 @@ Line Descriptions
 
     - **Calculate sensitivity:** When the flag *CALC_SENS* is used, the :ref:`sensitivity matrix <theory_IPCG>` (:math:`\mathbf{J}`) is computed and stored for the current model. When the flag *NOT_CALC_SENS* is used, the product of the sensitivity and any vector is done without storing the sensitivity matrix. The former option is faster but uses a lot more memory. Unless the forward meshes and/or the number of data are sufficiently small, it is suggested the user choose *NOT_CALC_SENS*.
 
-.. _e3d_input_inv2_ln23:
+.. _e3d_input_inv_ln23:
+
+    - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium. The latter option is advised when doing borehole EM surveys.
+
+.. _e3d_input_inv2_ln24:
 
     - **Memory Options:** This code uses a factorization to solve the forward system at each frequency. These factorizations must be stored. By using the flag 'FACTOR_IC' (in cpu), factorizations are stored within a computer's RAM. Although this is faster, larger problems cannot be solved if insufficient temporary memory is available. The factorizations are stored in permanent memory (disk) if the flag 'FACTOR_OOC' (out of cpu) is used followed by the path to a directory. This is slower because the program must read these files many times. The second options is ill-advised if files are being transferred over a network.
 
 
-.. _e3d_input_inv2_ln24:
+.. _e3d_input_inv2_ln25:
 
     - **PCT_FACT:** To save time and memory, we can approximate the sensitivity matrix at each iteration by using a **random** subset of the data/local forward meshes. Thus *PCT_FACT* is the fractional percent of tiles (local forward meshes) which are used to approximate the sensitivity at each iteration; e.g. 0 < *PCT_FACT* < 1. As a default option, we should use all of the tiles; i.e. *PCT_FACT* = 1.
 
-.. _e3d_input_inv2_ln25:
+.. _e3d_input_inv2_ln26:
 
     - **Active tiles file:** This line allows the user to invert only a subset of the data by specifying the tiles (local forward meshes) they wish to be used in the inversion. If the flag *USE_ALL_TILES* is used, then all the data are inverted; e.g. all the tiles are used. If the path to an :ref:`active tiles file<activeTilesFile>` is used, then only the 'active tiles' are inverted. The active tiles file is a vector of 1s and 0s, where a 1 denotes a local forward mesh that is used in the inversion, and a zero denotes a local forward mesh that is not. The number of values in the active tiles file must equal the number of local forward meshes.
