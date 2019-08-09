@@ -18,4 +18,5 @@ DEFAULT                                            ! DEFAULT ! beta_max  beta_mi
 CHANGE_MREF                                        ! CHANGE_MREF | NOT_CHANGE_MREF
 SMOOTH_MOD                                         ! SMOOTH_MOD | SMOOTH_MOD_DIF
 BOUNDS_NONE                                        ! BOUNDS_CONST 1.e-10  1.e+10 ! BOUNDS_NONE
+NOT_PRIMARY_FLD                                    ! NOT_PRIMARY_FLD | PRIMARY_FLD val
 FACTOR_OOC factor_dir                              ! FACTOR_IC | FACTOR_OOC directory name

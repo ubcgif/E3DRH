@@ -12,45 +12,47 @@ Both the forward and inverse problems are solved using the **e3d_v2.exe** execut
 +========+==============================================================+=========================================================================+
 | 1      |:ref:`Inversion Mesh<e3d_input_inv2_ln1>`                     | path to inversion mesh file                                             |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 2      |:ref:`Observations File<e3d_input_inv2_ln3>`                  | path to observations file                                               |
+| 2      |:ref:`Observations File<e3d_input_inv2_ln2>`                  | path to observations file                                               |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 3      |:ref:`Transmitters File<e3d_input_inv2_ln4>`                  | path to transmitters file                                               |
+| 3      |:ref:`Transmitters File<e3d_input_inv2_ln3>`                  | path to transmitters file                                               |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 4      |:ref:`Receivers File<e3d_input_inv2_ln5>`                     | path to receivers file                                                  |
+| 4      |:ref:`Receivers File<e3d_input_inv2_ln4>`                     | path to receivers file                                                  |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 5      |:ref:`Frequencies File<e3d_input_inv2_ln6>`                   | path to frequencies file                                                |
+| 5      |:ref:`Frequencies File<e3d_input_inv2_ln5>`                   | path to frequencies file                                                |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 6      |:ref:`Initial/FWD Model<e3d_input_inv2_ln7>`                  | initial model/forward model                                             |
+| 6      |:ref:`Initial/FWD Model<e3d_input_inv2_ln6>`                  | initial model/forward model                                             |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 7      |:ref:`Reference Model<e3d_input_inv2_ln8>`                    | reference model                                                         |
+| 7      |:ref:`Reference Model<e3d_input_inv2_ln7>`                    | reference model                                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 8      |:ref:`Active Topography Cells<e3d_input_inv2_ln9>`            | topography                                                              |
+| 8      |:ref:`Active Topography Cells<e3d_input_inv2_ln8>`            | topography                                                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 9      |:ref:`Active Model Cells<e3d_input_inv2_ln10>`                | active model cells                                                      |
+| 9      |:ref:`Active Model Cells<e3d_input_inv2_ln9>`                 | active model cells                                                      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 10     |:ref:`Cell Weights<e3d_input_inv2_ln11>`                      | additional cell weights                                                 |
+| 10     |:ref:`Cell Weights<e3d_input_inv2_ln10>`                      | additional cell weights                                                 |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 11     |:ref:`Face Weights<e3d_input_inv2_ln12>`                      | additional face weights                                                 |
+| 11     |:ref:`Face Weights<e3d_input_inv2_ln11>`                      | additional face weights                                                 |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 12     |:ref:`Norm Sparseness<e3d_input_inv2_ln13>`                   | set parameters to recover smooth, sparse or blocky models               |
+| 12     |:ref:`Norm Sparseness<e3d_input_inv2_ln12>`                   | set parameters to recover smooth, sparse or blocky models               |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 13     |:ref:`beta_max beta_min beta_factor<e3d_input_inv2_ln14>`     | cooling schedule for beta parameter                                     |
+| 13     |:ref:`beta_max beta_min beta_factor<e3d_input_inv2_ln13>`     | cooling schedule for beta parameter                                     |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 14     |:ref:`alpha_s alpha_x alpha_y alpha_z<e3d_input_inv2_ln15>`   | weighting constants for smallness and smoothness constraints            |
+| 14     |:ref:`alpha_s alpha_x alpha_y alpha_z<e3d_input_inv2_ln14>`   | weighting constants for smallness and smoothness constraints            |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 15     |:ref:`Chi Factor<e3d_input_inv2_ln16>`                        | stopping criteria for inversion                                         |
+| 15     |:ref:`Chi Factor<e3d_input_inv2_ln15>`                        | stopping criteria for inversion                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 16     |:ref:`iter_per_beta nBetas<e3d_input_inv2_ln17>`              | set the number of Gauss-Newton iteration for each beta value            |
+| 16     |:ref:`iter_per_beta nBetas<e3d_input_inv2_ln16>`              | set the number of Gauss-Newton iteration for each beta value            |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 17     |:ref:`tol_ipcg max_iter_ipcg<e3d_input_inv2_ln18>`            | set the tolerance and number of iterations for Gauss-Newton solve       |
+| 17     |:ref:`tol_ipcg max_iter_ipcg<e3d_input_inv2_ln17>`            | set the tolerance and number of iterations for Gauss-Newton solve       |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 18     |:ref:`Reference Model Update<e3d_input_inv2_ln19>`            | reference model                                                         |
+| 18     |:ref:`Reference Model Update<e3d_input_inv2_ln18>`            | reference model                                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 29     |:ref:`Hard Constraints<e3d_input_inv2_ln20>`                  | use *SMOOTH_MOD* or *SMOOTH_MOD_DIFF*                                   |
+| 19     |:ref:`Hard Constraints<e3d_input_inv2_ln19>`                  | use *SMOOTH_MOD* or *SMOOTH_MOD_DIFF*                                   |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 20     |:ref:`Bounds<e3d_input_inv2_ln21>`                            | upper and lower bounds for recovered model                              |
+| 20     |:ref:`Bounds<e3d_input_inv2_ln20>`                            | upper and lower bounds for recovered model                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 21     |:ref:`Memory Options<e3d_input_inv2_ln23>`                    | options for storing factorizations of forward system (RAM vs disk)      |
+| 21     |:ref:`Primary Field Computation Options <e3d_input_inv2_ln21>`| options for storing computing primary field in free space or full space |
++--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
+| 22     |:ref:`Memory Options<e3d_input_inv2_ln22>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -69,23 +71,23 @@ Line Descriptions
 
     - **Inversion Mesh:** file path to the :ref:`inversion (OcTree) mesh file<octreeFile>`
 
-.. _e3d_input_inv2_ln3:
+.. _e3d_input_inv2_ln2:
 
     - **Observation File:** file path to the :ref:`observed data file<obsFile>`
 
-.. _e3d_input_inv2_ln4:
+.. _e3d_input_inv2_ln3:
 
     - **Transmitter File:** file path to the :ref:`transmitter file<receiverFile>`
 
-.. _e3d_input_inv2_ln5:
+.. _e3d_input_inv2_ln4:
 
     - **Receiver File:** file path to the :ref:`receiver file<receiverFile>`
 
-.. _e3d_input_inv2_ln6:
+.. _e3d_input_inv2_ln5:
 
     - **Frequencies File:** file path to the :ref:`frequencies file<freqFile>`
 
-.. _e3d_input_inv2_ln7:
+.. _e3d_input_inv2_ln6:
 
     - **Initial/FWD Model:** On this line we specify either the starting model for the inversion or the conductivity model for the forward modeling. On this line, there are 3 possible options:
 
@@ -99,28 +101,28 @@ Line Descriptions
     If data are only being forward modeled, only the :ref:`active topography cells<e3d_input_inv2_ln7>` and :ref:`tol_ipcg max_iter_ipcg<e3d_input_inv2_ln16>` fields are relevant. **However**, the remaining fields must **not** be empty and must have correct syntax for the code to run.
 
 
-.. _e3d_input_inv2_ln8:
+.. _e3d_input_inv2_ln7:
 
     - **Reference Model:** The user may supply the file path to a reference conductivity model. If a homogeneous conductivity value is being used for all active cells, the user can enter "VALUE" followed by a space and a numerical value; example "VALUE 0.01".
 
 
-.. _e3d_input_inv2_ln9:
+.. _e3d_input_inv2_ln8:
 
     - **Active Topography Cells:** Here, the user can choose to specify the cells which lie below the surface topography. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above.
 
-.. _e3d_input_inv2_ln10:
+.. _e3d_input_inv2_ln9:
 
     - **Active Model Cells:** Here, the user can choose to specify the model cells which are active during the inversion. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above. Values for inactive cells are provided by the background conductivity model.
 
-.. _e3d_input_inv2_ln11:
+.. _e3d_input_inv2_ln10:
 
     - **Cell Weights:** Here, the user specifies whether cell weights are supplied. If so, the user provides the file path to a :ref:`cell weights file <weightsFile>`  If no additional cell weights are supplied, the user enters "NO_WEIGHT".
 
-.. _e3d_input_inv2_ln12:
+.. _e3d_input_inv2_ln11:
 
     - **Face Weights:** Here, the user specifies whether face weights are supplied. If so, the user provides the file path to a face weights file :ref:`cell weights file <weightsFile>`. If no additional cell weights are supplied, the user enters "NO_FACE_WEIGHT". The user may also enter "EKBLOM" for 1-norm approximation to recover sharper edges.
 
-.. _e3d_input_inv2_ln13:
+.. _e3d_input_inv2_ln12:
 
     - **Sparseness:** The sparseness of the recovered model is determined by the terms within the `model objective function <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Norms.html>`__ . A standard approach is to use an L2-norm for all terms
 
@@ -133,39 +135,43 @@ Line Descriptions
 
 
 
-.. _e3d_input_inv2_ln14:
+.. _e3d_input_inv2_ln13:
 
     - **beta_max beta_min beta_factor:** Here, the user specifies protocols for the trade-off parameter (beta). *beta_max* is the initial value of beta. *beta_min* is generally used to denote the minimum allowable trade-off parameter the program can use before quitting. For this code however, the minimum beta is determined through the *nBeta* parameter on :ref:`line 15 <e3d_input_inv2_ln15>` and the *beta_min* parameter has no function. *beta_factor* defines the factor by which beta is decreased at each iteration; example "1E4 10 0.2". The user may also enter "DEFAULT" if they wish to have beta calculated automatically. See theory on :ref:`cooling schedule <theory_cooling>`.
 
-.. _e3d_input_inv2_ln15:
+.. _e3d_input_inv2_ln14:
 
     - **alpha_s alpha_x alpha_y alpha_z:** `Alpha parameters <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Alphas.html>`__ . Here, the user specifies the relative weighting between the smallness and smoothness component penalties on the recovered models.
 
-.. _e3d_input_inv2_ln16:
+.. _e3d_input_inv2_ln15:
 
     - **Chi Factor:** The chi factor defines the target misfit for the inversion. A chi factor of 1 means the target misfit is equal to the total number of data observations. For more, see the `GIFtools cookbook <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Beta.html>`__ .
 
-.. _e3d_input_inv2_ln17:
+.. _e3d_input_inv2_ln16:
 
     - **iter_per_beta nBetas:** Here, *iter_per_beta* is the number of Gauss-Newton iterations per beta value. *nBetas* is the number of times the inverse problem is solved for smaller and smaller trade-off parameters until it quits. See theory section for :ref:`cooling schedule <theory_cooling>` and :ref:`Gauss-Newton update <theory_GN>`.
 
-.. _e3d_input_inv2_ln18:
+.. _e3d_input_inv2_ln17:
 
     - **tol_ipcg max_iter_ipcg:** Here, the user specifies solver parameters. *tol_ipcg* defines how well the iterative solver does when solving for :math:`\delta m` and *max_iter_ipcg* is the maximum iterations of incomplete-preconditioned-conjugate gradient. See theory on :ref:`Gauss-Newton solve <theory_IPCG>`
 
-.. _e3d_input_inv2_ln19:
+.. _e3d_input_inv2_ln18:
 
     - **Reference Model Update:** Here, the user specifies whether the reference model is updated at each inversion step result. If so, enter "CHANGE_MREF". If not, enter "NOT_CHANGE_MREF".
 
-.. _e3d_input_inv2_ln20:
+.. _e3d_input_inv2_ln19:
 
     - **Hard Constraints:** SMOOTH_MOD runs the inversion without implementing a reference model (essential :math:`m_{ref}=0`). "SMOOTH_MOD_DIF" constrains the inversion in the smallness and smoothness terms using a reference model.
 
-.. _e3d_input_inv2_ln21:
+.. _e3d_input_inv2_ln20:
 
     - **Bounds:** Bound constraints on the recovered model. Choose "BOUNDS_CONST" and enter the values of the minimum and maximum model conductivity; example "BOUNDS_CONST 1E-6 0.1". Enter "BOUNDS_NONE" if the inversion is unbounded, or if there is no a-prior information about the subsurface model.
 
-.. _e3d_input_inv2_ln23:
+.. _e3d_input_inv_ln21:
+
+    - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium. The latter option is advised when doing borehole EM surveys.
+
+.. _e3d_input_inv2_ln22:
 
     - **Memory Options:** This code uses a factorization to solve the forward system at each frequency. These factorizations must be stored. By using the flag 'FACTOR_IC' (in cpu), factorizations are stored within a computer's RAM. Although this is faster, larger problems cannot be solved if insufficient temporary memory is available. The factorizations are stored in permanent memory (disk) if the flag 'FACTOR_OOC' (out of cpu) is used followed by the path to a directory. This is slower because the program must read these files many times. The second options is ill-advised if files are being transferred over a network.
 

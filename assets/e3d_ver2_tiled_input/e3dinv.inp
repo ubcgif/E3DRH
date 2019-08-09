@@ -20,6 +20,7 @@ CHANGE_MREF                                        ! CHANGE_MREF | NOT_CHANGE_MR
 SMOOTH_MOD_DIF                                     ! SMOOTH_MOD | SMOOTH_MOD_DIF
 BOUNDS_NONE                                        ! BOUNDS_CONST 1.e-10  1.e+10    ! bounds
 CALC_SENS                                          ! CALC_SENS | NOT_CALC_SENS
+NOT_PRIMARY_FLD                                    ! NOT_PRIMARY_FLD | PRIMARY_FLD val
 FACTOR_OOC factor_dir                              ! FACTOR_IC  | FACTOR_OOC directory name
 1.                                                 ! pfactorkeep
 USE_ALL_TILES
