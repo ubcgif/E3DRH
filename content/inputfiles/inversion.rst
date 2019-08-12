@@ -167,7 +167,7 @@ Line Descriptions
 
     - **Bounds:** Bound constraints on the recovered model. Choose "BOUNDS_CONST" and enter the values of the minimum and maximum model conductivity; example "BOUNDS_CONST 1E-6 0.1". Enter "BOUNDS_NONE" if the inversion is unbounded, or if there is no a-prior information about the subsurface model.
 
-.. _e3d_input_inv_ln21:
+.. _e3d_input_inv2_ln21:
 
     - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium. The latter option is advised when doing borehole EM surveys.
 
