@@ -13,7 +13,7 @@ Here, the program libraries for E3D version 2 will be used to:
 
 Zip folders containing all necessary files can be downloaded here:
 
-	- `Files for example using E3D version 2 <https://github.com/ubcgif/E3D/raw/e3dinv_ver2/assets/E3D_manual_ver2.zip>`__
+	- `Files for example using E3D version 2 <https://github.com/ubcgif/E3D/raw/e3d_v2/assets/E3D_manual_ver2.zip>`__
 
 The full examples are parse into 4 sections:
 
