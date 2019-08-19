@@ -3,7 +3,7 @@
 Observations File
 =================
 
-The observations contains the set of field measurements used in the inversion. This file contains all necessary survey information including: the number of transmitters, transmitter geometry, observation locations, frequencies, observed fields and uncertainties. 
+The observations file contains the set of field measurements used in the inversion. This file contains all necessary survey information including: the number of transmitters, transmitter geometry, observation locations, frequencies, observed fields and uncertainties. 
 
 .. note:: Bolded entries are fixed flags recognized by the Fortran codes and blue hyperlinked entries are values/regular expressions specified by the user
 
@@ -11,8 +11,9 @@ The observations contains the set of field measurements used in the inversion. T
 The lines the observations file are formatted as follows:
 
 
-| **N_TRX** :math:`\;` :ref:`n_trx<e3d_dobs_ln1>`
+
 | **IGNORE** :ref:`reg_exp<e3d_dobs_ln1b>`
+| **N_TRX** :math:`\;` :ref:`n_trx<e3d_dobs_ln1>`
 |
 |
 | :ref:`DEFINE TRANSMITTER<e3d_dobs_transmitter>`
@@ -54,14 +55,14 @@ The lines the observations file are formatted as follows:
 Parameter Descriptions
 ----------------------
 
+.. _e3d_dobs_ln1b:
+
+    - **reg_exp:** Regular expression (flag) used to data points that are ignored during the inversion
 
 .. _e3d_dobs_ln1:
 
     - **n_trx:** The total number of transmitters. Example: *N_TRX 3*
 
-.. _e3d_dobs_ln1b:
-
-    - **reg_exp:** Regular expression (flag) used to data points that are ignored during the inversion
 
 .. _e3d_dobs_ln5:
 

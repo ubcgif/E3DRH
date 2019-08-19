@@ -73,12 +73,6 @@ Line Descriptions
     - **interp_topo:** Set as either "APPROXTOPO" or "GOODTOPO". If "APPROXTOPO" is chosen, there will only be fine cells close to the survey, whereas "GOODTOPO" will place fine cells everywhere on the surface.
 
 
-.. .. figure:: images/octree_example.png
-..      :align: center
-..      :width: 400
-
-..      Octree mesh showing and surface topography. Cells below the surface topography are assigned a value of 1 in the active cells model.
-
 Approximate versus Good Topography
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
