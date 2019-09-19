@@ -169,7 +169,7 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln21:
 
-    - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium. The latter option is advised when doing borehole EM surveys.
+    - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations and the code models the *total field*. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium and the code models the *secondary field*. *The latter option is strongly advised for most cases*.
 
 .. _e3d_input_inv2_ln22:
 
