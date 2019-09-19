@@ -31,7 +31,7 @@ Units
 ^^^^^
 
     - **Electric field data:** Real and imaginary components of *Ex*, *Ey* and *Ez* in units V/m
-    - **Magnetic field data:** Real and imaginary components of the total magnetic field *Hx*, *Hy* and *Hz* in units A/m. 
+    - **Magnetic field data:** Real and imaginary components of the total magnetic field or secondary magnetic field *Hx*, *Hy* and *Hz* in units A/m. 
     - **Conductivity model:** S/m
     - **Reference/starting conductivity model:** S/m 
     - **Model/interface weights:** unitless
