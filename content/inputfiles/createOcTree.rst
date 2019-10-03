@@ -13,7 +13,7 @@ Create OcTree Mesh Input File
 +========+==========================================================================+===================================================================+
 | 1      |:ref:`dx dy dz<e3d_input_octreeln1>`                                      | min. cell widths in x, y and z for base mesh                      |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 2      |:ref:`min_cell_fact min_cell_size_fwd max_topo_cell<e3d_input_octreeln2>` | additional cell size parameters                                   |
+| 2      |:ref:`min_cell_fact min_cell_size max_topo_cell<e3d_input_octreeln2>`     | additional cell size parameters                                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 3      |:ref:`x_pad y_pad down_pad up_pad<e3d_input_octreeln3>`                   | sets the extent padding in x, y and z direction                   |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -59,7 +59,7 @@ Line Descriptions
     - **min_cell_fact min_cell_size_fwd max_topo_cell:** These parameters determine the rate of cell expansion for regions near topography and for the local forward meshes.
 
         - **min_cell_fact:** Defines the rate of topography-based cell size increase on the global inversion mesh with respect to depth. After each layer of *N* cells, the cell size will increase by a factor of 2 until a maximum cell size (*max_topo_cell*) is reached. *N* must be an integer value that is a power of 2.
-        - **min_cell_size_fwd:** This sets the minimum cell size for the local forward meshes. A value of 2 means the minimum cell size in the local mesh has a side width of 2 times the base mesh cell size. This parameter must be an integer value that is a power of 2.
+        - **min_cell_size:** For ground-based surveys, this value is redundant; leave as 1. For airborne, we may want to specify the cell size between the surface topography and the fine cells around the receivers :ref:`(n1 n2 n3)<e3d_input_octreeln5>`. Here, min_cell_size is a factor defining the size of these cells relative to the underlying mesh cell size (dx dy dz). max_topo_cell is an integer value equal or greater than 1 and must be a power of 2. *DEFAULT* = 1.
         - **max_topo_cell:** This determines the maximum cell size for which topography-based cell size increase is used on the global inversion mesh; after which typical OcTree cell expansion is used. This parameter must be an integer value that is a power of 2.
 
 .. _e3d_input_octreeln3:
