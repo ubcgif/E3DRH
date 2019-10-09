@@ -42,7 +42,7 @@ Parameter Descriptions
 
 .. _e3d_rec_ln2:
 
-    - **N:** The number of points defining the transmitter/receiver loop. The first and last node **must** be the same; i.e. you must close the loop.
+    - **N:** The number of points defining the transmitter/receiver.
 
 .. _e3d_rec_ln3:
 
