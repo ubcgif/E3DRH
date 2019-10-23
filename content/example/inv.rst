@@ -15,7 +15,7 @@ To invert the synthetic data, the input file below was used:
      :align: center
      :width: 700
 
-The true model (left) and the final recovered model (right) are shown below. The recovered model is sliced along the horizontal at an elevation of 200 m.
+The true model (left) and the final recovered model (right) are shown below. A cutoff of 0.001 S/m was used when plotting both models. The recovered model is sliced along the horizontal at an elevation of -200 m.
 
 .. figure:: images/inv1.png
      :align: center
