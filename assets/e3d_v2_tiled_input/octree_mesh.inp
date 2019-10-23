@@ -1,0 +1,13 @@
+75 75 50                             ! min_dx, min_dy, min_dz
+1 1 64                               ! mincellfactor  mincellsize_fwd  max_topo_cell  
+4000 4000 3200 5600                  ! total padding extent in x, y, down, up
+600 0 0                              ! h1 h2 h3 for inversion (global) mesh
+400 0 0                              ! h1 h2 h3 for tiles (forward meshes)
+6 4 2                                ! # of small cells around receivers,  ncell2,  ncell4
+input_files\locFile.txt              ! survey file
+input_files\txFile.txt               ! transmitters file
+input_files\rxFile.txt               ! receivers file
+input_files\freqFile.txt             ! frequencies file
+input_files\topo.txt                 ! topo data file | TOPO_CONST d ! NO_TOPO
+MAKE_POLYGON 400                     ! polygon points file | MAKE_POLYGON d
+CREATE_LARGE_MESH octree_mesh.txt    ! READ_LARGE_MESH octree_file | CREATE_LARGE_MESH output mesh name

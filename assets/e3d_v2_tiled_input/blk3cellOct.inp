@@ -1,0 +1,8 @@
+input_files\octree_mesh.txt                    ! OcTree mesh file
+octree_model.con                               ! output OcTree model name
+1e-8                                           ! background conductivity
+3                                              ! number of blocks
+-10000 10000 -10000 10000 0 -10000 0.0001      ! x1 x2 y1 y2 z_top z_bottom conductivity
+-750 600 300 600 -150 -350 0.01                ! x1 x2 y1 y2 z_top z_bottom conductivity
+300 600 -750 600 -150 -350 0.01                ! x1 x2 y1 y2 z_top z_bottom conductivity
+

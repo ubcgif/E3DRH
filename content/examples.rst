@@ -12,7 +12,7 @@ Here, the program library for E3D version 2 tiled will be used to:
 
 Zip folders containing all necessary files can be downloaded here:
 
-	- `Files for example using E3D version 2 tiled <https://github.com/ubcgif/e3d/raw/e3d_v2_tiled/assets/E3D_manual_ver2_tiled.zip>`__
+	- `Files for example using E3D version 2 tiled <https://github.com/ubcgif/e3d/raw/e3d_v2_tiled/assets/e3d_v2_tiled_example.zip>`__
 
 The full examples are parse into 4 sections:
 
@@ -22,6 +22,5 @@ The full examples are parse into 4 sections:
     Create octree mesh <example/create_octree>
     Create octree model <example/create_model>
     Forward modeling <example/fwd>
-    Create weights <example/create_weights>
     Inversion <example/inv>
 
