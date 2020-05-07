@@ -76,10 +76,17 @@ Forward Problem
 To solve the forward problem, we must first discretize and solve for the fields in Eq. :eq:`maxwells_eq`, where :math:`e^{-i\omega t}` is suppressed. Using finite volume discretization, the electric fields on cell edges (:math:`\mathbf{u_e}`) are obtained by solving the following system at every frequency:
 
 .. math::
-    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s}
+    \mathbf{A}(\boldsymbol{\sigma}) \, \mathbf{u_e} = - i \omega \mathbf{s_e}
     :label: discrete_e_sys
 
-where :math:`\mathbf{C}` is the curl operator and:
+where :math:`\mathbf{s_e}` is a source term discretized to cell edges and matrix :math:`\mathbf{A}(\boldsymbol{\sigma})` is given by:
+
+.. math::
+    \mathbf{A}(\boldsymbol{\sigma}) = \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma}
+    :label: A_operator
+
+
+:math:`\mathbf{C}` is the curl operator and the mass matricies :math:`\mathbf{M_\sigma}` and :math:`\mathbf{M_\mu}` are given by:
 
 .. math::
     \begin{align}
@@ -88,6 +95,54 @@ where :math:`\mathbf{C}` is the curl operator and:
     \end{align}
 
 where :math:`\mathbf{V}` is a diagonal matrix containing  all cell volumes, :math:`\mathbf{A_{f2c}}` averages from faces to cell centres and :math:`\mathbf{A_{e2c}}` averages from edges to cell centres. The magnetic permeabilities and conductivities for each cell are contained within vectors :math:`\boldsymbol{\mu}` and :math:`\boldsymbol{\sigma}`, respectively.
+
+
+Total vs Secondary Field
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To compute the total field or the secondary field, we define a different right-hand-side for Eq. :eq:`discrete_e_sys`
+
+**Total Field Computation:**
+
+For total field data, the analytic source current :math:`\mathbf{s}` defined in Eq. :eq:`maxwells_eq` is interpolated to cell edges by a function :math:`f(\mathbf{s})`. It is then multiplyied by an inner-product matrix :math:`\mathbf{M_e}` that lives on cell-edges. Thus for the right-hand-side in Eq. :eq:`discrete_e_sys`, the discrete source term :math:`\mathbf{s_e}` is given by:
+
+.. math::
+    \mathbf{s_e} = \mathbf{M_e} \, f(\mathbf{s})
+
+where
+
+.. math::
+    \mathbf{M_e} = diag \big ( \mathbf{A^T_{e2c} v} \big )
+
+
+**Secondary Field Computation:**
+
+For secondary field data, we compute the analytic electric field in a homogeneous full-space due to a current loop or wire. We do this for a background conductivity :math:`\sigma_0` and permeability :math:`\mu_0`. The analytic solution for our source is computed by taking the analytic solution for an electric dipole and integrating over the path of the wire/loop, i.e.: 
+
+.. math::
+    \mathbf{u_0}(\mathbf{r}) = \int_{s'} \mathbf{E_e} (\mathbf{r}, \mathbf{r'}) d\mathbf{s'}
+
+For an electric dipole at the origin and oriented along the :math:`\hat{x}` direction, the electric field in a homogeneous full-space is given by:
+
+.. math::
+    \mathbf{E_e} = \frac{I ds}{4 \pi (\sigma + i \omega \varepsilon) r^3} e^{-ikr} \Bigg [ \Bigg ( \frac{x^2}{r^2} \mathbf{\hat{x}} + & \frac{xy}{r^2} \mathbf{\hat{y}} + \frac{xz}{r^2} \mathbf{\hat{z}} \Bigg ) ... \\
+    &\big ( -k^2 r^2 + 3ikr +3 \big ) + \big ( k^2 r^2 - ikr -1 \big ) \mathbf{\hat{x}} \Bigg ] .
+    :label: E_Cartesian
+
+where
+
+.. math::
+    k^2 = \omega^2 \mu \varepsilon - i\omega \mu \sigma
+
+
+Once the analytic background field is computed on cell edges, we construct the linear operator :math:`\mathbf{A}(\mathbf{\sigma_0})` from Eq. :eq:`A_operator` using the background conductivity and permeability. Then we use :math:`\mathbf{A}(\mathbf{\sigma_0})` and :math:`\mathbf{u_0}` to compute the right-hand-side that is used to solve Eq. :eq:`discrete_e_sys`
+
+.. math::
+    \mathbf{A}(\boldsymbol{\sigma_0}) \, \mathbf{u_0} = - i \omega \mathbf{s_e} 
+
+
+Computing Fields at Receivers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once the electric field on cell edges has been computed, we must project to the receivers. For E3D version 2, closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H`) are obtained by integrating the electric field (:math:`\mathbf{e}`) over the path of close loop to compute the EMF. The EMF is then divided by :math:`i\omega \mu_0 A`, where :math:`A` is the cross-sectional area, to represent the quantity in terms of the average magnetic field normal to the receiver. In practice, magnetic field measurements can be approximated accurately by applying a linear projection matrix (:math:`P`) to the electric fields computed on cell edges:
 
@@ -100,13 +155,6 @@ Where (:math:`\mathbf{P}`) is the projection matrix that takes the electric fiel
 .. math::
     \mathbf{H} = \frac{1}{i\omega} \mathbf{P \, u_e} = - \mathbf{P \, A}(\sigma)^{-1} \mathbf{s}
     :label: fwd_solution
-
-
-where
-
-.. math::
-    \mathbf{A}(\sigma) = \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma}
-    :label: A_operator
 
 
 Sensitivity
