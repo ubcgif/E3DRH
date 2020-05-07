@@ -78,10 +78,10 @@ Direct Solver Approach
 To solve the forward problem, we must first discretize and solve for the fields in Eq. :eq:`maxwells_eq`, where :math:`e^{-i\omega t}` is suppressed. Using finite volume discretization, the electric fields on cell edges (:math:`\mathbf{u_e}`) are obtained by solving the following system at every frequency:
 
 .. math::
-    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s}
+    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s_e}
     :label: discrete_e_sys
 
-where :math:`\mathbf{C}` is the curl operator and:
+where :math:`\mathbf{s_e}` is a source term defined on cell edges, :math:`\mathbf{C}` is the curl operator and:
 
 .. math::
     \begin{align}
@@ -110,8 +110,8 @@ then :eq:`fields_projected` can be written as:
 
 .. math::
     \begin{align}
-    \mathbf{E} &= -i\omega \mathbf{Q_e \, A}(\sigma)^{-1} \, \mathbf{s} \\
-    \mathbf{H} &= -i\omega \mathbf{Q_h \, A}(\sigma)^{-1} \, \mathbf{s}
+    \mathbf{E} &= -i\omega \mathbf{Q_e \, A}(\sigma)^{-1} \, \mathbf{s_e} \\
+    \mathbf{H} &= -i\omega \mathbf{Q_h \, A}(\sigma)^{-1} \, \mathbf{s_e}
     \end{align}
     :label: fwd_solution
 
@@ -132,7 +132,7 @@ where :math:`\mathbf{u_e}` is the fields on cell edges, :math:`\mathbf{a}` is th
 .. math::
     \begin{bmatrix} \mathbf{A} (\sigma) + \mathbf{D} & -i\omega \mathbf{M_\sigma G} \\ -i\omega \mathbf{G^T M_\sigma} & -i\omega \mathbf{G^T M_\sigma G} \end{bmatrix}
     \begin{bmatrix} \mathbf{a} \\ \phi \end{bmatrix} = 
-    \begin{bmatrix} -i\omega\mathbf{s} \\ -i\omega \mathbf{G^T s} \end{bmatrix}
+    \begin{bmatrix} -i\omega\mathbf{s_e} \\ -i\omega \mathbf{G^T s} \end{bmatrix}
     :label: maxwell_a_phi
 
 where
@@ -144,9 +144,59 @@ is a matrix that is added to the (1,1) block of Eq. :eq:`maxwell_a_phi` to impro
 
 Adjustable parameters for solving Eq. :eq:`maxwell_a_phi` iteratively using BiCGstab are defined as follows:
 
-     - **tol_bicg:** relative tolerance (stopping criteria) when solver is used during forward modeling; i.e. solves Eq. :eq:`discrete_e_sys`. Ideally, this number is very small (~1e-10).
-     - **tol_ipcg_bicg:** relative tolerance (stopping criteria) when solver needed in computation of :math:`\delta m` during Gauss Newton iteration; i.e. must solve Eq. :eq:`sensitivity_fields` to solve Eq. :eq:`GN_gen`. This value does not need to be as large as the previous parameter (~1e-5).
-     - **max_it_bicg:** maximum number of BICG iterations (~100)
+    - **tol_bicg:** relative tolerance (stopping criteria) when solver is used during forward modeling; i.e. solves Eq. :eq:`discrete_e_sys`. Ideally, this number is very small (~1e-10).
+    - **tol_ipcg_bicg:** relative tolerance (stopping criteria) when solver needed in computation of :math:`\delta m` during Gauss Newton iteration; i.e. must solve Eq. :eq:`sensitivity_fields` to solve Eq. :eq:`GN_gen`. This value does not need to be as large as the previous parameter (~1e-5).
+    - **max_it_bicg:** maximum number of BICG iterations (~100)
+
+
+Total vs Secondary Field
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To compute the total field or the secondary field, we define a different right-hand-side for Eq. :eq:`discrete_e_sys` (direct solver) or Eq. :eq:`maxwell_a_phi` (iterative solver).
+
+**Total Field Computation:**
+
+For total field data, the analytic source current :math:`\mathbf{s}` defined in Eq. :eq:`maxwells_eq` is interpolated to cell edges by a function :math:`f(\mathbf{s})`. It is then multiplyied by an inner-product matrix :math:`\mathbf{M_e}` that lives on cell-edges. Thus for the right-hand-side in Eq. :eq:`discrete_e_sys` or Eq. :eq:`maxwell_a_phi`, the discrete source term :math:`\mathbf{s_e}` is given by:
+
+.. math::
+    \mathbf{s_e} = \mathbf{M_e} \, f(\mathbf{s})
+
+where
+
+.. math::
+    \mathbf{M_e} = diag \big ( \mathbf{A^T_{e2c} v} \big )
+
+
+**Secondary Field Computation (Direct Solver):**
+
+For secondary field data, we compute the analytic electric field in a homogeneous full-space due to a current loop or wire. We do this for a background conductivity :math:`\sigma_0` and permeability :math:`\mu_0`. The analytic solution for our source is computed by taking the analytic solution for an electric dipole and integrating over the path of the wire/loop, i.e.: 
+
+.. math::
+    \mathbf{u_0}(\mathbf{r}) = \int_{s'} \mathbf{E_e} (\mathbf{r}, \mathbf{r'}) d\mathbf{s'}
+
+For an electric dipole at the origin and oriented along the :math:`\hat{x}` direction, the electric field in a homogeneous full-space is given by:
+
+.. math::
+    \mathbf{E_e} = \frac{I ds}{4 \pi (\sigma + i \omega \varepsilon) r^3} e^{-ikr} \Bigg [ \Bigg ( \frac{x^2}{r^2} \mathbf{\hat{x}} + & \frac{xy}{r^2} \mathbf{\hat{y}} + \frac{xz}{r^2} \mathbf{\hat{z}} \Bigg ) ... \\
+    &\big ( -k^2 r^2 + 3ikr +3 \big ) + \big ( k^2 r^2 - ikr -1 \big ) \mathbf{\hat{x}} \Bigg ] .
+    :label: E_Cartesian
+
+where
+
+.. math::
+    k^2 = \omega^2 \mu \varepsilon - i\omega \mu \sigma
+
+
+Once the analytic background field is computed on cell edges, we construct the linear operator :math:`\mathbf{A}(\mathbf{\sigma_0})` from Eq. :eq:`A_operator` using the background conductivity and permeability. Then we use :math:`\mathbf{A}(\mathbf{\sigma_0})` and :math:`\mathbf{u_0}` to compute the right-hand-side that is used to solve Eq. :eq:`discrete_e_sys`
+
+.. math::
+    \mathbf{A}(\boldsymbol{\sigma_0}) \, \mathbf{u_0} = - i \omega \mathbf{s_e}
+
+
+**Secondary Field Computation (Iterative Solver):**
+
+A similar approach is taken in this case. Here, we must compute the analytic vector potential :math:`mathbf{a}` and scalar potential :math:`\phi` for the background conductivity and permeabiltiy. The matrix in Eq. :eq:`maxwell_a_phi` is computed for the background conductivity and permeabiltiy. The linear operator and analytic potentials are then used to compute the right-hand side.
+
 
 .. _theory_sensitivity:
 
