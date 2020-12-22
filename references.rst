@@ -3,6 +3,5 @@
 References
 ==========
 
- .. bibliography:: reference.bib
-    :cited:
-    :style: alpha
+.. bibliography:: reference.bib
+    :all:
