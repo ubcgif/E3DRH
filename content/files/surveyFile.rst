@@ -117,7 +117,7 @@ Here, we define the inductive source using a set of wire segments. When defining
 | :math:`x_1 \;\; y_1 \;\; z_1`
 | :math:`x_2 \;\; y_2 \;\; z_2`
 | :math:`\;\;\;\; \vdots`
-| :math:`x_{N-1} \; y_{N-1} \;\; z_{N_1}`
+| :math:`x_{N-1} \; y_{N-1} \;\; z_{N-1}`
 | :math:`x_1 \;\; y_1 \;\; z_1`
 | 
 |
@@ -125,8 +125,8 @@ Here, we define the inductive source using a set of wire segments. When defining
 where
 
     - *TRX_ORIG* is a flag that must be entered
-    - :math:`N` is the number of nodes (# segments - 1)
-    - :math:`x_i, \; y_i \; z_i` are Easting, Northing and elevation locations for the nodes
+    - :math:`N` is the number of nodes (# segments = N-1)
+    - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
 
 
 
@@ -148,8 +148,8 @@ Using this transmitter type, we can define both inductive sources (by closing th
 where
 
     - *TRX_LINES* is a flag that must be entered
-    - :math:`N` is the number of nodes (# segments - 1)
-    - :math:`x_i, \; y_i \; z_i` are Easting, Northing and elevation locations for the nodes
+    - :math:`N` is the number of nodes (# segments = N-1)
+    - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
 
 
 
