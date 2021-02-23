@@ -26,41 +26,43 @@ Both the forward and inverse problems are solved using the **e3d_v2_tiled.exe** 
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 | 8      |:ref:`Reference Model<e3d_input_inv2_ln8>`                    | reference model                                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 9      |:ref:`Active Topography Cells<e3d_input_inv2_ln9>`            | topography                                                              |
+| 9      |:ref:`Susceptibility Model<e3d_input_inv2_ln9>`               | background susceptibility model                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 10     |:ref:`Active Model Cells<e3d_input_inv2_ln10>`                | active model cells                                                      |
+| 10     |:ref:`Active Topography Cells<e3d_input_inv2_ln10>`           | topography                                                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 11     |:ref:`Cell Weights<e3d_input_inv2_ln11>`                      | additional cell weights                                                 |
+| 11     |:ref:`Active Model Cells<e3d_input_inv2_ln11>`                | active model cells                                                      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 12     |:ref:`Face Weights<e3d_input_inv2_ln12>`                      | additional face weights                                                 |
+| 12     |:ref:`Cell Weights<e3d_input_inv2_ln12>`                      | additional cell weights                                                 |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 13     |:ref:`Norm Sparseness<e3d_input_inv2_ln13>`                   | set parameters to recover smooth, sparse or blocky models               |
+| 13     |:ref:`Face Weights<e3d_input_inv2_ln13>`                      | additional face weights                                                 |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 14     |:ref:`beta_max beta_min beta_factor<e3d_input_inv2_ln14>`     | cooling schedule for beta parameter                                     |
+| 14     |:ref:`Norm Sparseness<e3d_input_inv2_ln14>`                   | set parameters to recover smooth, sparse or blocky models               |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 15     |:ref:`alpha_s alpha_x alpha_y alpha_z<e3d_input_inv2_ln15>`   | weighting constants for smallness and smoothness constraints            |
+| 15     |:ref:`beta_max beta_min beta_factor<e3d_input_inv2_ln15>`     | cooling schedule for beta parameter                                     |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 16     |:ref:`Chi Factor<e3d_input_inv2_ln16>`                        | stopping criteria for inversion                                         |
+| 16     |:ref:`alpha_s alpha_x alpha_y alpha_z<e3d_input_inv2_ln16>`   | weighting constants for smallness and smoothness constraints            |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 17     |:ref:`iter_per_beta nBetas<e3d_input_inv2_ln17>`              | set the number of Gauss-Newton iteration for each beta value            |
+| 17     |:ref:`Chi Factor<e3d_input_inv2_ln17>`                        | stopping criteria for inversion                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 18     |:ref:`tol_ipcg max_iter_ipcg<e3d_input_inv2_ln18>`            | set the tolerance and number of iterations for Gauss-Newton solve       |
+| 18     |:ref:`iter_per_beta nBetas<e3d_input_inv2_ln18>`              | set the number of Gauss-Newton iteration for each beta value            |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 19     |:ref:`Reference Model Update<e3d_input_inv2_ln19>`            | reference model                                                         |
+| 19     |:ref:`tol_ipcg max_iter_ipcg<e3d_input_inv2_ln19>`            | set the tolerance and number of iterations for Gauss-Newton solve       |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 20     |:ref:`Hard Constraints<e3d_input_inv2_ln20>`                  | use *SMOOTH_MOD* or *SMOOTH_MOD_DIFF*                                   |
+| 20     |:ref:`Reference Model Update<e3d_input_inv2_ln20>`            | reference model                                                         |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 21     |:ref:`Bounds<e3d_input_inv2_ln21>`                            | upper and lower bounds for recovered model                              |
+| 21     |:ref:`Hard Constraints<e3d_input_inv2_ln21>`                  | use *SMOOTH_MOD* or *SMOOTH_MOD_DIFF*                                   |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 22     |:ref:`Calculate sensitivity<e3d_input_inv2_ln22>`             | use *CALC_SENS* or *NOT_CALC_SENS*                                      |
+| 22     |:ref:`Bounds<e3d_input_inv2_ln22>`                            | upper and lower bounds for recovered model                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 23     |:ref:`Primary Field Computation Options<e3d_input_inv2_ln23>` | computer primary field in free-space or whole space                     |
+| 23     |:ref:`Calculate sensitivity<e3d_input_inv2_ln23>`             | use *CALC_SENS* or *NOT_CALC_SENS*                                      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 24     |:ref:`Memory Options<e3d_input_inv2_ln24>`                    | options for storing factorizations of forward system (RAM vs disk)      |
+| 24     |:ref:`Field Options<e3d_input_inv2_ln24>`                     | model total or secondary field                                          |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 25     |:ref:`PCT_FACT<e3d_input_inv2_ln25>`                          | fractional percent of tiles used for sensitivity calculation            |
+| 25     |:ref:`Memory Options<e3d_input_inv2_ln25>`                    | options for storing factorizations of forward system (RAM vs disk)      |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
-| 26     |:ref:`Active tiles file<e3d_input_inv2_ln26>`                 | option to invert using only subset of data                              |
+| 26     |:ref:`PCT_FACT<e3d_input_inv2_ln26>`                          | fractional percent of tiles used for sensitivity calculation            |
++--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
+| 27     |:ref:`Active tiles file<e3d_input_inv2_ln27>`                 | option to invert using only subset of data                              |
 +--------+--------------------------------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -120,21 +122,26 @@ Line Descriptions
 
 .. _e3d_input_inv2_ln9:
 
-    - **Active Topography Cells:** Here, the user can choose to specify the cells which lie below the surface topography. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above.
+    - **Susceptibility Model:** The user may supply the file path to a background susceptibility model. If the Earth is non-susceptible, the user may enter the flag *NO_SUS*.
+
 
 .. _e3d_input_inv2_ln10:
 
-    - **Active Model Cells:** Here, the user can choose to specify the model cells which are active during the inversion. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above. Values for inactive cells are provided by the background conductivity model.
+    - **Active Topography Cells:** Here, the user can choose to specify the cells which lie below the surface topography. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above.
 
 .. _e3d_input_inv2_ln11:
 
-    - **Cell Weights:** Here, the user specifies whether cell weights are supplied. If so, the user provides the file path to a :ref:`cell weights file <weightsFile>`  If no additional cell weights are supplied, the user enters "NO_WEIGHT".
+    - **Active Model Cells:** Here, the user can choose to specify the model cells which are active during the inversion. To do this, the user may supply the file path to an active cells model file or type "ALL_ACTIVE". The active cells model has values 1 for cells lying below the surface topography and values 0 for cells lying above. Values for inactive cells are provided by the background conductivity model.
 
 .. _e3d_input_inv2_ln12:
 
-    - **Face Weights:** Here, the user specifies whether face weights are supplied. If so, the user provides the file path to a face weights file :ref:`cell weights file <weightsFile>`. If no additional cell weights are supplied, the user enters "NO_FACE_WEIGHT". The user may also enter "EKBLOM" for 1-norm approximation to recover sharper edges.
+    - **Cell Weights:** Here, the user specifies whether cell weights are supplied. If so, the user provides the file path to a :ref:`cell weights file <weightsFile>`  If no additional cell weights are supplied, the user enters "NO_WEIGHT".
 
 .. _e3d_input_inv2_ln13:
+
+    - **Face Weights:** Here, the user specifies whether face weights are supplied. If so, the user provides the file path to a face weights file :ref:`cell weights file <weightsFile>`. If no additional cell weights are supplied, the user enters "NO_FACE_WEIGHT". The user may also enter "EKBLOM" for 1-norm approximation to recover sharper edges.
+
+.. _e3d_input_inv2_ln14:
 
     - **Sparseness:** The sparseness of the recovered model is determined by the terms within the `model objective function <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Norms.html>`__ . A standard approach is to use an L2-norm for all terms
 
@@ -147,55 +154,61 @@ Line Descriptions
 
 
 
-.. _e3d_input_inv2_ln14:
+.. _e3d_input_inv2_ln15:
 
     - **beta_max beta_min beta_factor:** Here, the user specifies protocols for the trade-off parameter (beta). *beta_max* is the initial value of beta. *beta_min* is generally used to denote the minimum allowable trade-off parameter the program can use before quitting. For this code however, the minimum beta is determined through the *nBeta* parameter on :ref:`line 15 <e3d_input_inv2_ln15>` and the *beta_min* parameter has no function. *beta_factor* defines the factor by which beta is decreased at each iteration; example "1E4 10 0.2". The user may also enter "DEFAULT" if they wish to have beta calculated automatically. See theory on :ref:`cooling schedule <theory_cooling>`.
 
-.. _e3d_input_inv2_ln15:
+.. _e3d_input_inv2_ln16:
 
     - **alpha_s alpha_x alpha_y alpha_z:** `Alpha parameters <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Alphas.html>`__ . Here, the user specifies the relative weighting between the smallness and smoothness component penalties on the recovered models.
 
-.. _e3d_input_inv2_ln16:
+.. _e3d_input_inv2_ln17:
 
     - **Chi Factor:** The chi factor defines the target misfit for the inversion. A chi factor of 1 means the target misfit is equal to the total number of data observations. For more, see the `GIFtools cookbook <http://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/Beta.html>`__ .
 
-.. _e3d_input_inv2_ln17:
+.. _e3d_input_inv2_ln18:
 
     - **iter_per_beta nBetas:** Here, *iter_per_beta* is the number of Gauss-Newton iterations per beta value. *nBetas* is the number of times the inverse problem is solved for smaller and smaller trade-off parameters until it quits. See theory section for :ref:`cooling schedule <theory_cooling>` and :ref:`Gauss-Newton update <theory_GN>`.
 
-.. _e3d_input_inv2_ln18:
+.. _e3d_input_inv2_ln19:
 
     - **tol_ipcg max_iter_ipcg:** Here, the user specifies solver parameters. *tol_ipcg* defines how well the iterative solver does when solving for :math:`\delta m` and *max_iter_ipcg* is the maximum iterations of incomplete-preconditioned-conjugate gradient. See theory on :ref:`Gauss-Newton solve <theory_IPCG>`
 
-.. _e3d_input_inv2_ln19:
+.. _e3d_input_inv2_ln20:
 
     - **Reference Model Update:** Here, the user specifies whether the reference model is updated at each inversion step result. If so, enter "CHANGE_MREF". If not, enter "NOT_CHANGE_MREF".
 
-.. _e3d_input_inv2_ln20:
+.. _e3d_input_inv2_ln21:
 
     - **Hard Constraints:** SMOOTH_MOD runs the inversion without implementing a reference model (essential :math:`m_{ref}=0`). "SMOOTH_MOD_DIF" constrains the inversion in the smallness and smoothness terms using a reference model.
 
-.. _e3d_input_inv2_ln21:
+.. _e3d_input_inv2_ln22:
 
     - **Bounds:** Bound constraints on the recovered model. Choose "BOUNDS_CONST" and enter the values of the minimum and maximum model conductivity; example "BOUNDS_CONST 1E-6 0.1". Enter "BOUNDS_NONE" if the inversion is unbounded, or if there is no a-prior information about the subsurface model.
 
-.. _e3d_input_inv2_ln22:
+.. _e3d_input_inv2_ln23:
 
     - **Calculate sensitivity:** When the flag *CALC_SENS* is used, the :ref:`sensitivity matrix <theory_IPCG>` (:math:`\mathbf{J}`) is computed and stored for the current model. When the flag *NOT_CALC_SENS* is used, the product of the sensitivity and any vector is done without storing the sensitivity matrix. The former option is faster but uses a lot more memory. Unless the forward meshes and/or the number of data are sufficiently small, it is suggested the user choose *NOT_CALC_SENS*.
 
-.. _e3d_input_inv2_ln23:
+.. _e3d_input_inv_ln24:
 
-    - **Primary Field Options:** If the flag "NOT_PRIMARY_FLD" is used, then a free-space computation is done to obtain the source term in Maxwell's equations and the code models the *total field*. If "PRIMARY_FLD" is used followed by a numerical value, the source term is obtained by computing the primary field in a homogeneous medium and the code models the *secondary field*. *The latter option is strongly advised for most cases*.
+    - **Field Options:** The user can model the total field or the secondary field. In the latter case, the user may choose whether the primary field is computed analytically or numerically for a homogeneous background conductivity.
 
-.. _e3d_input_inv2_ln24:
+        - Use the flag *TOTAL_FIELD* to model the total field.
+
+        - Use the flag *SECONDARY_ANALYTIC* followed by a value for the background conductivity to model the secondary field. In this case, the code will compute the total field for the *conductivity model* provided, then subtract the analytic total field using the homogeneous *background conductivity* provided. To subtract the free-space primary field, let the background conductivity be 1e-8 S/m.
+
+        - Use the flag *SECONDARY_NUMERIC* followed by a value for the background conductivity to model the secondary field. In this case, the code will compute the total field for the *conductivity model* provided, then subtract the numerically computed total field using the homogeneous *background conductivity* provided. To subtract the free-space primary field, let the background conductivity be 1e-8 S/m.
+
+.. _e3d_input_inv2_ln25:
 
     - **Memory Options:** This code uses a factorization to solve the forward system at each frequency. These factorizations must be stored. By using the flag 'FACTOR_IC' (in cpu), factorizations are stored within a computer's RAM. Although this is faster, larger problems cannot be solved if insufficient temporary memory is available. The factorizations are stored in permanent memory (disk) if the flag 'FACTOR_OOC' (out of cpu) is used followed by the path to a directory. This is slower because the program must read these files many times. The second options is ill-advised if files are being transferred over a network.
 
 
-.. _e3d_input_inv2_ln25:
+.. _e3d_input_inv2_ln26:
 
     - **PCT_FACT:** To save time and memory, we can approximate the sensitivity matrix at each iteration by using a **random** subset of the data/local forward meshes. Thus *PCT_FACT* is the fractional percent of tiles (local forward meshes) which are used to approximate the sensitivity at each iteration; e.g. 0 < *PCT_FACT* < 1. As a default option, we should use all of the tiles; i.e. *PCT_FACT* = 1.
 
-.. _e3d_input_inv2_ln26:
+.. _e3d_input_inv2_ln27:
 
     - **Active tiles file:** This line allows the user to invert only a subset of the data by specifying the tiles (local forward meshes) they wish to be used in the inversion. If the flag *USE_ALL_TILES* is used, then all the data are inverted; e.g. all the tiles are used. If the path to an :ref:`active tiles file<activeTilesFile>` is used, then only the 'active tiles' are inverted. The active tiles file is a vector of 1s and 0s, where a 1 denotes a local forward mesh that is used in the inversion, and a zero denotes a local forward mesh that is not. The number of values in the active tiles file must equal the number of local forward meshes.
