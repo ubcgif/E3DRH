@@ -2,6 +2,7 @@ input_files/octree_mesh.txt              ! octree mesh file
 input_files/dobs.dat                     ! data file
 VALUE 0.0001                             ! initial model
 VALUE 0.0001                             ! reference model
+NO_SUS                                   ! susceptibility model | NO_SUS
 input_files/active_cells_topo.txt        ! active cell file for topography | ALL_ACTIVE
 ALL_ACTIVE                               ! model active cell file | ALL_ACTIVE
 NO_WEIGHT                                ! cell weight file | NO_WEIGHT
@@ -14,6 +15,6 @@ NO_FACE_WEIGHT                           ! interface weighting file | NO_FACE_WE
 CHANGE_MREF                              ! CHANGE_MREF | NOT_CHANGE_MREF
 SMOOTH_MOD_DIF                           ! SMOOTH_MOD | SMOOTH_MOD_DIF
 BOUNDS_NONE                              ! BOUNDS_NONE | BOUNDS_CONST lower upper | bounds file
-PRIMARY_FLD 1e-8                         ! NOT_PRIMARY_FLD | PRIMARY_FLD back_cond
+SECONDARY_NUMERIC 1e-8                   ! TOTAL_FIELD | SECONDARY_ANALYTIC val | SECONDARY_NUMERIC val
 FACTOR_IC                                ! FACTOR_IC | FACTOR_OOC directory_name
 USE_DIRECT_PARDISO                       ! USE_ITER bicg_tol bicg_ipcg_tol max_it_bicg | USE_DIRECT_PARDISO
