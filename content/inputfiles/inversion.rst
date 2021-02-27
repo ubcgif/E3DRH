@@ -190,7 +190,7 @@ Line Descriptions
 
     - **Calculate sensitivity:** When the flag *CALC_SENS* is used, the :ref:`sensitivity matrix <theory_IPCG>` (:math:`\mathbf{J}`) is computed and stored for the current model. When the flag *NOT_CALC_SENS* is used, the product of the sensitivity and any vector is done without storing the sensitivity matrix. The former option is faster but uses a lot more memory. Unless the forward meshes and/or the number of data are sufficiently small, it is suggested the user choose *NOT_CALC_SENS*.
 
-.. _e3d_input_inv_ln24:
+.. _e3d_input_inv2_ln24:
 
     - **Field Options:** The user can model the total field or the secondary field. In the latter case, the user may choose whether the primary field is computed analytically or numerically for a homogeneous background conductivity.
 
