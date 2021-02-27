@@ -173,7 +173,7 @@ Line Descriptions
 
     - **Bounds:** Bound constraints on the recovered model. Choose "BOUNDS_CONST" and enter the values of the minimum and maximum model conductivity; example "BOUNDS_CONST 1E-6 0.1". Enter "BOUNDS_NONE" if the inversion is unbounded, or if there is no a-prior information about the subsurface model.
 
-.. _e3d_input_inv_ln22:
+.. _e3d_input_inv2_ln22:
 
     - **Field Options:** The user can model the total field or the secondary field. In the latter case, the user may choose whether the primary field is computed analytically or numerically for a homogeneous background conductivity.
 
@@ -182,6 +182,7 @@ Line Descriptions
         - Use the flag *SECONDARY_ANALYTIC* followed by a value for the background conductivity to model the secondary field. In this case, the code will compute the total field for the *conductivity model* provided, then subtract the analytic total field using the homogeneous *background conductivity* provided. To subtract the free-space primary field, let the background conductivity be 1e-8 S/m.
 
         - Use the flag *SECONDARY_NUMERIC* followed by a value for the background conductivity to model the secondary field. In this case, the code will compute the total field for the *conductivity model* provided, then subtract the numerically computed total field using the homogeneous *background conductivity* provided. To subtract the free-space primary field, let the background conductivity be 1e-8 S/m.
+
 
 .. _e3d_input_inv2_ln23:
 
