@@ -26,7 +26,7 @@ Main Input Files
 Here, we describe the main input files for executables contained with the E3D version 1 coding package.
 
 .. tOcTree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     Create OcTree mesh <inputfiles/createOcTree>
     Create OcTree model <inputfiles/createModel>
