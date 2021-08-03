@@ -177,14 +177,14 @@ For secondary field data, we compute the analytic electric field in a homogeneou
 For an electric dipole at the origin and oriented along the :math:`\hat{x}` direction, the electric field in a homogeneous full-space is given by:
 
 .. math::
-    \mathbf{E_e} = \frac{I ds}{4 \pi (\sigma + i \omega \varepsilon) r^3} e^{-ikr} \Bigg [ \Bigg ( \frac{x^2}{r^2} \mathbf{\hat{x}} + & \frac{xy}{r^2} \mathbf{\hat{y}} + \frac{xz}{r^2} \mathbf{\hat{z}} \Bigg ) ... \\
-    &\big ( -k^2 r^2 + 3ikr +3 \big ) + \big ( k^2 r^2 - ikr -1 \big ) \mathbf{\hat{x}} \Bigg ] .
+    \mathbf{E_e} = \frac{I ds}{4 \pi (\sigma - i \omega \varepsilon) r^3} e^{ikr} \Bigg [ \Bigg ( \frac{x^2}{r^2} \mathbf{\hat{x}} + & \frac{xy}{r^2} \mathbf{\hat{y}} + \frac{xz}{r^2} \mathbf{\hat{z}} \Bigg ) ... \\
+    &\big ( -k^2 r^2 - 3ikr +3 \big ) + \big ( k^2 r^2 + ikr -1 \big ) \mathbf{\hat{x}} \Bigg ] .
     :label: E_Cartesian
 
 where
 
 .. math::
-    k^2 = \omega^2 \mu \varepsilon - i\omega \mu \sigma
+    k^2 = \omega^2 \mu \varepsilon + i\omega \mu \sigma
 
 
 Once the analytic background field is computed on cell edges, we construct the linear operator :math:`\mathbf{A}(\mathbf{\sigma_0})` from Eq. :eq:`A_operator` using the background conductivity and permeability. Then we use :math:`\mathbf{A}(\mathbf{\sigma_0})` and :math:`\mathbf{u_0}` to compute the right-hand-side that is used to solve Eq. :eq:`discrete_e_sys`
@@ -195,7 +195,7 @@ Once the analytic background field is computed on cell edges, we construct the l
 
 **Secondary Field Computation (Iterative Solver):**
 
-A similar approach is taken in this case. Here, we must compute the analytic vector potential :math:`mathbf{a}` and scalar potential :math:`\phi` for the background conductivity and permeabiltiy. The matrix in Eq. :eq:`maxwell_a_phi` is computed for the background conductivity and permeabiltiy. The linear operator and analytic potentials are then used to compute the right-hand side.
+A similar approach is taken in this case. Here, we must compute the analytic vector potential :math:`\mathbf{a}` and scalar potential :math:`\phi` for the background conductivity and permeabiltiy. The matrix in Eq. :eq:`maxwell_a_phi` is computed for the background conductivity and permeabiltiy. The linear operator and analytic potentials are then used to compute the right-hand side.
 
 
 .. _theory_sensitivity:
