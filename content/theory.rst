@@ -7,12 +7,12 @@ Background Theory
 
 This section aims to provide the user with a basic review of the physics, discretization, and optimization
 techniques used to solve the frequency domain electromagnetics problem. It is assumed
-that the user has some background in these areas. For further reading see (:cite:`nabighian1991`).
+that the user has some background in these areas. For further reading see ( :cite:`nabighian1991` ).
 
 .. important::
 
     This code uses the following coordinate system and Fourier convention to solve Maxwell's equations:
-        - X = Easting, Y = Northing, Z +ve downward (left-handed)
+        - X = Easting, Y = Northing, Z +ve upward (right-handed)
         - An :math:`e^{-i \omega t}` Fourier convention
 
 .. _theory_fundamentals:
@@ -21,8 +21,8 @@ Fundamental Physics
 -------------------
 
 Maxwell's equations provide the starting point from which an understanding of how electromagnetic
-fields can be used to uncover the substructure of the Earth. In the frequency domain Maxwell's
-equations are:
+fields can be used to uncover the substructure of the Earth. For a right-handed coordinate system
+and an :math:`e^{-i\omega t}` Fourier convention, Maxwell's equations in the frequency-domain are:
 
 .. math::
     \begin{align}
