@@ -3,12 +3,12 @@
 Package overview
 ================
 
-.. important:: E3D version 2 tiled performs forward modeling and inversion with the executable **e3d_v2_tiled.exe**. Past iterations of this code may have been given the name 'AEM.exe', although its application is not limited to airborne. To use this code, ensure you have downloaded E3D version 2 'tiled' package from the UBC-GIF website.
+.. important:: In the spring of 2022, a new suite of FDEM OcTree codes were developed. These codes use a right-handed coordinate system; as opposed to a modified left-handed coordinate system. E3DRH version 2 tiled performs forward modeling and inversion with the executable **e3drh_v2_tiled.exe**. `The manual for the original E3DRH v1 code can be found here <https://e3d.readthedocs.io/en/e3d/>`__ .
 
 Description
 -----------
 
-This manual provides instruction and background for the E3D version 2 tiled program library for the forward
+This manual provides instruction and background for the E3DRH version 2 tiled program library for the forward
 modelling and inversion of frequency domain electromagnetic survey data. New to this
 program is the ability to create many small local meshes on which to solve the EM forward problems
 for each transmitter in parallel. The mesh generation code is parallelized with OpenMP and is meant to run on
@@ -58,7 +58,7 @@ Cominco Exploration, Falconbridge, Hudson Bay Exploration and Development, INCO
 Exploration & Technical Services, Kennecott Exploration Company, Newmont Gold Company,
 Noranda Exploration, Placer Dome, and WMC.
 
-In comparison with the E3D version 1 and 2 program libraries there are several new features for mesh generation and inversion. These include:
+In comparison with the E3DRH version 1 and 2 program libraries there are several new features for mesh generation and inversion. These include:
 
   - Surface and below surface topography cell size control. This allows the user to generate a mesh with refined cells near the surface of the topography to better capture features.
 
@@ -72,7 +72,7 @@ Program Library Content
 
 The main executable programs within the AEM program library are:
 
-    - **e3d_v2_tiled:** Single executable file for carrying out forward modeling and inversion of FEM data
+    - **e3drh_v2_tiled:** Single executable file for carrying out forward modeling and inversion of FEM data
     - **create_octree_mesh_e3d_v2_tiled:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
 
 The following Octree utility programs are also used:
@@ -90,13 +90,13 @@ Licensing for commercial use is managed by distributors, not by the UBC-GIF rese
 Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/licensing>`__.
 
 
-Installing E3D
---------------
+Installing E3DRH
+----------------
 
-E3D Executables
-^^^^^^^^^^^^^^^
+E3DRH Executables
+^^^^^^^^^^^^^^^^^
 
-There is no automatic installer currently available for the E3D program library. Please follow the following steps in
+There is no automatic installer currently available for the E3DRH program library. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.
@@ -106,7 +106,7 @@ order to use the software:
 MPI Executables
 ^^^^^^^^^^^^^^^
 
-Message passaging interface (MPI) programming allows E3D version 2 tiled to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the executables. To set up MPI:
+Message passaging interface (MPI) programming allows E3DRH version 2 tiled to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the executables. To set up MPI:
 
     1. Download and install:
       
