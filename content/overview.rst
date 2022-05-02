@@ -1,9 +1,9 @@
 .. _overview:
 
+.. important:: In the spring of 2022, a new suite of FDEM OcTree codes were compiled: *E3DRH, E3DRH v2 and E3DRH v2 tiled*. **These codes use a right-handed coordinate system**; as opposed to the modified left-handed coordinate system used by *E3D, E3D v2 and E3D v2 tiled*. **You are currently viewing the manual for the package which uses 'e3drh.exe' to forward model and invert FDEM data**. The manual for the original E3D v1 package (which uses 'e3d.exe') `can be found here <https://e3d.readthedocs.io/en/e3d/>`__ .
+
 Package overview
 ================
-
-.. important:: E3DRH version 1 performs forward modeling and inversion with the executable **e3drh.exe**. This should not be confused with the original **e3d.exe** code; which uses a modified left-handed coordinate system as opposed to standard right-handed coordinate system.
 
 Description
 -----------
