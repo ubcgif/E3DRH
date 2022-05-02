@@ -3,7 +3,7 @@
 Running the programs
 ====================
 
-This section provides describes how to run all executables pertaining to the E3D package.
+This section provides describes how to run all executables pertaining to the E3DRH package.
 
 .. note::
 
@@ -15,10 +15,10 @@ This section provides describes how to run all executables pertaining to the E3D
 
     Executable files should **not** be renamed. However, input file names can be specified by the user if desired.
 
-The main executable programs within the E3D version 1 program library are:
+The main executable programs within the E3DRH version 1 program library are:
 
     - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3d:** used to forward model or invert FEM data
+    - **e3drh:** used to forward model or invert FEM data
 
 The following Octree utility programs may also be helpful:
 

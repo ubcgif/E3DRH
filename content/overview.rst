@@ -3,14 +3,14 @@
 Package overview
 ================
 
-.. important:: E3D version 1 performs forward modeling and inversion with the executable **e3d.exe**. Past iterations of this code may have been given the name 'e3dinv_iter.exe' or 'e3dinv_pardiso.exe'. To use this code, ensure you have downloaded 'e3dinv.exe' and all related file from the UBC-GIF website.
+.. important:: E3DRH version 1 performs forward modeling and inversion with the executable **e3drh.exe**. This should not be confused with the original **e3d.exe** code; which uses a modified left-handed coordinate system as opposed to standard right-handed coordinate system.
 
 Description
 -----------
 
-This manual provides instruction and background for the **E3D version 1** program library for the forward
-modelling and inversion of frequency domain electromagnetic survey data. In order to decrease
-computational time and increase accuracy by mesh refinement in areas of interest, conductivity models
+This manual provides instruction and background for the **E3DRH version 1** program library for the forward
+modelling and inversion of frequency domain electromagnetic survey data in a right-handed coordinate system.
+In order to decrease computational time and increase accuracy by mesh refinement in areas of interest, conductivity models
 are discretized on an Octree mesh.  
 
 
@@ -56,10 +56,10 @@ Noranda Exploration, Placer Dome, and WMC.
 Program Library Content
 -----------------------
 
-The main executable programs within the E3D version 1 program library are:
+The main executable programs within the E3DRH version 1 program library are:
 
     - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3d:** used to forward model and inverted FEM data
+    - **e3drh:** used to forward model and inverted FEM data
 
 The following Octree utility programs may also be helpful:
 
@@ -75,13 +75,13 @@ Licensing for commercial use is managed by distributors, not by the UBC-GIF rese
 Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/licensing>`__.
 
 
-Installing E3D
---------------
+Installing E3DRH
+----------------
 
-E3D Executables
-^^^^^^^^^^^^^^^
+E3DRH Executables
+^^^^^^^^^^^^^^^^^
 
-There is no automatic installer currently available for E3D version 1. Please follow the following steps in
+There is no automatic installer currently available for E3DRH version 1. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.
@@ -91,7 +91,7 @@ order to use the software:
 MPI Executables
 ^^^^^^^^^^^^^^^
 
-Message passaging interface (MPI) programming allows E3D version 1 to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the E3D version 1 executables. To set up MPI:
+Message passaging interface (MPI) programming allows E3DRH version 1 to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the E3DRH version 1 executables. To set up MPI:
 
     1. Download and install:
       

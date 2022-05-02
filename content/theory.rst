@@ -10,7 +10,7 @@ that the user has some background in these areas. For further reading see ( :cit
 .. important::
 
     This code uses the following coordinate system and Fourier convention to solve Maxwell's equations:
-        - X = Easting, Y = Northing, Z +ve downward (left-handed)
+        - X = Easting, Y = Northing, Z +ve upward (right-handed)
         - An :math:`e^{-i \omega t}` Fourier convention
 
 .. _theory_fundamentals:
@@ -25,7 +25,7 @@ equations are:
 .. math::
     \begin{align}
         \nabla \times &\mathbf{E} - i\omega\mu \mathbf{H} = 0 \\
-        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{s} \\
+        \nabla \times &\mathbf{H} + \sigma \mathbf{E} = \mathbf{s} \\
         &\mathbf{\hat{n} \times H} = 0
     \end{align}
     :label: maxwells_eq

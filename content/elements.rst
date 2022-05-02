@@ -1,17 +1,17 @@
 .. _elements:
 
-Elements of the E3D version 1 package
-=====================================
+Elements of the E3DRH version 1 package
+=======================================
 
-This section provides a brief description of each program in the E3D version 1 package. In addition, we describe the file formats for all input and supporting files used by the coding library.
+This section provides a brief description of each program in the E3DRH version 1 package. In addition, we describe the file formats for all input and supporting files used by the coding library.
 
 Program Library
 ---------------
 
-The main executable programs within the E3D version 1 program library are:
+The main executable programs within the E3DRH version 1 program library are:
 
     - **create_octree_mesh_e3d:** creates an OcTree mesh based on the survey geometry
-    - **e3d:** used to forward model or invert FEM data
+    - **e3drh:** used to forward model or invert FEM data
 
 The following Octree utility programs may also be helpful:
 
@@ -23,7 +23,7 @@ The following Octree utility programs may also be helpful:
 Main Input Files
 ----------------
 
-Here, we describe the main input files for executables contained with the E3D version 1 coding package.
+Here, we describe the main input files for executables contained with the E3DRH version 1 coding package.
 
 .. tOcTree::
     :maxdepth: 1
@@ -38,7 +38,7 @@ Here, we describe the main input files for executables contained with the E3D ve
 Supporting Files
 ----------------
 
-Here, we describe the formats of supporting files used to run E3D executable files. The input files for each executable program are described in the :ref:`running the programs<running>` section.
+Here, we describe the formats of supporting files used to run E3DRH executable files. The input files for each executable program are described in the :ref:`running the programs<running>` section.
 
 .. toctree::
     :maxdepth: 1
