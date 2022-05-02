@@ -28,8 +28,7 @@ The following Octree utility programs may also be helpful:
     - **create_weight_file:** creates cell weighting for the recovered model
     - **interface_weights:** creates weights on the faces of cells for the recovered model
 
-Contents
---------
+**Contents:**
 
 To learn the specifics of running each executable, see the following sections:
 
