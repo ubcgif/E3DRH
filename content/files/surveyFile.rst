@@ -42,13 +42,6 @@ The lines of the survey file are formatted as follows:
 |
 
 
-.. figure:: images/files_locations.png
-     :align: center
-     :width: 400
-
-     Example survey file with various types of transmitters.
-
-
 
 Parameter Descriptions
 ----------------------
@@ -64,7 +57,7 @@ Parameter Descriptions
 
 .. _e3d_survey_ln4:
 
-    - **xi yi zi:** This refers to the X (Easting), Y (Northing) and Z (elevation) locations of the nodes defining the transmitter loop. Transmitters are defined using a left-handed coordinate system. Which means you must define a horizontal transmitter loop in the clockwise direction for a dipole moment in the vertical direction.
+    - **xi yi zi:** This refers to the X (Easting), Y (Northing) and Z (elevation) locations of the nodes defining the transmitter loop. Transmitters are defined using a **right-handed coordinate system**
 
 .. _e3d_survey_ln5:
 
@@ -151,3 +144,19 @@ where
     - *TRX_ORIG* is a flag that must be entered
     - :math:`N` is the number of nodes (# segments = N-1)
     - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
+
+
+Example Survey File
+-------------------
+
+Below, we show a survey file example. There is both an inductive and a galvanic source; each of which has 2 operating frequencies.
+Each source computes the fields at 4 locations.
+The path of the wire is defined according to the right-hand rule.
+The inductive source is a square loop defined in the counter-clockwise direction, resulting in a dipole moment pointing in the upward direction.
+The galvanic source is an electric dipole with positive current flowing from (-1000, 0, 0) to (1000, 0, 0).
+Therefore the primary magnetic field produced by the galvanic source at the Earth's surface is up when standing North of the source, and down when standing South of the source.
+
+
+.. figure:: images/files_locations.png
+     :align: center
+     :width: 700
