@@ -3,7 +3,7 @@
 Inversion Program
 =================
 
-Both the forward and inverse problems are solved using the **e3d.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
+Both the forward and inverse problems are solved using the **e3drh.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
 
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Units
 Output Files
 ^^^^^^^^^^^^
 
-The program **e3d.exe** creates the following output files:
+The program **e3drh.exe** creates the following output files:
 
     - **dpred_fwd.txt** predicted data if forward modeling is used
 
@@ -58,9 +58,9 @@ The program **e3d.exe** creates the following output files:
 
     - **inv.con:** final conductivity model
 
-    - **e3d.log:** log file for the inversion
+    - **e3drh.log:** log file for the inversion
 
-    - **e3d.out:** stores details regarding the inversion
+    - **e3drh.out:** stores details regarding the inversion
 
 
 
