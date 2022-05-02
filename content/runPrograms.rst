@@ -29,8 +29,8 @@ The following Octree utility programs may also be helpful:
     - **create_weight_file:** creates the weighting on each cell in the model
     - **interface_weights:** creates weights on the faces of cells
 
-Contents
---------
+
+**Contents:**
 
 To learn the specifics of running each executable, see the following sections:
 
