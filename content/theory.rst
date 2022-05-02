@@ -21,13 +21,13 @@ Fundamental Physics
 -------------------
 
 Maxwell's equations provide the starting point from which an understanding of how electromagnetic
-fields can be used to uncover the substructure of the Earth. In the frequency domain Maxwell's
-equations are:
+fields can be used to uncover the substructure of the Earth. For a right-handed coordinate system
+and an :math:`e^{-i\omega t}` Fourier convention, Maxwell's equations in the frequency-domain are:
 
 .. math::
     \begin{align}
         \nabla \times &\mathbf{E} - i\omega\mu \mathbf{H} = 0 \\
-        \nabla \times &\mathbf{H} + \sigma \mathbf{E} = \mathbf{s} \\
+        \nabla \times &\mathbf{H} - \sigma \mathbf{E} = \mathbf{s} \\
         &\mathbf{\hat{n} \times H} = 0
     \end{align}
     :label: maxwells_eq
@@ -80,7 +80,7 @@ Direct Solver Approach
 To solve the forward problem, we must first discretize and solve for the fields in Eq. :eq:`maxwells_eq`, where :math:`e^{-i\omega t}` is suppressed. Using finite volume discretization, the electric fields on cell edges (:math:`\mathbf{u_e}`) are obtained by solving the following system at every frequency:
 
 .. math::
-    \big [ \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s_e}
+    \big [ \mathbf{C^T \, M_\mu \, C} - i\omega \mathbf{M_\sigma} \big ] \, \mathbf{u_e} = - i \omega \mathbf{s_e}
     :label: discrete_e_sys
 
 where :math:`\mathbf{s_e}` is a source term defined on cell edges, :math:`\mathbf{C}` is the curl operator and:
@@ -105,7 +105,7 @@ Once the electric field on cell edges has been computed, the electric (:math:`\m
 where :math:`\mathbf{Q_c}` represents the appropriate projection matrix from cell centers to a particular receiver (Ex, Ey, Ez, Hx, Hy or Hz). If we let
 
 .. math::
-    \mathbf{A}(\sigma) = \mathbf{C^T \, M_\mu \, C} + i\omega \mathbf{M_\sigma}
+    \mathbf{A}(\sigma) = \mathbf{C^T \, M_\mu \, C} - i\omega \mathbf{M_\sigma}
     :label: A_operator
 
 then :eq:`fields_projected` can be written as:
