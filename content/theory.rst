@@ -146,17 +146,34 @@ Once the analytic background field is computed on cell edges, we construct the l
 Computing Fields at Receivers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once the electric field on cell edges has been computed, we must project to the receivers. For E3D version 2, closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H`) are obtained by integrating the electric field (:math:`\mathbf{e}`) over the path of close loop to compute the EMF. The EMF is then divided by :math:`i\omega \mu_0 A`, where :math:`A` is the cross-sectional area, to represent the quantity in terms of the average magnetic field normal to the receiver. In practice, magnetic field measurements can be approximated accurately by applying a linear projection matrix (:math:`P`) to the electric fields computed on cell edges:
+Once the electric field on cell edges has been computed, we must project to the receivers.
+
+**Magnetic Field Measurements:** closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H_n`) are obtained by integrating the electric field (:math:`\mathbf{E}`) over the path of close loop to compute the EMF. Since we are using an :math:`e^{-i\omega t}` Fourier convention, the EMF is then divided by :math:`i\omega \mu_0 A`; where :math:`A` is the cross-sectional area. Thus:
 
 .. math::
-    H = \frac{1}{i\omega \mu_0 A} \int_C \mathbf{e} \cdot d\mathbf{l} \approx \frac{1}{i\omega} P \, \mathbf{u_e}
+    H_n = \frac{1}{i\omega \mu_0 A} \int_C \mathbf{E} \cdot d\mathbf{l} \approx \frac{1}{i\omega} P \, \mathbf{u_e}
 
 
-Where (:math:`\mathbf{P}`) is the projection matrix that takes the electric fields on cell edges to all receivers, the vector containing all magnetic field measurements is given by:
+**Electric Field Measurements:** Electric field measurements are obtained by integrating the electric field along the wire path, then dividing by its length (:math:`L`). Thus electric field data are given by:
 
 .. math::
-    \mathbf{H} = \frac{1}{i\omega} \mathbf{P \, u_e} = - \mathbf{P \, A}(\sigma)^{-1} \mathbf{s}
+    E = \frac{1}{L} \int_C \mathbf{E} \cdot d \mathbf{l}
+
+
+**Numerical Evaluation:** Numerically, both magnetic and electric field data can be obtained by applying the appropriate projection matrix to the electric field :math:`\mathbf{u_e}` on mesh edges. For magnetic field data:
+
+.. math::
+    \mathbf{d_m} = \frac{1}{i\omega} \mathbf{P_m \, u_e} = - \mathbf{P_m \, A}(\sigma)^{-1} \mathbf{s}
     :label: fwd_solution
+
+
+where (:math:`\mathbf{P_m}`) is the projection matrix that takes the electric fields on cell edges to all loop receivers. For electric field data:
+
+.. math::
+    \mathbf{d_m} = \mathbf{P_e \, u_e} = - \mathbf{P_e \, A}(\sigma)^{-1} \mathbf{s}
+    :label: fwd_solution_2
+
+where (:math:`\mathbf{P_e}`) is the projection matrix that takes the electric fields on cell edges to all grounded receivers. 
 
 
 Sensitivity
