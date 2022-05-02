@@ -59,8 +59,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'e3d'
-copyright = u'2015-2017, UBC-GIF'
+project = u'e3drh'
+copyright = u'2015-2022, UBC-GIF'
 author = u'UBC-GIF'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -118,8 +118,8 @@ todo_include_todos = False
 
 # -- Edit on Github Extension ---------------------------------------------
 
-edit_on_github_project = 'ubcgif/e3d'
-edit_on_github_branch = 'master'
+edit_on_github_project = 'ubcgif/E3DRH'
+edit_on_github_branch = 'main'
 check_meta = False
 
 
@@ -246,7 +246,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'e3dManual.tex', u'e3d Documentation',
+  (master_doc, 'e3drhManual.tex', u'e3drh Documentation',
    u'UBC-GIF', 'manual'),
 ]
 
@@ -276,7 +276,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'e3ddoc', u'e3d Documentation',
+    (master_doc, 'e3drhdoc', u'e3drh Documentation',
      [author], 1)
 ]
 
@@ -290,7 +290,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'e3ddoc', u'e3d Documentation',
+  (master_doc, 'e3drhdoc', u'e3drh Documentation',
    author, 'e3ddoc', 'One line description of project.',
    'Miscellaneous'),
 ]
