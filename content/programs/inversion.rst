@@ -3,7 +3,7 @@
 Inversion Program
 =================
 
-Both the forward and inverse problems are solved using the **e3d_v2_tiled.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
+Both the forward and inverse problems are solved using the **e3drh_v2_tiled.exe** executable program. In each case, format of the :ref:`input file<e3d_input_inv>` (denoted here as **e3dinv.inp**) is the same. In the case of forward modeling however, some lines in the input file are omitted.
 
 Running the Program
 ^^^^^^^^^^^^^^^^^^^
@@ -50,7 +50,7 @@ Output Files
 
 **THIS IS NOT CORRECT**
 
-The program **e3d_v2_tiled.exe** creates the following output files:
+The program **e3drh_v2_tiled.exe** creates the following output files:
 
     - **inv.con:** recovered conductivity model for the final beta value
 
@@ -62,9 +62,9 @@ The program **e3d_v2_tiled.exe** creates the following output files:
 
     - **dpred.txt** predicted data for final recovered model
 
-    - **e3d_v2_tiled.log:** log file for the inversion
+    - **e3drh_v2_tiled.log:** log file for the inversion
 
-    - **e3d_v2_tiled.out:** inversion summary
+    - **e3drh_v2_tiled.out:** inversion summary
 
 
 
