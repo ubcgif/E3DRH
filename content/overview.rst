@@ -3,12 +3,12 @@
 Package overview
 ================
 
-.. important:: E3D version 2 performs forward modeling and inversion with the executable **e3d_v2.exe**. Past iterations of this code may have been given the name 'e3dinv_1mesh.exe'. To use this code, ensure you have downloaded E3D version 2 package from the UBC-GIF website.
+.. important:: In the spring of 2022, a new suite of FDEM OcTree codes were developed. These codes use a right-handed coordinate system; as opposed to a modified left-handed coordinate system. E3DRH version 2 performs forward modeling and inversion with the executable **e3drh_v2.exe**. `The manual for the original E3D v2 code can be found here <https://e3d.readthedocs.io/en/e3d_v2/>`__ .
 
 Description
 -----------
 
-This manual provides instruction and background for the E3D version 2 program library for the forward
+This manual provides instruction and background for the E3DRH version 2 program library for the forward
 modelling and inversion of frequency domain electromagnetic survey data. In order to decrease computational time and increase accuracy by mesh refinement in areas of interest, models
 are discretized on an Octree mesh.
 
@@ -53,8 +53,8 @@ Cominco Exploration, Falconbridge, Hudson Bay Exploration and Development, INCO
 Exploration & Technical Services, Kennecott Exploration Company, Newmont Gold Company,
 Noranda Exploration, Placer Dome, and WMC.
 
-In comparison with the E3D version 1 program library there are several new features for mesh generation and inversion
-with E3D version 2. These include:
+In comparison with the E3DRH version 1 program library there are several new features for mesh generation and inversion
+with E3DRH version 2. These include:
 
   - Surface and below surface topography cell size control. This allows the user to generate a mesh with refined cells near the surface of the topography to better capture features.
 
@@ -64,9 +64,9 @@ with E3D version 2. These include:
 Program Library Content
 -----------------------
 
-The main executable programs within the E3D version 2 program library are:
+The main executable programs within the E3DRH version 2 program library are:
 
-    - **e3d_v2:** single executable file for carrying out forward modeling and inversion of FEM data
+    - **e3drh_v2:** single executable file for carrying out forward modeling and inversion of FEM data
     - **create_octree_mesh_e3d_v2:** creates a the OcTree mesh based on transmitter and receiver locations
 
 The following Octree utility programs may also be helpful:
@@ -83,13 +83,13 @@ Licensing for commercial use is managed by distributors, not by the UBC-GIF rese
 Details are in the `Licensing policy document <http://gif.eos.ubc.ca/software/licensing>`__.
 
 
-Installing E3D
---------------
+Installing E3DRH
+----------------
 
-E3D Executables
-^^^^^^^^^^^^^^^
+E3DRH Executables
+^^^^^^^^^^^^^^^^^
 
-There is no automatic installer currently available for the E3D version 2 program library. Please follow the following steps in
+There is no automatic installer currently available for the E3DRH version 2 program library. Please follow the following steps in
 order to use the software:
 
     1. Extract all files provided from the given zip-based archive and place them all together in a new folder.
@@ -101,7 +101,7 @@ MPI can be downloaded `here <http://www.mcs.anl.gov/research/projects/mpich2/>`_
 MPI Executables
 ^^^^^^^^^^^^^^^
 
-Message passaging interface (MPI) programming allows E3D version 2 to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the E3D version 2 executables. To set up MPI:
+Message passaging interface (MPI) programming allows E3DRH version 2 to utilize parallel computing. Even if the code is being run on a single machine, the user is **required** to download the necessary MPI package to use the E3DRH version 2 executables. To set up MPI:
 
     1. Download and install:
       

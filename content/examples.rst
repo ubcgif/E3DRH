@@ -3,7 +3,7 @@
 Examples
 ========
 
-Here, the program libraries for E3D version 2 will be used to:
+Here, the program libraries for E3DRH version 2 will be used to:
 
 	- create an Octree mesh based on the survey
 	- create octree models
@@ -12,7 +12,7 @@ Here, the program libraries for E3D version 2 will be used to:
 
 Zip folders containing all necessary files can be downloaded here:
 
-	- `Files for example using E3D version 2 <https://github.com/ubcgif/E3D/raw/e3d_v2/assets/e3d_v2_example.zip>`__
+	- `Files for example using E3DRH version 2 <https://github.com/ubcgif/E3DRH/raw/e3drh_v2/assets/e3drh_v2_example.zip>`__
 
 The full examples are parse into 4 sections:
 

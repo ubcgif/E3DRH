@@ -1,10 +1,10 @@
 
-E3D version 2 package
-=====================
+E3DRH version 2 package
+=======================
 
-.. important:: E3D version 2 performs forward modeling and inversion with the executable **e3d_v2.exe**. Past iterations of this code may have been given the name 'e3dinv_1mesh.exe'. To use this code, ensure you have downloaded the E3D version 2 package from the UBC-GIF website.
+.. important:: In the spring of 2022, a new suite of FDEM OcTree codes were developed. These codes use a right-handed coordinate system; as opposed to a modified left-handed coordinate system. `The manual for the original E3DRH v2 code can be found here <https://e3d.readthedocs.io/en/e3d_v2/>`__ .
 
-E3D version 2 is a program library for carrying out forward modelling and inversion of frequency domain EM data over 3D structures. The contents of this manual are as follows:
+E3DRH version 2 is a program library for carrying out forward modelling and inversion of frequency domain EM data over 3D structures. The contents of this manual are as follows:
 
 .. toctree::
     :numbered:

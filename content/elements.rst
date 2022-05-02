@@ -3,14 +3,14 @@
 Elements of the Program
 =======================
 
-This section provides a brief description of each program in the E3D version 2 package. In addition, we describe the file formats for all input and supporting files used by the coding library.
+This section provides a brief description of each program in the E3DRH version 2 package. In addition, we describe the file formats for all input and supporting files used by the coding library.
 
 Program Library
 ---------------
 
-The main executable programs within the E3D version 2 program library are:
+The main executable programs within the E3DRH version 2 program library are:
 
-    - **e3d_v2:** single executable file for carrying out forward modeling and inversion of FEM data
+    - **e3drh_v2:** single executable file for carrying out forward modeling and inversion of FEM data
     - **create_octree_mesh_e3d_v2:** creates a the OcTree mesh based on transmitter and receiver locations
 
 The following Octree utility programs may also be helpful:
@@ -23,7 +23,7 @@ The following Octree utility programs may also be helpful:
 Main Input Files
 ----------------
 
-Here, we describe the main input files for executables contained with the E3D version 2 package.
+Here, we describe the main input files for executables contained with the E3DRH version 2 package.
 
 .. toctree::
     :maxdepth: 2
@@ -38,7 +38,7 @@ Here, we describe the main input files for executables contained with the E3D ve
 Supporting Files
 ----------------
 
-Here, we describe the formats of supporting files used to run **e3d_v2.exe**. The input files for each executable program are described in the :ref:`running the programs<running>` section.
+Here, we describe the formats of supporting files used to run **e3drh_v2.exe**. The input files for each executable program are described in the :ref:`running the programs<running>` section.
 
 .. toctree::
     :maxdepth: 1

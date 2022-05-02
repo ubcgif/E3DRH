@@ -3,7 +3,7 @@
 Running the programs
 ====================
 
-This section provides describes how to run all executables pertaining to the E3D version 2 package.
+This section provides describes how to run all executables pertaining to the E3DRH version 2 package.
 
 .. note::
 
@@ -15,9 +15,9 @@ This section provides describes how to run all executables pertaining to the E3D
 
     Executable files should **not** be renamed. However, input file names can be specified by the user if desired.
 
-The main executable programs within the E3D version 2 program library are:
+The main executable programs within the E3DRH version 2 program library are:
 
-    - **e3d_v2:** single executable file for carrying out forward modeling and inversion of FEM data
+    - **e3drh_v2:** single executable file for carrying out forward modeling and inversion of FEM data
     - **create_octree_mesh_e3d_v2:** creates a the OcTree mesh based on transmitter and receiver locations
 
 The following Octree utility programs may also be helpful:
