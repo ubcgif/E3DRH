@@ -86,6 +86,30 @@ Defining Transmitters
 
 There are three types of transmitters that *E3D* survey files can use
 
+Arbitrary source
+~~~~~~~~~~~~~~~~
+
+Using this transmitter type, we can define both inductive sources (by closing the loop) or grounded sources (by not closing the loop). The *Arbitrary Source* is by far the most developed of the three source types. The 'right-hand rule' can be used to understand the relationship between the source current and the primary magnetic field it produces.
+
+The block defining this transmitter type is given by:
+
+|
+| *TRX_LINES*
+| :math:`N`
+| :math:`x_1 \;\; y_1 \;\; z_1`
+| :math:`x_2 \;\; y_2 \;\; z_2`
+| :math:`\;\;\;\; \vdots`
+| :math:`x_{N} \; y_{N} \;\; z_{N}`
+| 
+|
+
+where
+
+    - *TRX_LINES* is a flag that must be entered
+    - :math:`N` is the number of nodes (# segments = N-1)
+    - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
+
+
 Circular loop transmitter
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,43 +151,3 @@ where
     - *TRX_ORIG* is a flag that must be entered
     - :math:`N` is the number of nodes (# segments = N-1)
     - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
-
-
-
-Arbitrary source
-~~~~~~~~~~~~~~~~
-
-Using this transmitter type, we can define both inductive sources (by closing the loop) or grounded sources (by not closing the loop). The block defining this transmitter is given by:
-
-|
-| *TRX_LINES*
-| :math:`N`
-| :math:`x_1 \;\; y_1 \;\; z_1`
-| :math:`x_2 \;\; y_2 \;\; z_2`
-| :math:`\;\;\;\; \vdots`
-| :math:`x_{N} \; y_{N} \;\; z_{N}`
-| 
-|
-
-where
-
-    - *TRX_LINES* is a flag that must be entered
-    - :math:`N` is the number of nodes (# segments = N-1)
-    - :math:`x_i, \; y_i, \; z_i` are Easting, Northing and elevation locations for the nodes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

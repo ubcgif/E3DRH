@@ -90,10 +90,7 @@ There are three types of transmitters that *E3D* survey files can use. These wer
 Data Array
 ----------
 
-.. important:: The data are represented in a left-handed coordinate system where X is Easting, Y is Northing and Z is +ve downward. 
-
-
-For each transmitter at each frequency, a set of field observations are made for a set of receivers. These field observations include real and imaginary components of the electric and magnetic fields as well as their uncertainties. The rows of the data array are formatted as follows:
+**E3DRH uses a right-handed Cartesian coordinate system. The vector components of the data are therefore X = Easting direction, Y = Northing direction and Z = positive upward direction.** For each transmitter at each frequency, a set of field observations are made for a set of receivers. These field observations include real and imaginary components of the electric and magnetic fields as well as their uncertainties. The rows of the data array are formatted as follows:
 
 .. math::
     | \; x \; | \; y \; | \; z \; | \;\;\; E_x \; data \;\;\; | \;\;\; E_y \; data \;\;\; | \;\;\; E_z \; data \;\;\; | \;\;\; H_x \; data \;\;\; | \;\;\; H_y \; data \;\;\; | \;\;\; H_z \; data \;\;\; |
