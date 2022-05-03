@@ -3,9 +3,9 @@
 Forward Modeling
 ================
 
-Here, the code **e3d.exe** and the input file **e3dfwd.inp** (:ref:`see format <e3d_input_fwd>`) are used to forward model secondary field FEM data for a synthetic airborne survey. The transmitter loop is horizontal and flown 75 m above the surface. The receiver is located 125 m above the surface. Files relevant to this part of the example are in the sub-folder *fwd*. For this example, we use the model that was created in the example ":ref:`create model<example_model>`". Before running this example, you may want to do the following:
+Here, the code **e3drh.exe** and the input file **e3dfwd.inp** (:ref:`see format <e3d_input_fwd>`) are used to forward model secondary field FEM data for a synthetic airborne survey. The transmitter loop is horizontal and flown 75 m above the surface. The receiver is located 125 m above the surface. Files relevant to this part of the example are in the sub-folder *fwd*. For this example, we use the model that was created in the example ":ref:`create model<example_model>`". Before running this example, you may want to do the following:
 
-	- `Download and open the zip folder containing the entire E3D version 1 example <https://github.com/ubcgif/E3D/raw/e3d/assets/e3d_example.zip>`__ (if not done already)
+	- `Download and open the zip folder containing the entire E3D version 1 example <https://github.com/ubcgif/E3DRH/raw/e3drh/assets/e3drh_example.zip>`__ (if not done already)
 	- :ref:`Learn how to run code from command line <e3d_fwd>`
 	- :ref:`Learn the format of the input file <e3d_input_fwd>`
 
