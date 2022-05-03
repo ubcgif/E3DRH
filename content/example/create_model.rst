@@ -5,7 +5,7 @@ Create Model
 
 Here, the code **blk3cellOct.exe** and the input file **blk3cellOct.inp** (:ref:`see format <e3d_input_model>`) are used to create a conductivity model on the OcTree mesh. For this example, we use the mesh that was created in the example ":ref:`create OcTree mesh<example_octree>`". Files relevant to this part of the example are in the sub-folder *octree_model*. Before running this example, you may want to do the following:
 
-	- `Download and open the zip folder containing the entire E3D version 2 example <https://github.com/ubcgif/E3D/raw/e3d_v2/assets/e3d_v2_example.zip>`__ (if not done already)
+	- `Download and open the zip folder containing the entire E3DRH version 2 example <https://github.com/ubcgif/E3DRH/raw/e3drh_v2/assets/e3drh_v2_example.zip>`__ (if not done already)
 	- Learn how to run :ref:`blk3cellOct<e3d_model>` from command line
 	- Learn the format of the input files :ref:`blk3cellOct.inp<e3d_input_model>`
 
