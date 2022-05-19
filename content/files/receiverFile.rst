@@ -56,9 +56,9 @@ Parameter Descriptions
 Inductive and Galvanic Sources
 ------------------------------
 
-**Transmitter Loop (inductive source):** When defining inductive sources, you **must** close the loop; i.e. the location of the fist and last nodes defining the wire path must be identical. Thus for a loop comprised of N segments, the user must define the source using N+1 nodes. The wire path of the transmitter loop is defined according to the right-hand rule (counter-clockwise).
+**Transmitter Loop (inductive source):** When defining inductive sources, you **must** close the loop; i.e. the location of the fist and last nodes defining the wire path must be identical. Thus for a loop comprised of N segments, the user must define the source using N+1 nodes. The wire path of the transmitter loop is defined according to the right-hand rule (counter-clockwise); think about the Biot-Savart law and how we used our right hand to define the direction of the currents and the direction of the magnetic field they produce.
 
-Below, we define the 183rd source in a survey using 5 nodes. The source is horizontal square 4m by 4m loop that lies 10 m above the Earth's surface. According to the right-hand rule, the primary magnetic field produced by this source is upward (+ve Hz) at the centre of the loop::
+Below, we define the 183rd source in a survey using 5 nodes. The source is horizontal square 4m by 4m loop that lies 10 m above the Earth's surface. According to the right-hand rule (counter-clockwise), the primary magnetic field produced by this source is upward (+ve Hz) at the centre of the loop::
 
     183 5 1
     -2.0 -2.0 10.0
@@ -84,19 +84,9 @@ According to the right-hand rule, the primary magnetic field on the surface shou
 Measuring Magnetic and Electric Fields
 --------------------------------------
 
-**Loop Receiver (magnetic field):** Closed loops are used to define receivers that measure directional components of the magnetic field; i.e. the location of the fist and last nodes defining the wire path must be identical. For the *E3DRH v2 tiled* package, we model the fields using an :math:`e^{-i\omega t}` Fourier convention. As a result, the integral form of Faraday's law becomes:
+**Loop Receiver (magnetic field):** Closed loops are used to define receivers that measure directional components of the magnetic field; i.e. the location of the fist and last nodes defining the wire path must be identical. These are H-field measurements in units A/m. For *E3DRH v2 tiled*, we integrate the electric field over the path of the loop in the counter-clockwise direction (right-handed) to obtain the EMF, then convert the EMF to a magnetic field measurement; see the :ref:`theory section <theory_receivers>` . Thus for *E3DRH v2 tiled*, nodes are ordered according to the path of integration; i.e. counter-clockwise.
 
-.. math::
-    \int_C \mathbf{E} \cdot d\mathbf{l} = i \omega \mu_0 A \mathbf{H} \cdot \hat{\mathbf{n}}
-
-where :math:`A` is the cross-sectional area of the loop, :math:`\hat{\mathbf{n}}` is the direction of its dipole moment, and :math:`\bar{\mathbf{H}}` is the magnetic field at the loop.
-
-The receiver measures the average magnetic field through the loop in the :math:`\hat{\mathbf{n}}` direction in units A/m. Thus the magnetic datum is defined as:
-
-.. math::
-    H_n = \frac{1}{i \omega \mu_0 A} \int_C \mathbf{E} \cdot d\mathbf{l}
-
-Because an :math:`e^{-i\omega t}` Fourier convention is being used, the **right-hand rule** defines the relationship between the receiver loop's path and the direction of the field it measures. Here, we define the 8th receiver loop in a survey. It is a square 4m by 4m loop that measures the component of the magnetic field in the Easting direction (i.e. Hx)::
+Here, we define the 8th receiver loop in a survey. It is a square 4m by 4m loop that measures the component of the magnetic field in the Easting direction (i.e. Hx)::
 
     8 5 1
     0.0 -0.5 -0.5
@@ -106,13 +96,7 @@ Because an :math:`e^{-i\omega t}` Fourier convention is being used, the **right-
     0.0 -0.5 -0.5
 
 
-**Wire Receiver (electric field):** If the first and last nodes defining the wire path are not in the same place, the user will define a grounded receiver which measures the electric field in units V/m. The grounded loop can be more than one segment long.
-
-The *E3DRH v2 tiled* package does not model the electric field at a point. Instead, it intergrate the electric field over the path of the wire, then averages by the length. Electric field data can therefore be defined as:
-
-.. math::
-    E = \frac{1}{L} \int \mathbf{E} \cdot d \mathbf{l}
-
+**Wire Receiver (electric field):** If the first and last nodes defining the wire path are not in the same place, the user will define a grounded receiver which measures the electric field in units V/m. The grounded loop can be more than one segment long. The *E3DRH v2 tiled* package does not model the electric field at a point. Instead, it intergrates the electric field over the path of the wire, then averages by the length; see the :ref:`theory section <theory_receivers>` .  Electric field data can therefore be defined as:
 
 Below, we define the 65th receiver in a survey using 3 nodes (2 segments). The receiver is a 20 m long electric dipole source on the Earth's surface.
 Since the wire path is defined from (-10, 0, 0) to (10, 0, 0), this receiver should provide the Easting component of the electric field (i.e. Ex)::

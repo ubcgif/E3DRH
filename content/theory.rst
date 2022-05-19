@@ -143,12 +143,14 @@ Once the analytic background field is computed on cell edges, we construct the l
     \mathbf{A}(\boldsymbol{\sigma_0}) \, \mathbf{u_0} = - i \omega \mathbf{s_e} 
 
 
+.. _theory_receivers:
+
 Computing Fields at Receivers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once the electric field on cell edges has been computed, we must project to the receivers.
 
-**Magnetic Field Measurements:** closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H_n`) are obtained by integrating the electric field (:math:`\mathbf{E}`) over the path of close loop to compute the EMF. Since we are using an :math:`e^{-i\omega t}` Fourier convention, the EMF is then divided by :math:`i\omega \mu_0 A`; where :math:`A` is the cross-sectional area. Thus:
+**Magnetic Field Measurements:** closed wire loops are used to measure the average magnetic field perpendicular to the loop. Magnetic field measurements (:math:`H_n`) are obtained by integrating the electric field (:math:`\mathbf{E}`) over the path of close loop in the counter-clockwise direction to compute the EMF. Since we are using an :math:`e^{-i\omega t}` Fourier convention, the EMF is then divided by :math:`i\omega \mu_0 A`; where :math:`A` is the cross-sectional area. Thus:
 
 .. math::
     H_n = \frac{1}{i\omega \mu_0 A} \int_C \mathbf{E} \cdot d\mathbf{l} \approx \frac{1}{i\omega} P \, \mathbf{u_e}
@@ -157,7 +159,7 @@ Once the electric field on cell edges has been computed, we must project to the 
 **Electric Field Measurements:** Electric field measurements are obtained by integrating the electric field along the wire path, then dividing by its length (:math:`L`). Thus electric field data are given by:
 
 .. math::
-    E = \frac{1}{L} \int_C \mathbf{E} \cdot d \mathbf{l}
+    E = \frac{1}{L} \int_{l_1}^{l_2} \mathbf{E} \cdot d \mathbf{l}
 
 
 **Numerical Evaluation:** Numerically, both magnetic and electric field data can be obtained by applying the appropriate projection matrix to the electric field :math:`\mathbf{u_e}` on mesh edges. For magnetic field data:
